@@ -3,97 +3,227 @@
   "nodes": [
     {
       "parameters": {
-        "rule": { "interval": [{ "field": "weeks", "triggerAtDay": [1], "triggerAtHour": 8 }] }
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 8
+            }
+          ]
+        }
       },
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [-3200, 0],
+      "position": [
+        -3200,
+        0
+      ],
       "id": "70fb6505-c7bf-483d-b374-a3ee72321969",
       "name": "Lunes 8AM"
     },
     {
-      "parameters": { "url": "https://feeds.feedburner.com/TheHackersNews", "options": {} },
+      "parameters": {
+        "url": "https://feeds.feedburner.com/TheHackersNews",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, -240],
+      "position": [
+        -2960,
+        -240
+      ],
       "id": "rss-cyber-0001",
       "name": "RSS - Ciberseguridad"
     },
     {
-      "parameters": { "url": "https://isc.sans.edu/rssfeed_full.xml", "options": {} },
+      "parameters": {
+        "url": "https://isc.sans.edu/rssfeed_full.xml",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, -80],
+      "position": [
+        -2960,
+        -80
+      ],
       "id": "rss-infra-0002",
       "name": "RSS - Infraestructura"
     },
     {
-      "parameters": { "url": "https://blog.research.google/feeds/posts/default", "options": {} },
+      "parameters": {
+        "url": "https://blog.research.google/feeds/posts/default",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, 80],
+      "position": [
+        -2960,
+        80
+      ],
       "id": "rss-ia-0003",
       "name": "RSS - IA"
     },
     {
-      "parameters": { "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml", "options": {} },
+      "parameters": {
+        "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, 240],
+      "position": [
+        -2960,
+        240
+      ],
       "id": "rss-hard-0004",
       "name": "RSS - Hardening"
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "tag1", "name": "category", "value": "Ciberseguridad", "type": "string" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "tag1",
+              "name": "category",
+              "value": "Ciberseguridad",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [-2720, -240],
+      "position": [
+        -2720,
+        -240
+      ],
       "id": "tag-cyber-0001",
       "name": "Tag: Ciberseguridad"
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "tag2", "name": "category", "value": "Infraestructura", "type": "string" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "tag2",
+              "name": "category",
+              "value": "Infraestructura",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [-2720, -80],
+      "position": [
+        -2720,
+        -80
+      ],
       "id": "tag-infra-0002",
       "name": "Tag: Infraestructura"
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "tag3", "name": "category", "value": "IA", "type": "string" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "tag3",
+              "name": "category",
+              "value": "IA",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [-2720, 80],
+      "position": [
+        -2720,
+        80
+      ],
       "id": "tag-ia-0003",
       "name": "Tag: IA"
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "tag4", "name": "category", "value": "Hardening", "type": "string" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "tag4",
+              "name": "category",
+              "value": "Hardening",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [-2720, 240],
+      "position": [
+        -2720,
+        240
+      ],
       "id": "tag-hard-0004",
       "name": "Tag: Hardening"
     },
     {
       "parameters": {
         "authentication": "serviceAccount",
-        "documentId": { "__rl": true, "value": "YOUR_GOOGLE_SHEET_ID", "mode": "list", "cachedResultName": "Linkedin_Post_Automation" },
-        "sheetName": { "__rl": true, "value": "YOUR_SHEET_GID", "mode": "list", "cachedResultName": "PostedLog" },
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Linkedin_Post_Automation"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "YOUR_SHEET_GID",
+          "mode": "list",
+          "cachedResultName": "PostedLog"
+        },
         "options": {}
       },
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
-      "position": [-2720, 420],
+      "position": [
+        -2720,
+        420
+      ],
       "id": "read-log-0005",
       "name": "Read Posted Log",
-      "credentials": { "googleApi": { "id": "YOUR_GOOGLE_SERVICE_ACCOUNT_CRED_ID", "name": "Google Service Account account" } }
+      "credentials": {
+        "googleApi": {
+          "id": "YOUR_GOOGLE_SERVICE_ACCOUNT_CRED_ID",
+          "name": "Google Service Account account"
+        }
+      }
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "logflag", "name": "isLogEntry", "value": true, "type": "boolean" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "logflag",
+              "name": "isLogEntry",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [-2480, 420],
+      "position": [
+        -2480,
+        420
+      ],
       "id": "tag-log-0006",
       "name": "Tag Log Entries"
     },
@@ -103,22 +233,44 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-2240, 80],
+      "position": [
+        -2240,
+        80
+      ],
       "id": "select-topic-0007",
       "name": "Select New Topic"
     },
     {
       "parameters": {
         "conditions": {
-          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 },
-          "conditions": [{ "id": "found-check", "leftValue": "={{ $json.found }}", "rightValue": "", "operator": { "type": "boolean", "operation": "true", "singleValue": true } }],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "found-check",
+              "leftValue": "={{ $json.found }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
           "combinator": "and"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [-2000, 80],
+      "position": [
+        -2000,
+        80
+      ],
       "id": "if-newcontent-0008",
       "name": "Hay contenido nuevo?"
     },
@@ -126,45 +278,94 @@
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
-      "position": [-1760, 260],
+      "position": [
+        -1760,
+        260
+      ],
       "id": "noop-nonew-0009",
       "name": "Sin contenido nuevo - Fin"
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "prep1", "name": "text", "value": "=Título: {{ $json.title }}\\nCategoría: {{ $json.category }}\\nResumen: {{ $json.description }}\\nFuente: {{ $json.link }}", "type": "string" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "prep1",
+              "name": "text",
+              "value": "=Título: {{ $json.title }}\\nCategoría: {{ $json.category }}\\nResumen: {{ $json.description }}\\nFuente: {{ $json.link }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [-1760, 0],
+      "position": [
+        -1760,
+        0
+      ],
       "id": "prepare-prompt-0010",
       "name": "Prepare Prompt"
     },
     {
       "parameters": {
-        "modelId": { "__rl": true, "value": "models/gemini-2.0-flash-lite", "mode": "list", "cachedResultName": "models/gemini-2.0-flash-lite" },
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.0-flash-lite",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.0-flash-lite"
+        },
         "messages": {
           "values": [
             {
               "content": "Eres un agente de IA experto en ciberseguridad, infraestructura, IA y hardening, especializado en crear publicaciones profesionales, educativas y de alto impacto para LinkedIn, basadas en el tema proporcionado por el usuario.\n\nGenera una publicación bien estructurada para LinkedIn que:\n- Comience con un gancho atractivo y relevante.\n- Tenga un tono profesional, técnico y objetivo (sin alarmismo ni FUD).\n- Sea clara, desglosando conceptos complejos en ideas digeribles.\n- Sea educativa y aporte valor accionable (buenas prácticas, hardening, mitigaciones).\n- Use emojis con moderación.\n- Incluya hashtags específicos del sector (#Ciberseguridad #InfoSec #Cybersecurity #Hardening #IA, etc.).\n- Termine con una llamada a la acción clara.\n\nRestricciones: máximo 3000 caracteres.\n\nREGLAS CRÍTICAS DE FORMATO:\n- El texto de entrada del usuario viene estructurado como \"Título:\", \"Categoría:\", \"Resumen:\", \"Fuente:\" — eso es SOLO información de referencia interna para ti. NUNCA reproduzcas esas etiquetas ni esa estructura en el post final.\n- NO uses markdown de ningún tipo: nada de asteriscos (**), guiones bajos, ni símbolos de formato. LinkedIn no los interpreta y se ven como texto roto.\n- Si necesitas listar puntos, usa emojis o guiones simples seguidos de texto plano, nunca \"**texto en negrita**\".\n- Escribe en prosa fluida y natural, como si estuvieras redactando el post directamente desde cero, no como si estuvieras resumiendo un documento con secciones.\n\nInstrucción crítica de formato: Entrega ÚNICAMENTE el contenido de la publicación. Sin frases introductorias, saludos ni explicaciones finales.",
               "role": "system"
             },
-            { "content": "=Crea un post de LinkedIn basado en esta noticia:\n{{ $json.text }}", "role": "user" }
+            {
+              "content": "=Crea un post de LinkedIn basado en esta noticia:\n{{ $json.text }}",
+              "role": "user"
+            }
           ]
         },
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1,
-      "position": [-1520, -80],
+      "position": [
+        -1520,
+        -80
+      ],
       "id": "1789c41a-9666-490d-8d8f-2a388f21bea4",
       "name": "Generar Post - Gemini (Primario)",
       "onError": "continueErrorOutput",
-      "credentials": { "googlePalmApi": { "id": "YOUR_GEMINI_CRED_ID", "name": "Google Gemini API account" } }
+      "credentials": {
+        "googlePalmApi": {
+          "id": "YOUR_GEMINI_CRED_ID",
+          "name": "Google Gemini API account"
+        }
+      }
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "norm1", "name": "content", "value": "={{ $json.content.parts[0].text }}", "type": "string" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "norm1",
+              "name": "content",
+              "value": "={{ $json.content.parts[0].text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [-1280, -160],
+      "position": [
+        -1280,
+        -160
+      ],
       "id": "4aba2949-ea9b-4b53-89ce-6529dcf4654c",
       "name": "Normalizar salida Gemini"
     },
@@ -181,16 +382,39 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [-1280, 0],
+      "position": [
+        -1280,
+        0
+      ],
       "id": "groq-backup-0011",
       "name": "Generar Post - Groq (Backup)",
-      "credentials": { "httpHeaderAuth": { "id": "GROQ_CRED_ID", "name": "Groq API Key" } }
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "GROQ_CRED_ID",
+          "name": "Groq API Key"
+        }
+      }
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "norm2", "name": "content", "value": "={{ $json.choices[0].message.content }}", "type": "string" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "norm2",
+              "name": "content",
+              "value": "={{ $json.choices[0].message.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [-1040, 0],
+      "position": [
+        -1040,
+        0
+      ],
       "id": "normalizar-groq-0012",
       "name": "Normalizar salida Groq"
     },
@@ -198,7 +422,10 @@
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
-      "position": [-800, -80],
+      "position": [
+        -800,
+        -80
+      ],
       "id": "final-posttext-0013",
       "name": "Final Post Text"
     },
@@ -206,11 +433,20 @@
       "parameters": {
         "method": "GET",
         "url": "=https://image.pollinations.ai/prompt/{{ encodeURIComponent('Imagen profesional y conceptual sobre ' + $('Select New Topic').item.json.category + ': ' + $('Final Post Text').item.json.content.substring(0,300)) }}?width=1024&height=1024&nologo=true",
-        "options": { "response": { "response": { "responseFormat": "file" } } }
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [-560, -160],
+      "position": [
+        -560,
+        -160
+      ],
       "id": "img-pollinations-0014",
       "name": "Generar Imagen - Pollinations (Primario)",
       "onError": "continueErrorOutput"
@@ -221,7 +457,10 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-320, -160],
+      "position": [
+        -320,
+        -160
+      ],
       "id": "mark-img-ok1-0015",
       "name": "Mark Image OK (Pollinations)"
     },
@@ -234,15 +473,29 @@
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({\n  inputs: \"Professional conceptual image about \" + $('Select New Topic').item.json.category + \": \" + $('Final Post Text').item.json.content.substring(0,300)\n}) }}",
-        "options": { "response": { "response": { "responseFormat": "file" } } }
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [-560, 0],
+      "position": [
+        -560,
+        0
+      ],
       "id": "img-hf-backup-0016",
       "name": "Generar Imagen - HuggingFace (Backup)",
       "onError": "continueErrorOutput",
-      "credentials": { "httpHeaderAuth": { "id": "HF_CRED_ID", "name": "HuggingFace API Key" } }
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "HF_CRED_ID",
+          "name": "HuggingFace API Key"
+        }
+      }
     },
     {
       "parameters": {
@@ -250,15 +503,33 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-320, 0],
+      "position": [
+        -320,
+        0
+      ],
       "id": "mark-img-ok2-0017",
       "name": "Mark Image OK (HuggingFace)"
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "img3", "name": "hasImage", "value": false, "type": "boolean" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "img3",
+              "name": "hasImage",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [-320, 160],
+      "position": [
+        -320,
+        160
+      ],
       "id": "no-image-fallback-0018",
       "name": "Sin Imagen (Fallback final)"
     },
@@ -266,22 +537,44 @@
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
-      "position": [-80, -80],
+      "position": [
+        -80,
+        -80
+      ],
       "id": "final-image-0019",
       "name": "Final Image"
     },
     {
       "parameters": {
         "conditions": {
-          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 },
-          "conditions": [{ "id": "has-img-check", "leftValue": "={{ $json.hasImage }}", "rightValue": "", "operator": { "type": "boolean", "operation": "true", "singleValue": true } }],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "has-img-check",
+              "leftValue": "={{ $json.hasImage }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
           "combinator": "and"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [160, -80],
+      "position": [
+        160,
+        -80
+      ],
       "id": "if-hasimage-0020",
       "name": "Hay imagen disponible?"
     },
@@ -298,10 +591,18 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [420, -200],
+      "position": [
+        420,
+        -200
+      ],
       "id": "register-upload-0021",
       "name": "Registrar Upload Imagen LinkedIn",
-      "credentials": { "linkedInOAuth2Api": { "id": "YOUR_LINKEDIN_CRED_ID", "name": "LinkedIn account" } }
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "YOUR_LINKEDIN_CRED_ID",
+          "name": "LinkedIn account"
+        }
+      }
     },
     {
       "parameters": {
@@ -309,7 +610,10 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [680, -120],
+      "position": [
+        680,
+        -120
+      ],
       "id": "combine-code-0022",
       "name": "Combinar Info Upload + Imagen"
     },
@@ -325,7 +629,10 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [920, -120],
+      "position": [
+        920,
+        -120
+      ],
       "id": "upload-binary-0023",
       "name": "Subir Binario Imagen"
     },
@@ -336,7 +643,14 @@
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "linkedInOAuth2Api",
         "sendHeaders": true,
-        "headerParameters": { "parameters": [{ "name": "X-Restli-Protocol-Version", "value": "2.0.0" }] },
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Restli-Protocol-Version",
+              "value": "2.0.0"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"author\": \"urn:li:person:YOUR_LINKEDIN_PERSON_URN\",\n  \"lifecycleState\": \"PUBLISHED\",\n  \"specificContent\": {\n    \"com.linkedin.ugc.ShareContent\": {\n      \"shareCommentary\": { \"text\": {{ JSON.stringify($('Final Post Text').item.json.content) }} },\n      \"shareMediaCategory\": \"IMAGE\",\n      \"media\": [\n        {\n          \"status\": \"READY\",\n          \"description\": { \"text\": \"Imagen generada automáticamente\" },\n          \"media\": \"{{ $('Registrar Upload Imagen LinkedIn').item.json.value.asset }}\",\n          \"title\": { \"text\": \"{{ $('Select New Topic').item.json.category }} Insight\" }\n        }\n      ]\n    }\n  },\n  \"visibility\": { \"com.linkedin.ugc.MemberNetworkVisibility\": \"PUBLIC\" }\n}",
@@ -344,48 +658,129 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1160, -200],
+      "position": [
+        1160,
+        -200
+      ],
       "id": "create-post-image-0024",
       "name": "Publicar Post con Imagen",
-      "credentials": { "linkedInOAuth2Api": { "id": "YOUR_LINKEDIN_CRED_ID", "name": "LinkedIn account" } }
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "YOUR_LINKEDIN_CRED_ID",
+          "name": "LinkedIn account"
+        }
+      }
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "res1", "name": "success", "value": "={{ $json.id ? true : false }}", "type": "boolean" }, { "id": "res2", "name": "urn", "value": "={{ $json.id }}", "type": "string" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "res1",
+              "name": "success",
+              "value": "={{ $json.id ? true : false }}",
+              "type": "boolean"
+            },
+            {
+              "id": "res2",
+              "name": "urn",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [1400, -200],
+      "position": [
+        1400,
+        -200
+      ],
       "id": "normalize-result-img-0025",
       "name": "Normalizar Resultado (Imagen)"
     },
     {
-      "parameters": { "person": "YOUR_LINKEDIN_PERSON_URN", "text": "={{ $('Final Post Text').item.json.content }}", "additionalFields": {} },
+      "parameters": {
+        "person": "YOUR_LINKEDIN_PERSON_URN",
+        "text": "={{ $('Final Post Text').item.json.content }}",
+        "additionalFields": {}
+      },
       "type": "n8n-nodes-base.linkedIn",
       "typeVersion": 1,
-      "position": [420, 160],
+      "position": [
+        420,
+        160
+      ],
       "id": "7ab2492f-6fde-46a6-84a3-1a907ab2cad0",
       "name": "Publicar Post - Solo Texto (Fallback)",
-      "credentials": { "linkedInOAuth2Api": { "id": "YOUR_LINKEDIN_CRED_ID", "name": "LinkedIn account" } }
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "YOUR_LINKEDIN_CRED_ID",
+          "name": "LinkedIn account"
+        }
+      }
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "res3", "name": "success", "value": "={{ $json.urn ? true : false }}", "type": "boolean" }, { "id": "res4", "name": "urn", "value": "={{ $json.urn }}", "type": "string" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "res3",
+              "name": "success",
+              "value": "={{ $json.urn ? true : false }}",
+              "type": "boolean"
+            },
+            {
+              "id": "res4",
+              "name": "urn",
+              "value": "={{ $json.urn }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [680, 160],
+      "position": [
+        680,
+        160
+      ],
       "id": "normalize-result-text-0026",
       "name": "Normalizar Resultado (Texto)"
     },
     {
       "parameters": {
         "conditions": {
-          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2 },
-          "conditions": [{ "id": "post-ok-check", "leftValue": "={{ $json.success }}", "rightValue": "", "operator": { "type": "boolean", "operation": "true", "singleValue": true } }],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "post-ok-check",
+              "leftValue": "={{ $json.success }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
           "combinator": "and"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [1640, -32],
+      "position": [
+        1640,
+        -32
+      ],
       "id": "a7ccedea-6cbe-4bb2-b8b2-3445b2b5c0b5",
       "name": "Publicación exitosa?"
     },
@@ -398,10 +793,18 @@
       },
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
-      "position": [1880, -200],
+      "position": [
+        1880,
+        -200
+      ],
       "id": "c74ad6b3-e577-427b-b66b-dc517e7f5e66",
       "name": "Success Mail",
-      "credentials": { "gmailOAuth2": { "id": "GMAIL_CRED_ID", "name": "Gmail account" } }
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GMAIL_CRED_ID",
+          "name": "Gmail account"
+        }
+      }
     },
     {
       "parameters": {
@@ -412,24 +815,45 @@
       },
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
-      "position": [1880, 120],
+      "position": [
+        1880,
+        120
+      ],
       "id": "c7f52c69-f59e-495c-b162-5ae6b921bc98",
       "name": "Failure Mail",
-      "credentials": { "gmailOAuth2": { "id": "GMAIL_CRED_ID", "name": "Gmail account" } }
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GMAIL_CRED_ID",
+          "name": "Gmail account"
+        }
+      }
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
-      "position": [2120, 120],
+      "position": [
+        2120,
+        120
+      ],
       "id": "832a7f2e-f26b-4698-8952-e4ac70b7bd88",
       "name": "No Operation, do nothing"
     },
     {
       "parameters": {
         "operation": "append",
-        "documentId": { "__rl": true, "value": "YOUR_GOOGLE_SHEET_ID", "mode": "list", "cachedResultName": "Linkedin_Post_Automation" },
-        "sheetName": { "__rl": true, "value": "YOUR_SHEET_GID", "mode": "list", "cachedResultName": "PostedLog" },
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Linkedin_Post_Automation"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "YOUR_SHEET_GID",
+          "mode": "list",
+          "cachedResultName": "PostedLog"
+        },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
@@ -445,16 +869,51 @@
       },
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
-      "position": [2120, -200],
+      "position": [
+        2120,
+        -200
+      ],
       "id": "7864b77d-c071-4acd-adca-5d9fb3e3dc37",
       "name": "Log Posted Item",
-      "credentials": { "googleApi": { "id": "YOUR_GOOGLE_SERVICE_ACCOUNT_CRED_ID", "name": "Google Service Account account" } }
+      "credentials": {
+        "googleApi": {
+          "id": "YOUR_GOOGLE_SERVICE_ACCOUNT_CRED_ID",
+          "name": "Google Service Account account"
+        }
+      }
     },
     {
-      "parameters": { "assignments": { "assignments": [{ "id": "26e3d125", "name": "Post Description", "value": "={{ $('Select New Topic').item.json.title }}", "type": "string" }, { "id": "01d7f2e0", "name": "URN", "value": "={{ $json.urn }}", "type": "string" }, { "id": "5cd5c859", "name": "Posted at", "value": "={{ $now }}", "type": "string" }] }, "options": {} },
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "26e3d125",
+              "name": "Post Description",
+              "value": "={{ $('Select New Topic').item.json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "01d7f2e0",
+              "name": "URN",
+              "value": "={{ $json.urn }}",
+              "type": "string"
+            },
+            {
+              "id": "5cd5c859",
+              "name": "Posted at",
+              "value": "={{ $now }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [2360, -200],
+      "position": [
+        2360,
+        -200
+      ],
       "id": "3289cd73-9ae4-4134-b452-8496912c8af1",
       "name": "Filter content for Drive"
     },
@@ -464,7 +923,10 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2600, -200],
+      "position": [
+        2600,
+        -200
+      ],
       "id": "9d333848-d44a-4b32-ba4b-cc9a025e6086",
       "name": "Creating csv file"
     },
@@ -474,7 +936,10 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2840, -200],
+      "position": [
+        2840,
+        -200
+      ],
       "id": "5a5c4ec8-e97f-45c8-ae42-dba52540a898",
       "name": "Converting csv to binary"
     },
@@ -482,170 +947,943 @@
       "parameters": {
         "authentication": "oAuth2",
         "name": "=Linkedin_Post_{{ $now }}",
-        "driveId": { "__rl": true, "value": "My Drive", "mode": "list", "cachedResultName": "My Drive" },
-        "folderId": { "__rl": true, "value": "root", "mode": "list", "cachedResultName": "/ (Root folder)" },
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "root",
+          "mode": "list",
+          "cachedResultName": "/ (Root folder)"
+        },
         "options": {}
       },
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
-      "position": [3080, -200],
+      "position": [
+        3080,
+        -200
+      ],
       "id": "1051b16e-3851-4118-9b96-f3feb69587a6",
       "name": "Upload file",
-      "credentials": { "googleDriveOAuth2Api": { "id": "YOUR_GOOGLE_DRIVE_OAUTH_CRED_ID", "name": "Google Drive OAuth2" } }
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "YOUR_GOOGLE_DRIVE_OAUTH_CRED_ID",
+          "name": "Google Drive OAuth2"
+        }
+      }
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
-      "position": [3320, -200],
+      "position": [
+        3320,
+        -200
+      ],
       "id": "a9a6c4af-fea0-4716-b9f2-d8e77446ff13",
       "name": "No Operation, do nothing1"
     },
     {
-      "parameters": { "url": "https://krebsonsecurity.com/feed/", "options": {} },
+      "parameters": {
+        "url": "https://krebsonsecurity.com/feed/",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, 400],
+      "position": [
+        -2960,
+        400
+      ],
       "id": "rss-krebs-0027",
       "name": "RSS - Krebs on Security"
     },
     {
-      "parameters": { "url": "https://www.darkreading.com/rss.xml", "options": {} },
+      "parameters": {
+        "url": "https://www.darkreading.com/rss.xml",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, 560],
+      "position": [
+        -2960,
+        560
+      ],
       "id": "rss-darkreading-0028",
       "name": "RSS - Dark Reading"
     },
     {
-      "parameters": { "url": "https://www.theregister.com/security/headlines.atom", "options": {} },
+      "parameters": {
+        "url": "https://www.theregister.com/security/headlines.atom",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, 720],
+      "position": [
+        -2960,
+        720
+      ],
       "id": "rss-theregister-0029",
       "name": "RSS - The Register Security"
     },
     {
-      "parameters": { "url": "https://www.wired.com/feed/category/security/latest/rss", "options": {} },
+      "parameters": {
+        "url": "https://www.wired.com/feed/category/security/latest/rss",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, 880],
+      "position": [
+        -2960,
+        880
+      ],
       "id": "rss-wired-0030",
       "name": "RSS - Wired Security"
     },
     {
-      "parameters": { "url": "https://aws.amazon.com/blogs/security/feed/", "options": {} },
+      "parameters": {
+        "url": "https://aws.amazon.com/blogs/security/feed/",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, 1040],
+      "position": [
+        -2960,
+        1040
+      ],
       "id": "rss-awssecurity-0031",
       "name": "RSS - AWS Security Blog"
     },
     {
-      "parameters": { "url": "https://kubernetes.io/feed.xml", "options": {} },
+      "parameters": {
+        "url": "https://kubernetes.io/feed.xml",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, 1200],
+      "position": [
+        -2960,
+        1200
+      ],
       "id": "rss-kubernetes-0032",
       "name": "RSS - Kubernetes Blog"
     },
     {
-      "parameters": { "url": "https://www.docker.com/blog/feed/", "options": {} },
+      "parameters": {
+        "url": "https://www.docker.com/blog/feed/",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, 1360],
+      "position": [
+        -2960,
+        1360
+      ],
       "id": "rss-docker-0033",
       "name": "RSS - Docker Blog"
     },
     {
-      "parameters": { "url": "https://www.hashicorp.com/blog/feed.xml", "options": {} },
+      "parameters": {
+        "url": "https://www.hashicorp.com/blog/feed.xml",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, 1520],
+      "position": [
+        -2960,
+        1520
+      ],
       "id": "rss-hashicorp-0034",
       "name": "RSS - HashiCorp Blog"
     },
     {
-      "parameters": { "url": "https://openai.com/blog/rss.xml", "options": {} },
+      "parameters": {
+        "url": "https://openai.com/blog/rss.xml",
+        "options": {}
+      },
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [-2960, 1680],
+      "position": [
+        -2960,
+        1680
+      ],
       "id": "rss-openai-0035",
       "name": "RSS - OpenAI Blog"
+    },
+    {
+      "parameters": {
+        "mode": "append",
+        "numberInputs": 5
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -2600,
+        -160
+      ],
+      "id": "merge-ciber-0040",
+      "name": "Merge - Ciberseguridad"
+    },
+    {
+      "parameters": {
+        "mode": "append",
+        "numberInputs": 5
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -2600,
+        700
+      ],
+      "id": "merge-infra-0041",
+      "name": "Merge - Infraestructura"
+    },
+    {
+      "parameters": {
+        "mode": "append",
+        "numberInputs": 2
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -2600,
+        1400
+      ],
+      "id": "merge-ia-0042",
+      "name": "Merge - IA"
+    },
+    {
+      "parameters": {
+        "mode": "append",
+        "numberInputs": 5
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -2360,
+        220
+      ],
+      "id": "merge-preselect-0043",
+      "name": "Merge - PreSelect"
     }
   ],
   "pinData": {},
   "connections": {
-    "Lunes 8AM": { "main": [[
-      { "node": "RSS - Ciberseguridad", "type": "main", "index": 0 },
-      { "node": "RSS - Infraestructura", "type": "main", "index": 0 },
-      { "node": "RSS - IA", "type": "main", "index": 0 },
-      { "node": "RSS - Hardening", "type": "main", "index": 0 },
-      { "node": "Read Posted Log", "type": "main", "index": 0 },
-      { "node": "RSS - Krebs on Security", "type": "main", "index": 0 },
-      { "node": "RSS - Dark Reading", "type": "main", "index": 0 },
-      { "node": "RSS - The Register Security", "type": "main", "index": 0 },
-      { "node": "RSS - Wired Security", "type": "main", "index": 0 },
-      { "node": "RSS - AWS Security Blog", "type": "main", "index": 0 },
-      { "node": "RSS - Kubernetes Blog", "type": "main", "index": 0 },
-      { "node": "RSS - Docker Blog", "type": "main", "index": 0 },
-      { "node": "RSS - HashiCorp Blog", "type": "main", "index": 0 },
-      { "node": "RSS - OpenAI Blog", "type": "main", "index": 0 }
-    ]] },
-    "RSS - Ciberseguridad": { "main": [[{ "node": "Tag: Ciberseguridad", "type": "main", "index": 0 }]] },
-    "RSS - Infraestructura": { "main": [[{ "node": "Tag: Infraestructura", "type": "main", "index": 0 }]] },
-    "RSS - IA": { "main": [[{ "node": "Tag: IA", "type": "main", "index": 0 }]] },
-    "RSS - Hardening": { "main": [[{ "node": "Tag: Hardening", "type": "main", "index": 0 }]] },
-    "Read Posted Log": { "main": [[{ "node": "Tag Log Entries", "type": "main", "index": 0 }]] },
-    "RSS - Krebs on Security": { "main": [[{ "node": "Tag: Ciberseguridad", "type": "main", "index": 0 }]] },
-    "RSS - Dark Reading": { "main": [[{ "node": "Tag: Ciberseguridad", "type": "main", "index": 0 }]] },
-    "RSS - The Register Security": { "main": [[{ "node": "Tag: Ciberseguridad", "type": "main", "index": 0 }]] },
-    "RSS - Wired Security": { "main": [[{ "node": "Tag: Ciberseguridad", "type": "main", "index": 0 }]] },
-    "RSS - AWS Security Blog": { "main": [[{ "node": "Tag: Infraestructura", "type": "main", "index": 0 }]] },
-    "RSS - Kubernetes Blog": { "main": [[{ "node": "Tag: Infraestructura", "type": "main", "index": 0 }]] },
-    "RSS - Docker Blog": { "main": [[{ "node": "Tag: Infraestructura", "type": "main", "index": 0 }]] },
-    "RSS - HashiCorp Blog": { "main": [[{ "node": "Tag: Infraestructura", "type": "main", "index": 0 }]] },
-    "RSS - OpenAI Blog": { "main": [[{ "node": "Tag: IA", "type": "main", "index": 0 }]] },
-    "Tag: Ciberseguridad": { "main": [[{ "node": "Select New Topic", "type": "main", "index": 0 }]] },
-    "Tag: Infraestructura": { "main": [[{ "node": "Select New Topic", "type": "main", "index": 0 }]] },
-    "Tag: IA": { "main": [[{ "node": "Select New Topic", "type": "main", "index": 0 }]] },
-    "Tag: Hardening": { "main": [[{ "node": "Select New Topic", "type": "main", "index": 0 }]] },
-    "Tag Log Entries": { "main": [[{ "node": "Select New Topic", "type": "main", "index": 0 }]] },
-    "Select New Topic": { "main": [[{ "node": "Hay contenido nuevo?", "type": "main", "index": 0 }]] },
-    "Hay contenido nuevo?": { "main": [[{ "node": "Prepare Prompt", "type": "main", "index": 0 }], [{ "node": "Sin contenido nuevo - Fin", "type": "main", "index": 0 }]] },
-    "Prepare Prompt": { "main": [[{ "node": "Generar Post - Gemini (Primario)", "type": "main", "index": 0 }]] },
-    "Generar Post - Gemini (Primario)": { "main": [[{ "node": "Normalizar salida Gemini", "type": "main", "index": 0 }], [{ "node": "Generar Post - Groq (Backup)", "type": "main", "index": 0 }]] },
-    "Normalizar salida Gemini": { "main": [[{ "node": "Final Post Text", "type": "main", "index": 0 }]] },
-    "Generar Post - Groq (Backup)": { "main": [[{ "node": "Normalizar salida Groq", "type": "main", "index": 0 }]] },
-    "Normalizar salida Groq": { "main": [[{ "node": "Final Post Text", "type": "main", "index": 0 }]] },
-    "Final Post Text": { "main": [[{ "node": "Generar Imagen - Pollinations (Primario)", "type": "main", "index": 0 }]] },
-    "Generar Imagen - Pollinations (Primario)": { "main": [[{ "node": "Mark Image OK (Pollinations)", "type": "main", "index": 0 }], [{ "node": "Generar Imagen - HuggingFace (Backup)", "type": "main", "index": 0 }]] },
-    "Mark Image OK (Pollinations)": { "main": [[{ "node": "Final Image", "type": "main", "index": 0 }]] },
-    "Generar Imagen - HuggingFace (Backup)": { "main": [[{ "node": "Mark Image OK (HuggingFace)", "type": "main", "index": 0 }], [{ "node": "Sin Imagen (Fallback final)", "type": "main", "index": 0 }]] },
-    "Mark Image OK (HuggingFace)": { "main": [[{ "node": "Final Image", "type": "main", "index": 0 }]] },
-    "Sin Imagen (Fallback final)": { "main": [[{ "node": "Final Image", "type": "main", "index": 0 }]] },
-    "Final Image": { "main": [[{ "node": "Hay imagen disponible?", "type": "main", "index": 0 }]] },
-    "Hay imagen disponible?": { "main": [[{ "node": "Registrar Upload Imagen LinkedIn", "type": "main", "index": 0 }], [{ "node": "Publicar Post - Solo Texto (Fallback)", "type": "main", "index": 0 }]] },
-    "Registrar Upload Imagen LinkedIn": { "main": [[{ "node": "Combinar Info Upload + Imagen", "type": "main", "index": 0 }]] },
-    "Combinar Info Upload + Imagen": { "main": [[{ "node": "Subir Binario Imagen", "type": "main", "index": 0 }]] },
-    "Subir Binario Imagen": { "main": [[{ "node": "Publicar Post con Imagen", "type": "main", "index": 0 }]] },
-    "Publicar Post con Imagen": { "main": [[{ "node": "Normalizar Resultado (Imagen)", "type": "main", "index": 0 }]] },
-    "Normalizar Resultado (Imagen)": { "main": [[{ "node": "Publicación exitosa?", "type": "main", "index": 0 }]] },
-    "Publicar Post - Solo Texto (Fallback)": { "main": [[{ "node": "Normalizar Resultado (Texto)", "type": "main", "index": 0 }]] },
-    "Normalizar Resultado (Texto)": { "main": [[{ "node": "Publicación exitosa?", "type": "main", "index": 0 }]] },
-    "Publicación exitosa?": { "main": [[{ "node": "Success Mail", "type": "main", "index": 0 }], [{ "node": "Failure Mail", "type": "main", "index": 0 }]] },
-    "Success Mail": { "main": [[{ "node": "Log Posted Item", "type": "main", "index": 0 }]] },
-    "Failure Mail": { "main": [[{ "node": "No Operation, do nothing", "type": "main", "index": 0 }]] },
-    "Log Posted Item": { "main": [[{ "node": "Filter content for Drive", "type": "main", "index": 0 }]] },
-    "Filter content for Drive": { "main": [[{ "node": "Creating csv file", "type": "main", "index": 0 }]] },
-    "Creating csv file": { "main": [[{ "node": "Converting csv to binary", "type": "main", "index": 0 }]] },
-    "Converting csv to binary": { "main": [[{ "node": "Upload file", "type": "main", "index": 0 }]] },
-    "Upload file": { "main": [[{ "node": "No Operation, do nothing1", "type": "main", "index": 0 }]] }
+    "Lunes 8AM": {
+      "main": [
+        [
+          {
+            "node": "RSS - Ciberseguridad",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Infraestructura",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - IA",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Hardening",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Krebs on Security",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Dark Reading",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - The Register Security",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Wired Security",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - AWS Security Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Kubernetes Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Docker Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - HashiCorp Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - OpenAI Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Read Posted Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS - Ciberseguridad": {
+      "main": [
+        [
+          {
+            "node": "Merge - Ciberseguridad",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS - Infraestructura": {
+      "main": [
+        [
+          {
+            "node": "Merge - Infraestructura",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS - IA": {
+      "main": [
+        [
+          {
+            "node": "Merge - IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS - Hardening": {
+      "main": [
+        [
+          {
+            "node": "Tag: Hardening",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Posted Log": {
+      "main": [
+        [
+          {
+            "node": "Tag Log Entries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS - Krebs on Security": {
+      "main": [
+        [
+          {
+            "node": "Merge - Ciberseguridad",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "RSS - Dark Reading": {
+      "main": [
+        [
+          {
+            "node": "Merge - Ciberseguridad",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "RSS - The Register Security": {
+      "main": [
+        [
+          {
+            "node": "Merge - Ciberseguridad",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "RSS - Wired Security": {
+      "main": [
+        [
+          {
+            "node": "Merge - Ciberseguridad",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "RSS - AWS Security Blog": {
+      "main": [
+        [
+          {
+            "node": "Merge - Infraestructura",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "RSS - Kubernetes Blog": {
+      "main": [
+        [
+          {
+            "node": "Merge - Infraestructura",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "RSS - Docker Blog": {
+      "main": [
+        [
+          {
+            "node": "Merge - Infraestructura",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "RSS - HashiCorp Blog": {
+      "main": [
+        [
+          {
+            "node": "Merge - Infraestructura",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "RSS - OpenAI Blog": {
+      "main": [
+        [
+          {
+            "node": "Merge - IA",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Tag: Ciberseguridad": {
+      "main": [
+        [
+          {
+            "node": "Merge - PreSelect",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tag: Infraestructura": {
+      "main": [
+        [
+          {
+            "node": "Merge - PreSelect",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Tag: IA": {
+      "main": [
+        [
+          {
+            "node": "Merge - PreSelect",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Tag: Hardening": {
+      "main": [
+        [
+          {
+            "node": "Merge - PreSelect",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Tag Log Entries": {
+      "main": [
+        [
+          {
+            "node": "Merge - PreSelect",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Select New Topic": {
+      "main": [
+        [
+          {
+            "node": "Hay contenido nuevo?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hay contenido nuevo?": {
+      "main": [
+        [
+          {
+            "node": "Prepare Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sin contenido nuevo - Fin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generar Post - Gemini (Primario)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generar Post - Gemini (Primario)": {
+      "main": [
+        [
+          {
+            "node": "Normalizar salida Gemini",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generar Post - Groq (Backup)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar salida Gemini": {
+      "main": [
+        [
+          {
+            "node": "Final Post Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generar Post - Groq (Backup)": {
+      "main": [
+        [
+          {
+            "node": "Normalizar salida Groq",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar salida Groq": {
+      "main": [
+        [
+          {
+            "node": "Final Post Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final Post Text": {
+      "main": [
+        [
+          {
+            "node": "Generar Imagen - Pollinations (Primario)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generar Imagen - Pollinations (Primario)": {
+      "main": [
+        [
+          {
+            "node": "Mark Image OK (Pollinations)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generar Imagen - HuggingFace (Backup)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Image OK (Pollinations)": {
+      "main": [
+        [
+          {
+            "node": "Final Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generar Imagen - HuggingFace (Backup)": {
+      "main": [
+        [
+          {
+            "node": "Mark Image OK (HuggingFace)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sin Imagen (Fallback final)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Image OK (HuggingFace)": {
+      "main": [
+        [
+          {
+            "node": "Final Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sin Imagen (Fallback final)": {
+      "main": [
+        [
+          {
+            "node": "Final Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final Image": {
+      "main": [
+        [
+          {
+            "node": "Hay imagen disponible?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hay imagen disponible?": {
+      "main": [
+        [
+          {
+            "node": "Registrar Upload Imagen LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Publicar Post - Solo Texto (Fallback)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registrar Upload Imagen LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Combinar Info Upload + Imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combinar Info Upload + Imagen": {
+      "main": [
+        [
+          {
+            "node": "Subir Binario Imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Subir Binario Imagen": {
+      "main": [
+        [
+          {
+            "node": "Publicar Post con Imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publicar Post con Imagen": {
+      "main": [
+        [
+          {
+            "node": "Normalizar Resultado (Imagen)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar Resultado (Imagen)": {
+      "main": [
+        [
+          {
+            "node": "Publicación exitosa?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publicar Post - Solo Texto (Fallback)": {
+      "main": [
+        [
+          {
+            "node": "Normalizar Resultado (Texto)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar Resultado (Texto)": {
+      "main": [
+        [
+          {
+            "node": "Publicación exitosa?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publicación exitosa?": {
+      "main": [
+        [
+          {
+            "node": "Success Mail",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Failure Mail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Success Mail": {
+      "main": [
+        [
+          {
+            "node": "Log Posted Item",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Failure Mail": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Posted Item": {
+      "main": [
+        [
+          {
+            "node": "Filter content for Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter content for Drive": {
+      "main": [
+        [
+          {
+            "node": "Creating csv file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Creating csv file": {
+      "main": [
+        [
+          {
+            "node": "Converting csv to binary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Converting csv to binary": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge - Ciberseguridad": {
+      "main": [
+        [
+          {
+            "node": "Tag: Ciberseguridad",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge - Infraestructura": {
+      "main": [
+        [
+          {
+            "node": "Tag: Infraestructura",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge - IA": {
+      "main": [
+        [
+          {
+            "node": "Tag: IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge - PreSelect": {
+      "main": [
+        [
+          {
+            "node": "Select New Topic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
   },
   "active": false,
-  "settings": { "executionOrder": "v1", "binaryMode": "separate", "availableInMCP": false },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
   "versionId": "public-template-v1",
-  "meta": { "instanceId": "REPLACE_WITH_YOUR_OWN_N8N_INSTANCE_ID" },
+  "meta": {
+    "instanceId": "REPLACE_WITH_YOUR_OWN_N8N_INSTANCE_ID"
+  },
   "nodeGroups": [],
   "id": "linkedin-post-automation-template",
   "tags": []

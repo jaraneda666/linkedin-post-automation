@@ -209,7 +209,9 @@ Title,Link,Category,PostedText,URN,PostedAt
 Edita el nodo **"Lunes 8AM"** → parámetro `rule.interval` → ajusta `triggerAtDay` (0=domingo, 1=lunes...) y `triggerAtHour`.
 
 ### Agregar/cambiar fuentes RSS
-Edita la URL en cualquiera de los nodos `RSS - *`, o duplica un nodo `RSS Feed Read` existente y conéctalo al Schedule Trigger y al nodo `Tag: <Categoría>` correspondiente para sumarlo sin crear un nodo de tag nuevo.
+Edita la URL en cualquiera de los nodos `RSS - *`, o duplica uno existente, conéctalo al Schedule Trigger, y súmalo como una entrada más al nodo `Merge - <Categoría>` correspondiente (subiendo su `numberInputs` en 1).
+
+> ⚠️ **No conectes el nuevo nodo RSS directamente al nodo `Tag: <Categoría>` ni a `Select New Topic`.** Eso reintroduce el bug de publicaciones duplicadas — ver tabla de Troubleshooting.
 
 Fuentes incluidas en el workflow (13 en total):
 
@@ -245,6 +247,7 @@ Fuentes incluidas en el workflow (13 en total):
 | `redirect_uri_mismatch` en OAuth | Cliente OAuth tipo "Desktop" en vez de "Web application" | Crear un nuevo Client ID tipo "Web application" con el redirect URI de n8n registrado |
 | `Service Accounts do not have storage quota` | Service Account no puede escribir en "My Drive" personal | Usar credencial **OAuth2** para el nodo de Google Drive, no Service Account |
 | El post sale con `**negrita**` o etiquetas de metadata | El modelo de IA copia literalmente el formato del prompt | Ajustar el system prompt para prohibir markdown y etiquetas explícitamente (ver nodo "Generar Post - Gemini") |
+| Se publican 2-3 posts duplicados en LinkedIn en una sola corrida | Varios nodos conectados directamente a la misma entrada de otro nodo (ej. varios `RSS - *` → `Select New Topic`) sin un nodo `Merge`. n8n no combina esas ramas automáticamente: ejecuta el nodo destino una vez *por cada rama*, generando selecciones y publicaciones independientes | Agrupar cada familia de feeds con un nodo `Merge` (modo `Append`, `numberInputs` = cantidad de ramas) antes de unirlas — ver nodos `Merge - Ciberseguridad`, `Merge - Infraestructura`, `Merge - IA` y `Merge - PreSelect` en el workflow |
 | `invalid syntax` / `JSON Body is not valid JSON` en nodos HTTP Request | Campo en modo "Fixed" en vez de "Expression" | Cambiar el toggle del campo a "Expression" y usar `JSON.stringify()` |
 
 ---
