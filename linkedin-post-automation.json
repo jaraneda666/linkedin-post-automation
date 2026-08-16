@@ -500,6 +500,78 @@
       "position": [3320, -200],
       "id": "a9a6c4af-fea0-4716-b9f2-d8e77446ff13",
       "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": { "url": "https://krebsonsecurity.com/feed/", "options": {} },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [-2960, 400],
+      "id": "rss-krebs-0027",
+      "name": "RSS - Krebs on Security"
+    },
+    {
+      "parameters": { "url": "https://www.darkreading.com/rss.xml", "options": {} },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [-2960, 560],
+      "id": "rss-darkreading-0028",
+      "name": "RSS - Dark Reading"
+    },
+    {
+      "parameters": { "url": "https://www.theregister.com/security/headlines.atom", "options": {} },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [-2960, 720],
+      "id": "rss-theregister-0029",
+      "name": "RSS - The Register Security"
+    },
+    {
+      "parameters": { "url": "https://www.wired.com/feed/category/security/latest/rss", "options": {} },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [-2960, 880],
+      "id": "rss-wired-0030",
+      "name": "RSS - Wired Security"
+    },
+    {
+      "parameters": { "url": "https://aws.amazon.com/blogs/security/feed/", "options": {} },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [-2960, 1040],
+      "id": "rss-awssecurity-0031",
+      "name": "RSS - AWS Security Blog"
+    },
+    {
+      "parameters": { "url": "https://kubernetes.io/feed.xml", "options": {} },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [-2960, 1200],
+      "id": "rss-kubernetes-0032",
+      "name": "RSS - Kubernetes Blog"
+    },
+    {
+      "parameters": { "url": "https://www.docker.com/blog/feed/", "options": {} },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [-2960, 1360],
+      "id": "rss-docker-0033",
+      "name": "RSS - Docker Blog"
+    },
+    {
+      "parameters": { "url": "https://www.hashicorp.com/blog/feed.xml", "options": {} },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [-2960, 1520],
+      "id": "rss-hashicorp-0034",
+      "name": "RSS - HashiCorp Blog"
+    },
+    {
+      "parameters": { "url": "https://openai.com/blog/rss.xml", "options": {} },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [-2960, 1680],
+      "id": "rss-openai-0035",
+      "name": "RSS - OpenAI Blog"
     }
   ],
   "pinData": {},
@@ -509,13 +581,31 @@
       { "node": "RSS - Infraestructura", "type": "main", "index": 0 },
       { "node": "RSS - IA", "type": "main", "index": 0 },
       { "node": "RSS - Hardening", "type": "main", "index": 0 },
-      { "node": "Read Posted Log", "type": "main", "index": 0 }
+      { "node": "Read Posted Log", "type": "main", "index": 0 },
+      { "node": "RSS - Krebs on Security", "type": "main", "index": 0 },
+      { "node": "RSS - Dark Reading", "type": "main", "index": 0 },
+      { "node": "RSS - The Register Security", "type": "main", "index": 0 },
+      { "node": "RSS - Wired Security", "type": "main", "index": 0 },
+      { "node": "RSS - AWS Security Blog", "type": "main", "index": 0 },
+      { "node": "RSS - Kubernetes Blog", "type": "main", "index": 0 },
+      { "node": "RSS - Docker Blog", "type": "main", "index": 0 },
+      { "node": "RSS - HashiCorp Blog", "type": "main", "index": 0 },
+      { "node": "RSS - OpenAI Blog", "type": "main", "index": 0 }
     ]] },
     "RSS - Ciberseguridad": { "main": [[{ "node": "Tag: Ciberseguridad", "type": "main", "index": 0 }]] },
     "RSS - Infraestructura": { "main": [[{ "node": "Tag: Infraestructura", "type": "main", "index": 0 }]] },
     "RSS - IA": { "main": [[{ "node": "Tag: IA", "type": "main", "index": 0 }]] },
     "RSS - Hardening": { "main": [[{ "node": "Tag: Hardening", "type": "main", "index": 0 }]] },
     "Read Posted Log": { "main": [[{ "node": "Tag Log Entries", "type": "main", "index": 0 }]] },
+    "RSS - Krebs on Security": { "main": [[{ "node": "Tag: Ciberseguridad", "type": "main", "index": 0 }]] },
+    "RSS - Dark Reading": { "main": [[{ "node": "Tag: Ciberseguridad", "type": "main", "index": 0 }]] },
+    "RSS - The Register Security": { "main": [[{ "node": "Tag: Ciberseguridad", "type": "main", "index": 0 }]] },
+    "RSS - Wired Security": { "main": [[{ "node": "Tag: Ciberseguridad", "type": "main", "index": 0 }]] },
+    "RSS - AWS Security Blog": { "main": [[{ "node": "Tag: Infraestructura", "type": "main", "index": 0 }]] },
+    "RSS - Kubernetes Blog": { "main": [[{ "node": "Tag: Infraestructura", "type": "main", "index": 0 }]] },
+    "RSS - Docker Blog": { "main": [[{ "node": "Tag: Infraestructura", "type": "main", "index": 0 }]] },
+    "RSS - HashiCorp Blog": { "main": [[{ "node": "Tag: Infraestructura", "type": "main", "index": 0 }]] },
+    "RSS - OpenAI Blog": { "main": [[{ "node": "Tag: IA", "type": "main", "index": 0 }]] },
     "Tag: Ciberseguridad": { "main": [[{ "node": "Select New Topic", "type": "main", "index": 0 }]] },
     "Tag: Infraestructura": { "main": [[{ "node": "Select New Topic", "type": "main", "index": 0 }]] },
     "Tag: IA": { "main": [[{ "node": "Select New Topic", "type": "main", "index": 0 }]] },

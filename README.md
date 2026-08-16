@@ -209,11 +209,30 @@ Title,Link,Category,PostedText,URN,PostedAt
 Edita el nodo **"Lunes 8AM"** → parámetro `rule.interval` → ajusta `triggerAtDay` (0=domingo, 1=lunes...) y `triggerAtHour`.
 
 ### Agregar/cambiar fuentes RSS
-Edita la URL en cualquiera de los nodos `RSS - *`. Fuentes usadas por defecto:
-- Ciberseguridad: `https://feeds.feedburner.com/TheHackersNews`
-- Infraestructura: `https://isc.sans.edu/rssfeed_full.xml`
-- IA: `https://blog.research.google/feeds/posts/default`
-- Hardening: `https://www.cisa.gov/cybersecurity-advisories/all.xml`
+Edita la URL en cualquiera de los nodos `RSS - *`, o duplica un nodo `RSS Feed Read` existente y conéctalo al Schedule Trigger y al nodo `Tag: <Categoría>` correspondiente para sumarlo sin crear un nodo de tag nuevo.
+
+Fuentes incluidas en el workflow (13 en total):
+
+**Ciberseguridad**
+- `https://feeds.feedburner.com/TheHackersNews`
+- `https://krebsonsecurity.com/feed/`
+- `https://www.darkreading.com/rss.xml`
+- `https://www.theregister.com/security/headlines.atom`
+- `https://www.wired.com/feed/category/security/latest/rss`
+
+**Infraestructura**
+- `https://isc.sans.edu/rssfeed_full.xml`
+- `https://aws.amazon.com/blogs/security/feed/`
+- `https://kubernetes.io/feed.xml`
+- `https://www.docker.com/blog/feed/`
+- `https://www.hashicorp.com/blog/feed.xml`
+
+**IA**
+- `https://blog.research.google/feeds/posts/default`
+- `https://openai.com/blog/rss.xml`
+
+**Hardening**
+- `https://www.cisa.gov/cybersecurity-advisories/all.xml`
 
 ---
 
