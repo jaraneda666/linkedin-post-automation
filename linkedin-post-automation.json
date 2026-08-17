@@ -37,7 +37,11 @@
         -16
       ],
       "id": "a22c0a96-b0c5-4eea-b113-4079010a1038",
-      "name": "RSS - Ciberseguridad"
+      "name": "RSS - Ciberseguridad",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -51,7 +55,11 @@
         176
       ],
       "id": "a1575378-16c0-4b2f-b235-bd6c691fddd0",
-      "name": "RSS - Infraestructura"
+      "name": "RSS - Infraestructura",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -65,7 +73,11 @@
         368
       ],
       "id": "20606b9b-d2cf-48fd-9843-15ff40797076",
-      "name": "RSS - IA"
+      "name": "RSS - IA",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -79,7 +91,11 @@
         560
       ],
       "id": "29c47f12-98f8-44a2-9780-7eb96f31e13d",
-      "name": "RSS - Hardening"
+      "name": "RSS - Hardening",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -1101,7 +1117,11 @@
         400
       ],
       "id": "rss-krebs-0027",
-      "name": "RSS - Krebs on Security"
+      "name": "RSS - Krebs on Security",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -1115,7 +1135,11 @@
         560
       ],
       "id": "rss-darkreading-0028",
-      "name": "RSS - Dark Reading"
+      "name": "RSS - Dark Reading",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -1129,7 +1153,11 @@
         720
       ],
       "id": "rss-theregister-0029",
-      "name": "RSS - The Register Security"
+      "name": "RSS - The Register Security",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -1143,7 +1171,11 @@
         880
       ],
       "id": "rss-wired-0030",
-      "name": "RSS - Wired Security"
+      "name": "RSS - Wired Security",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -1157,7 +1189,11 @@
         1040
       ],
       "id": "rss-awssecurity-0031",
-      "name": "RSS - AWS Security Blog"
+      "name": "RSS - AWS Security Blog",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -1171,7 +1207,11 @@
         1200
       ],
       "id": "rss-kubernetes-0032",
-      "name": "RSS - Kubernetes Blog"
+      "name": "RSS - Kubernetes Blog",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -1185,7 +1225,11 @@
         1360
       ],
       "id": "rss-docker-0033",
-      "name": "RSS - Docker Blog"
+      "name": "RSS - Docker Blog",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -1199,7 +1243,11 @@
         1520
       ],
       "id": "rss-hashicorp-0034",
-      "name": "RSS - HashiCorp Blog"
+      "name": "RSS - HashiCorp Blog",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -1213,7 +1261,11 @@
         1680
       ],
       "id": "rss-openai-0035",
-      "name": "RSS - OpenAI Blog"
+      "name": "RSS - OpenAI Blog",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {

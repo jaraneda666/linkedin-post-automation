@@ -248,6 +248,7 @@ Fuentes incluidas en el workflow (13 en total):
 
 | Problema | Causa común | Solución |
 |---|---|---|
+| `The connection timed out` en un nodo `RSS - *` | Timeout transitorio de red contra ese feed en particular; sin reintentos, esto abortaba toda la ejecución semanal | Los 13 nodos RSS tienen `retryOnFail` (3 intentos, 2s de espera) y `onError: continueRegularOutput`, así que un feed caído se omite sin frenar el resto del workflow |
 | `Bad request` en "Subir Binario Imagen" | Uploads a LinkedIn requieren `Authentication: None` y `Body Content Type: n8n Binary File` | Verificar configuración del nodo, no usar credencial predefinida en este PUT específico |
 | `The item has no binary field 'data'` | El binario se pierde al pasar por nodos Set | Usar **Code nodes** en vez de Set nodes para pasos donde se debe preservar el binario |
 | `redirect_uri_mismatch` en OAuth | Cliente OAuth tipo "Desktop" en vez de "Web application" | Crear un nuevo Client ID tipo "Web application" con el redirect URI de n8n registrado |
