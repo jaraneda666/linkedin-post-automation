@@ -22,10 +22,10 @@ Automatización en **n8n** que publica posts profesionales en LinkedIn de forma 
 
 Cada **lunes a las 8:00 AM**, el workflow:
 
-1. **Lee 4 feeds RSS** de fuentes reconocidas de ciberseguridad, infraestructura, IA y hardening
+1. **Lee 13 feeds RSS** de fuentes reconocidas de ciberseguridad, infraestructura, IA y hardening
 2. **Selecciona una noticia nueva** (que no se haya publicado antes, usando un log en Google Sheets)
-3. **Genera un post de LinkedIn** con IA a partir de esa noticia (Gemini como motor principal, Groq como respaldo automático)
-4. **Genera una imagen conceptual** relacionada al post (Pollinations.ai como principal, HuggingFace como respaldo)
+3. **Genera un post de LinkedIn bilingüe (español + inglés)** con IA a partir de esa noticia (Gemini como motor principal, Groq como respaldo automático)
+4. **Genera una imagen conceptual con el titular superpuesto** (Pollinations.ai + Cloudinary para el overlay de texto como principal, HuggingFace sin texto como respaldo)
 5. **Publica en LinkedIn** con imagen adjunta (o solo texto si la generación de imagen falla)
 6. **Envía notificación por Gmail** confirmando éxito o fallo
 7. **Registra el post** en Google Sheets (para no repetir noticias) y guarda un backup CSV en Google Drive
@@ -101,8 +101,9 @@ CSV + Upload a Google Drive
 | **Google Cloud Project** | Sheets, Drive, Gmail | Gratis |
 | **Google Gemini API** | Generación de texto (primario) | Gratis (free tier) |
 | **Groq API** | Generación de texto (backup) | Gratis (free tier) |
-| **Pollinations.ai** | Generación de imagen (primario) | Gratis, sin API key |
-| **HuggingFace Inference API** | Generación de imagen (backup) | Gratis (free tier) |
+| **Pollinations.ai** | Generación de imagen base (primario) | Gratis, sin API key |
+| **Cloudinary** | Overlay del titular como texto sobre la imagen (transformación `l_text` vía fetch, primario) | Gratis (free tier), solo necesitas tu *cloud name* — no requiere API key para `fetch` |
+| **HuggingFace Inference API** | Generación de imagen sin texto (backup) | Gratis (free tier) |
 | **LinkedIn Developer App** | Publicación de posts | Gratis |
 | **Gmail** | Notificaciones | Gratis |
 
@@ -129,6 +130,8 @@ Reemplaza en el workflow (todos marcados con placeholders tipo `YOUR_*`):
 - `documentId` / `sheetName` de los nodos **Read Posted Log** y **Log Posted Item** con tu propio spreadsheet
 - `person: "YOUR_LINKEDIN_PERSON_URN"` en los nodos de LinkedIn con tu propio Person URN
 - `sendTo: "YOUR_EMAIL@example.com"` en los nodos de Gmail con tu correo
+- `res.cloudinary.com/YOUR_CLOUDINARY_CLOUD_NAME` en el nodo **Generar Imagen con Texto - Pollinations+Cloudinary (Primario)** con tu *cloud name* de Cloudinary (Dashboard → Product Environment Settings)
+- `folderId` del nodo **Upload file** si quieres subir los backups CSV a una carpeta específica de Drive en vez de la raíz (`root`)
 
 ---
 
@@ -207,6 +210,9 @@ Title,Link,Category,PostedText,URN,PostedAt
 
 ### Cambiar la frecuencia o el día
 Edita el nodo **"Lunes 8AM"** → parámetro `rule.interval` → ajusta `triggerAtDay` (0=domingo, 1=lunes...) y `triggerAtHour`.
+
+### Formato del post (bilingüe)
+El post se genera en **español primero, luego inglés** (separados por la línea `🌐 English version:`), con una línea en blanco antes del bloque de hashtags. Esto se controla desde el system prompt de los nodos **Generar Post - Gemini (Primario)** y **Generar Post - Groq (Backup)** — ambos deben mantenerse sincronizados si editas uno, ya que cualquiera de los dos puede terminar generando el post final.
 
 ### Agregar/cambiar fuentes RSS
 Edita la URL en cualquiera de los nodos `RSS - *`, o duplica uno existente, conéctalo al Schedule Trigger, y súmalo como una entrada más al nodo `Merge - <Categoría>` correspondiente (subiendo su `numberInputs` en 1).

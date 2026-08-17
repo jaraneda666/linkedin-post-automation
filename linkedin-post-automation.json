@@ -1,5 +1,6 @@
 {
-  "name": "Linkedin Post Automation - RSS + Backups",
+  "id": "linkedin-post-automation-template",
+  "name": "Linkedin Post Automation - RSS",
   "nodes": [
     {
       "parameters": {
@@ -18,10 +19,10 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -3200,
-        0
+        -656,
+        368
       ],
-      "id": "70fb6505-c7bf-483d-b374-a3ee72321969",
+      "id": "4061aa48-0963-4b36-b28f-dfa6261345b5",
       "name": "Lunes 8AM"
     },
     {
@@ -32,10 +33,10 @@
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
       "position": [
-        -2960,
-        -240
+        -432,
+        -16
       ],
-      "id": "rss-cyber-0001",
+      "id": "a22c0a96-b0c5-4eea-b113-4079010a1038",
       "name": "RSS - Ciberseguridad"
     },
     {
@@ -46,10 +47,10 @@
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
       "position": [
-        -2960,
-        -80
+        -432,
+        176
       ],
-      "id": "rss-infra-0002",
+      "id": "a1575378-16c0-4b2f-b235-bd6c691fddd0",
       "name": "RSS - Infraestructura"
     },
     {
@@ -60,10 +61,10 @@
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
       "position": [
-        -2960,
-        80
+        -432,
+        368
       ],
-      "id": "rss-ia-0003",
+      "id": "20606b9b-d2cf-48fd-9843-15ff40797076",
       "name": "RSS - IA"
     },
     {
@@ -74,10 +75,10 @@
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
       "position": [
-        -2960,
-        240
+        -432,
+        560
       ],
-      "id": "rss-hard-0004",
+      "id": "29c47f12-98f8-44a2-9780-7eb96f31e13d",
       "name": "RSS - Hardening"
     },
     {
@@ -98,10 +99,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2720,
-        -240
+        -208,
+        -16
       ],
-      "id": "tag-cyber-0001",
+      "id": "3cb5f25d-4362-455a-bc9d-da2dd48a235b",
       "name": "Tag: Ciberseguridad"
     },
     {
@@ -122,10 +123,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2720,
-        -80
+        -208,
+        176
       ],
-      "id": "tag-infra-0002",
+      "id": "6a6e8b48-dc93-4feb-b73f-c2c3da4e4abe",
       "name": "Tag: Infraestructura"
     },
     {
@@ -146,10 +147,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2720,
-        80
+        -208,
+        368
       ],
-      "id": "tag-ia-0003",
+      "id": "ce0a292e-3736-47a5-9e3a-36eacc5ad3b3",
       "name": "Tag: IA"
     },
     {
@@ -170,10 +171,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2720,
-        240
+        -208,
+        560
       ],
-      "id": "tag-hard-0004",
+      "id": "b2fe068e-bf2f-41b7-a943-bb8042566bbb",
       "name": "Tag: Hardening"
     },
     {
@@ -196,10 +197,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -2720,
-        420
+        -432,
+        752
       ],
-      "id": "read-log-0005",
+      "id": "2744c5cb-4cc1-40de-84f3-513175a2cb99",
       "name": "Read Posted Log",
       "credentials": {
         "googleApi": {
@@ -226,10 +227,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2480,
-        420
+        -208,
+        752
       ],
-      "id": "tag-log-0006",
+      "id": "469429e6-8887-497a-bafd-3b9026dad981",
       "name": "Tag Log Entries"
     },
     {
@@ -239,10 +240,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2240,
-        80
+        16,
+        368
       ],
-      "id": "select-topic-0007",
+      "id": "85f4758a-79e6-4408-9ba4-f993ffb88e16",
       "name": "Select New Topic"
     },
     {
@@ -273,10 +274,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -2000,
-        80
+        240,
+        368
       ],
-      "id": "if-newcontent-0008",
+      "id": "ac23b7bf-1dac-407d-81bc-dca43943c7ff",
       "name": "Hay contenido nuevo?"
     },
     {
@@ -284,10 +285,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -1760,
-        260
+        464,
+        464
       ],
-      "id": "noop-nonew-0009",
+      "id": "48cd4573-a703-446e-a134-8f18164857d2",
       "name": "Sin contenido nuevo - Fin"
     },
     {
@@ -307,10 +308,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1760,
-        0
+        464,
+        272
       ],
-      "id": "prepare-prompt-0010",
+      "id": "e7879ee0-991a-4ea7-a171-5a4dd269993d",
       "name": "Prepare Prompt"
     },
     {
@@ -324,12 +325,11 @@
         "messages": {
           "values": [
             {
-              "content": "Eres un agente de IA experto en ciberseguridad, infraestructura, IA y hardening, especializado en crear publicaciones profesionales, educativas y de alto impacto para LinkedIn, basadas en el tema proporcionado por el usuario.\n\nGenera una publicación bien estructurada para LinkedIn que:\n- Comience con un gancho atractivo y relevante.\n- Tenga un tono profesional, técnico y objetivo (sin alarmismo ni FUD).\n- Sea clara, desglosando conceptos complejos en ideas digeribles.\n- Sea educativa y aporte valor accionable (buenas prácticas, hardening, mitigaciones).\n- Use emojis con moderación.\n- Incluya hashtags específicos del sector (#Ciberseguridad #InfoSec #Cybersecurity #Hardening #IA, etc.).\n- Termine con una llamada a la acción clara.\n\nRestricciones: máximo 3000 caracteres.\n\nREGLAS CRÍTICAS DE FORMATO:\n- El texto de entrada del usuario viene estructurado como \"Título:\", \"Categoría:\", \"Resumen:\", \"Fuente:\" — eso es SOLO información de referencia interna para ti. NUNCA reproduzcas esas etiquetas ni esa estructura en el post final.\n- NO uses markdown de ningún tipo: nada de asteriscos (**), guiones bajos, ni símbolos de formato. LinkedIn no los interpreta y se ven como texto roto.\n- Si necesitas listar puntos, usa emojis o guiones simples seguidos de texto plano, nunca \"**texto en negrita**\".\n- Escribe en prosa fluida y natural, como si estuvieras redactando el post directamente desde cero, no como si estuvieras resumiendo un documento con secciones.\n\nInstrucción crítica de formato: Entrega ÚNICAMENTE el contenido de la publicación. Sin frases introductorias, saludos ni explicaciones finales.",
+              "content": "Eres un agente de IA experto en ciberseguridad, infraestructura, IA y hardening, especializado en crear publicaciones profesionales, educativas y de alto impacto para LinkedIn, basadas en el tema proporcionado por el usuario.\n\nGenera una publicación BILINGÜE para LinkedIn, con esta estructura exacta y en este orden:\n1. El post completo en ESPAÑOL (máximo 1100 caracteres): comienza con un gancho atractivo y relevante, desarrolla el tema de forma clara y educativa aportando valor accionable (buenas prácticas, hardening, mitigaciones), tono profesional y objetivo (sin alarmismo ni FUD), usa emojis con moderación, y cierra con una reflexión sin preguntas abiertas relacionada al tema, SIN pedir explícitamente comentarios, seguidores o interacción.\n2. Una línea con exactamente este separador: 🌐 English version:\n3. El mismo post traducido al INGLÉS (máximo 1100 caracteres), mismo contenido, tono y estructura que la versión en español.\n4. Una línea COMPLETAMENTE VACÍA (un salto de línea vacío, sin ningún carácter).\n5. Los hashtags del sector, todos en una sola línea, compartidos para ambos idiomas (#Cybersecurity #InfoSec #AI #Infrastructure #Hardening, etc.).\n\nRestricción dura: el post COMPLETO (español + inglés + hashtags) no debe superar 3000 caracteres en total.\n\nREGLAS CRÍTICAS DE FORMATO (búscalas y elimínalas de tu borrador antes de responder):\n- El texto de entrada viene estructurado como \"Título:\", \"Resumen:\", \"Fuente:\" — eso es SOLO referencia interna. NUNCA reproduzcas esas etiquetas ni esa estructura en el post final.\n- PROHIBIDO usar asteriscos (**) para negrita en absolutamente ninguna parte del post, ni siquiera en los ítems de una lista numerada. Si quieres destacar un concepto, hazlo con la redacción o un emoji, nunca con **texto**.\n- PROHIBIDO envolver el post completo (o cualquier parte) entre comillas dobles (\"...\").\n- PROHIBIDO pedir que sigan la cuenta, se suscriban, o cualquier variante de \"síguenos\".\n- PROHIBIDO frases como \"comparte en los comentarios\", \"cuéntame abajo\", \"déjame tu opinión en comentarios\" o cualquier instrucción explícita de comentar. Puedes cerrar con una reflexión, pero sin decirle al lector dónde ni cómo responder.\n- NO uses guiones bajos ni ningún otro símbolo de marcado.\n- OBLIGATORIO: deja una línea COMPLETAMENTE VACÍa entre el final del texto en inglés y el bloque de hashtags. Nunca pegues los hashtags directamente al final del último párrafo.\n- Escribe en prosa fluida y natural, como si lo redactaras directamente, no como resumen de un documento.\n\nInstrucción crítica de formato: Entrega ÚNICAMENTE el contenido de la publicación (español, separador, inglés, línea en blanco, hashtags). Sin frases introductorias, saludos ni explicaciones finales.",
               "role": "system"
             },
             {
-              "content": "=Crea un post de LinkedIn basado en esta noticia:\n{{ $json.text }}",
-              "role": "user"
+              "content": "=Crea un post de LinkedIn basado en esta noticia:\n{{ $json.text }}"
             }
           ]
         },
@@ -338,18 +338,18 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1,
       "position": [
-        -1520,
-        -80
+        688,
+        272
       ],
-      "id": "1789c41a-9666-490d-8d8f-2a388f21bea4",
+      "id": "2bc9e120-c8b7-4340-a947-b0667fd580b4",
       "name": "Generar Post - Gemini (Primario)",
-      "onError": "continueErrorOutput",
       "credentials": {
         "googlePalmApi": {
           "id": "YOUR_GEMINI_CRED_ID",
           "name": "Google Gemini API account"
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -368,10 +368,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1280,
-        -160
+        1264,
+        176
       ],
-      "id": "4aba2949-ea9b-4b53-89ce-6529dcf4654c",
+      "id": "59261ea3-f6ec-4ac3-9dbf-cd4863fc2a34",
       "name": "Normalizar salida Gemini"
     },
     {
@@ -382,16 +382,16 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({\n  model: \"openai/gpt-oss-20b\",\n  messages: [\n    { role: \"system\", content: \"Eres experto en ciberseguridad, infraestructura, IA y hardening. Escribe posts de LinkedIn profesionales, educativos, sin alarmismo, con hashtags relevantes y un CTA final. Máximo 3000 caracteres. El input viene con etiquetas 'Título:', 'Categoría:', 'Resumen:', 'Fuente:' que son SOLO referencia interna — nunca las reproduzcas en el post. NO uses markdown ni asteriscos de ningún tipo, solo texto plano con emojis. Entrega SOLO el post en prosa fluida, sin explicaciones.\" },\n    { role: \"user\", content: \"Crea un post de LinkedIn basado en: \" + $('Prepare Prompt').item.json.text }\n  ],\n  temperature: 0.7\n}) }}",
+        "jsonBody": "={{ JSON.stringify({\n  model: \"openai/gpt-oss-20b\",\n  messages: [\n    { role: \"system\", content: \"Eres experto en ciberseguridad, infraestructura, IA y hardening. Escribe un post de LinkedIn BILINGÜE: primero la versión completa en ESPAÑOL (máx 1100 caracteres), luego una línea separadora exacta '🌐 English version:', luego la misma versión traducida al INGLÉS (máx 1100 caracteres), luego una línea COMPLETAMENTE VACÍA, y al final los hashtags compartidos en una sola línea. El post completo (ambos idiomas + hashtags) no debe superar 3000 caracteres. Profesional, educativo, sin alarmismo, cierra con una reflexión sin preguntas abiertas, SIN pedir comentarios ni seguidores. PROHIBIDO usar asteriscos (**) para negrita en cualquier parte, incluyendo listas. PROHIBIDO envolver el texto entre comillas. El input viene con etiquetas 'Título:', 'Categoría:', 'Resumen:', 'Fuente:' que son SOLO referencia interna. Entrega SOLO el post en texto plano, sin explicaciones, sin comillas, sin asteriscos.\" },\n    { role: \"user\", content: \"Crea un post de LinkedIn basado en: \" + $('Prepare Prompt').item.json.text }\n  ],\n  temperature: 0.7\n}) }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1280,
-        0
+        1040,
+        368
       ],
-      "id": "groq-backup-0011",
+      "id": "f899c12c-df8a-46c4-88ca-60c0bb6c10b8",
       "name": "Generar Post - Groq (Backup)",
       "credentials": {
         "httpHeaderAuth": {
@@ -417,10 +417,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1040,
-        0
+        1264,
+        368
       ],
-      "id": "normalizar-groq-0012",
+      "id": "ab36342b-628f-421d-abaa-69784fae5758",
       "name": "Normalizar salida Groq"
     },
     {
@@ -428,16 +428,28 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -800,
-        -80
+        1488,
+        272
       ],
-      "id": "final-posttext-0013",
+      "id": "18ef0555-70f2-4515-ba89-109a9f253580",
       "name": "Final Post Text"
     },
     {
       "parameters": {
-        "method": "GET",
-        "url": "=https://image.pollinations.ai/prompt/{{ encodeURIComponent('Imagen profesional y conceptual sobre ' + $('Select New Topic').item.json.category + ': ' + $('Final Post Text').item.json.content.substring(0,300)) }}?width=1024&height=1024&nologo=true",
+        "jsCode": "const category = $('Select New Topic').item.json.category;\nconst postText = $('Final Post Text').item.json.content;\n\n// Estilo base más corto (menos tokens = URL final más corta y segura)\nconst baseStyle = \"digital matte painting, Unreal Engine 5 render, cinematic lighting, volumetric fog, dramatic depth of field, dynamic low-angle camera, rich color grading, high contrast, ultra detailed, 8k\";\n\n// Escenas acortadas — mismo concepto, menos palabras\nconst categoryScenes = {\n  \"Ciberseguridad\": [\n    \"Hand typing on keyboard in dark room, red terminal warnings on monitors, cinematic blue-red lighting\",\n    \"Glowing digital padlock shattering into binary code, deep navy background, dramatic lighting\"\n  ],\n  \"Infraestructura\": [\n    \"Isometric data center with glowing server racks, streams of light, night city skyline\",\n    \"Symmetrical corridor of server racks, blue LED lights, silhouette figure walking away\"\n  ],\n  \"IA\": [\n    \"Glowing neural network sphere made of light particles, floating in dark space, purple-cyan gradient\",\n    \"Human silhouette dissolving into glowing data particles, minimalist dark background\"\n  ],\n  \"Hardening\": [\n    \"Isometric stone castle with glowing circuit patterns, translucent digital shield dome, dusk sky\",\n    \"Interlocking metal gears and circuit boards forming barrier, dramatic side lighting\"\n  ]\n};\n\nconst scenes = categoryScenes[category] || categoryScenes[\"Ciberseguridad\"];\nconst chosenScene = scenes[Math.floor(Math.random() * scenes.length)];\nconst imagePrompt = `${chosenScene}, ${baseStyle}`;\n\nconst availableModels = [\"flux\", \"flux-realism\", \"flux-3d\", \"turbo\"];\nconst chosenModel = availableModels[Math.floor(Math.random() * availableModels.length)];\nconst seed = Math.floor(Math.random() * 1000000);\n\nconst cleanText = postText\n  .replace(/#\\w+/g, '')\n  .replace(/[\\u{1F300}-\\u{1FAFF}]/gu, '')\n  .trim();\n\nlet headline = cleanText.split(/[.!?\\n]/)[0]\n  .replace(/[^a-zA-ZÀ-ÿ0-9 ]/g, '')\n  .trim()\n  .toUpperCase();\n\nconst words = headline.split(/\\s+/).slice(0, 5);\nheadline = words.join(' ');\nconst headlineUrlSafe = headline.replace(/\\s+/g, '%20');\n\nreturn [{\n  json: {\n    ...$('Final Post Text').item.json,\n    imagePrompt: imagePrompt,\n    imageSeed: seed,\n    imageModel: chosenModel,\n    headlineText: headlineUrlSafe\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1712,
+        272
+      ],
+      "id": "bd134cf0-e99a-4835-a1cc-3f5bb6214d56",
+      "name": "Build Image Prompt"
+    },
+    {
+      "parameters": {
+        "url": "=https://res.cloudinary.com/YOUR_CLOUDINARY_CLOUD_NAME/image/fetch/l_text:Arial_60_bold:{{ $json.headlineText }},co_white,g_south,y_50,b_rgb:0d1b2a,bo_25px_solid_rgb:0d1b2a/{{ encodeURIComponent('https://image.pollinations.ai/prompt/' + encodeURIComponent($json.imagePrompt)) }}",
         "options": {
           "response": {
             "response": {
@@ -449,11 +461,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -560,
-        -160
+        1936,
+        272
       ],
-      "id": "img-pollinations-0014",
-      "name": "Generar Imagen - Pollinations (Primario)",
+      "id": "1fe2704a-7495-431a-af41-6ad1ab4cf45d",
+      "name": "Generar Imagen con Texto - Pollinations+Cloudinary (Primario)",
       "onError": "continueErrorOutput"
     },
     {
@@ -463,10 +475,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -320,
-        -160
+        2384,
+        80
       ],
-      "id": "mark-img-ok1-0015",
+      "id": "86a508e2-2917-416d-861b-20f500268ffa",
       "name": "Mark Image OK (Pollinations)"
     },
     {
@@ -477,7 +489,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({\n  inputs: \"Professional conceptual image about \" + $('Select New Topic').item.json.category + \": \" + $('Final Post Text').item.json.content.substring(0,300)\n}) }}",
+        "jsonBody": "={{ JSON.stringify({\n  inputs: $json.imagePrompt,\n  parameters: {\n    negative_prompt: \"blurry, low quality, watermark, text, logo, distorted, amateur, cartoon, childish\",\n    num_inference_steps: 30\n  }\n}) }}",
         "options": {
           "response": {
             "response": {
@@ -489,18 +501,18 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -560,
-        0
+        2160,
+        368
       ],
-      "id": "img-hf-backup-0016",
-      "name": "Generar Imagen - HuggingFace (Backup)",
-      "onError": "continueErrorOutput",
+      "id": "71c50ad2-72d5-4723-906c-917395aac6cc",
+      "name": "Generar Imagen - HuggingFace (Backup, sin texto)",
       "credentials": {
         "httpHeaderAuth": {
           "id": "HF_CRED_ID",
           "name": "HuggingFace API Key"
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -509,10 +521,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -320,
-        0
+        2384,
+        272
       ],
-      "id": "mark-img-ok2-0017",
+      "id": "a36cbc2d-6b88-437d-ac5a-726d696f64ce",
       "name": "Mark Image OK (HuggingFace)"
     },
     {
@@ -532,10 +544,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -320,
-        160
+        2384,
+        464
       ],
-      "id": "no-image-fallback-0018",
+      "id": "998d4a3b-0390-46a5-b355-08dc82928a7e",
       "name": "Sin Imagen (Fallback final)"
     },
     {
@@ -543,10 +555,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -80,
-        -80
+        2608,
+        272
       ],
-      "id": "final-image-0019",
+      "id": "161f54ac-f6e6-4002-ac54-91387b1b4d4a",
       "name": "Final Image"
     },
     {
@@ -577,10 +589,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        160,
-        -80
+        2832,
+        272
       ],
-      "id": "if-hasimage-0020",
+      "id": "625fab67-9124-478d-aea4-f1e216aa26d9",
       "name": "Hay imagen disponible?"
     },
     {
@@ -597,10 +609,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        420,
-        -200
+        3056,
+        176
       ],
-      "id": "register-upload-0021",
+      "id": "572c4e45-0337-4882-8222-e447256fbf74",
       "name": "Registrar Upload Imagen LinkedIn",
       "credentials": {
         "linkedInOAuth2Api": {
@@ -616,17 +628,16 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        680,
-        -120
+        3280,
+        176
       ],
-      "id": "combine-code-0022",
+      "id": "bdb5b003-4f3b-4672-a6eb-6045e8763624",
       "name": "Combinar Info Upload + Imagen"
     },
     {
       "parameters": {
         "method": "PUT",
         "url": "={{ $json.value.uploadMechanism['com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest'].uploadUrl }}",
-        "authentication": "none",
         "sendBody": true,
         "contentType": "binaryData",
         "inputDataFieldName": "data",
@@ -635,10 +646,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        920,
-        -120
+        3504,
+        176
       ],
-      "id": "upload-binary-0023",
+      "id": "f810c883-2051-46b4-8756-15dabed636a9",
       "name": "Subir Binario Imagen"
     },
     {
@@ -664,10 +675,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1160,
-        -200
+        3728,
+        176
       ],
-      "id": "create-post-image-0024",
+      "id": "2cb0e953-9566-4ee8-a474-c1dded7006d2",
       "name": "Publicar Post con Imagen",
       "credentials": {
         "linkedInOAuth2Api": {
@@ -699,10 +710,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1400,
-        -200
+        3952,
+        176
       ],
-      "id": "normalize-result-img-0025",
+      "id": "52f51a20-8229-40b2-b193-e1657791121b",
       "name": "Normalizar Resultado (Imagen)"
     },
     {
@@ -714,10 +725,10 @@
       "type": "n8n-nodes-base.linkedIn",
       "typeVersion": 1,
       "position": [
-        420,
-        160
+        3728,
+        368
       ],
-      "id": "7ab2492f-6fde-46a6-84a3-1a907ab2cad0",
+      "id": "79edadbb-9e9c-4c12-9a32-d88e1c63ad4e",
       "name": "Publicar Post - Solo Texto (Fallback)",
       "credentials": {
         "linkedInOAuth2Api": {
@@ -749,10 +760,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        680,
-        160
+        3952,
+        368
       ],
-      "id": "normalize-result-text-0026",
+      "id": "e17f59a1-6f39-45bc-b996-e40f382f483f",
       "name": "Normalizar Resultado (Texto)"
     },
     {
@@ -783,10 +794,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1640,
-        -32
+        4176,
+        272
       ],
-      "id": "a7ccedea-6cbe-4bb2-b8b2-3445b2b5c0b5",
+      "id": "07af0a35-1dbb-42aa-9d55-75741f8abd1f",
       "name": "Publicación exitosa?"
     },
     {
@@ -799,11 +810,12 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        1880,
-        -200
+        4400,
+        176
       ],
-      "id": "c74ad6b3-e577-427b-b66b-dc517e7f5e66",
+      "id": "73ae3891-dcff-42a7-92a2-43e34b240a70",
       "name": "Success Mail",
+      "webhookId": "0233a188-b4db-4d20-8dab-076be6f87da2",
       "credentials": {
         "gmailOAuth2": {
           "id": "GMAIL_CRED_ID",
@@ -821,11 +833,12 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        1880,
-        120
+        4400,
+        368
       ],
-      "id": "c7f52c69-f59e-495c-b162-5ae6b921bc98",
+      "id": "3597a74e-5d49-4cb6-834c-4e9ebc9281e2",
       "name": "Failure Mail",
+      "webhookId": "e8008948-46cf-45a6-8732-277b348252c6",
       "credentials": {
         "gmailOAuth2": {
           "id": "GMAIL_CRED_ID",
@@ -838,47 +851,132 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2120,
-        120
+        4624,
+        368
       ],
-      "id": "832a7f2e-f26b-4698-8952-e4ac70b7bd88",
+      "id": "440d0cda-3c26-4745-bf46-4837303d19dc",
       "name": "No Operation, do nothing"
     },
     {
       "parameters": {
+        "authentication": "serviceAccount",
         "operation": "append",
         "documentId": {
           "__rl": true,
           "value": "YOUR_GOOGLE_SHEET_ID",
           "mode": "list",
-          "cachedResultName": "Linkedin_Post_Automation"
+          "cachedResultName": "Linkedin_Post_Automation",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jPcRQL9rHoNF8l-0pZ4IYd9ex3MS4Y438FHyUw4lwKE/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": "YOUR_SHEET_GID",
           "mode": "list",
-          "cachedResultName": "PostedLog"
+          "cachedResultName": "PostedLog",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jPcRQL9rHoNF8l-0pZ4IYd9ex3MS4Y438FHyUw4lwKE/edit#gid=0"
         },
         "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Title": "={{ $('Select New Topic').item.json.title }}",
-            "Link": "={{ $('Select New Topic').item.json.link }}",
-            "Category": "={{ $('Select New Topic').item.json.category }}",
-            "PostedText": "={{ $('Final Post Text').item.json.content }}",
-            "URN": "={{ $json.urn }}",
-            "PostedAt": "={{ $now }}"
-          }
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Link",
+              "displayName": "Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Category",
+              "displayName": "Category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "PostedText",
+              "displayName": "PostedText",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "URN",
+              "displayName": "URN",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "PostedAt",
+              "displayName": "PostedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "threadId",
+              "displayName": "threadId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "labelIds",
+              "displayName": "labelIds",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
         },
         "options": {}
       },
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        2120,
-        -200
+        4624,
+        176
       ],
-      "id": "7864b77d-c071-4acd-adca-5d9fb3e3dc37",
+      "id": "5c024af0-4f11-4118-8ac8-193ffed39c4b",
       "name": "Log Posted Item",
       "credentials": {
         "googleApi": {
@@ -916,10 +1014,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2360,
-        -200
+        4848,
+        176
       ],
-      "id": "3289cd73-9ae4-4134-b452-8496912c8af1",
+      "id": "eb1dbeb8-a297-49f5-8bd9-e3342ca78b98",
       "name": "Filter content for Drive"
     },
     {
@@ -929,10 +1027,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2600,
-        -200
+        5072,
+        176
       ],
-      "id": "9d333848-d44a-4b32-ba4b-cc9a025e6086",
+      "id": "c48bfbf0-793b-467d-9282-745b8c149c77",
       "name": "Creating csv file"
     },
     {
@@ -942,15 +1040,14 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2840,
-        -200
+        5296,
+        176
       ],
-      "id": "5a5c4ec8-e97f-45c8-ae42-dba52540a898",
+      "id": "6a0c4650-facf-45ab-8471-22b5537aeef8",
       "name": "Converting csv to binary"
     },
     {
       "parameters": {
-        "authentication": "oAuth2",
         "name": "=Linkedin_Post_{{ $now }}",
         "driveId": {
           "__rl": true,
@@ -969,10 +1066,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        3080,
-        -200
+        5520,
+        176
       ],
-      "id": "1051b16e-3851-4118-9b96-f3feb69587a6",
+      "id": "1b92d168-d911-44e7-93a1-6000104cf0b0",
       "name": "Upload file",
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -986,10 +1083,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        3320,
-        -200
+        5744,
+        176
       ],
-      "id": "a9a6c4af-fea0-4716-b9f2-d8e77446ff13",
+      "id": "b33ebe69-6609-41e9-9662-3a02c87cd1db",
       "name": "No Operation, do nothing1"
     },
     {
@@ -1175,7 +1272,6 @@
       "name": "Merge - PreSelect"
     }
   ],
-  "pinData": {},
   "connections": {
     "Lunes 8AM": {
       "main": [
@@ -1304,105 +1400,6 @@
             "node": "Tag Log Entries",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "RSS - Krebs on Security": {
-      "main": [
-        [
-          {
-            "node": "Merge - Ciberseguridad",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "RSS - Dark Reading": {
-      "main": [
-        [
-          {
-            "node": "Merge - Ciberseguridad",
-            "type": "main",
-            "index": 2
-          }
-        ]
-      ]
-    },
-    "RSS - The Register Security": {
-      "main": [
-        [
-          {
-            "node": "Merge - Ciberseguridad",
-            "type": "main",
-            "index": 3
-          }
-        ]
-      ]
-    },
-    "RSS - Wired Security": {
-      "main": [
-        [
-          {
-            "node": "Merge - Ciberseguridad",
-            "type": "main",
-            "index": 4
-          }
-        ]
-      ]
-    },
-    "RSS - AWS Security Blog": {
-      "main": [
-        [
-          {
-            "node": "Merge - Infraestructura",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "RSS - Kubernetes Blog": {
-      "main": [
-        [
-          {
-            "node": "Merge - Infraestructura",
-            "type": "main",
-            "index": 2
-          }
-        ]
-      ]
-    },
-    "RSS - Docker Blog": {
-      "main": [
-        [
-          {
-            "node": "Merge - Infraestructura",
-            "type": "main",
-            "index": 3
-          }
-        ]
-      ]
-    },
-    "RSS - HashiCorp Blog": {
-      "main": [
-        [
-          {
-            "node": "Merge - Infraestructura",
-            "type": "main",
-            "index": 4
-          }
-        ]
-      ]
-    },
-    "RSS - OpenAI Blog": {
-      "main": [
-        [
-          {
-            "node": "Merge - IA",
-            "type": "main",
-            "index": 1
           }
         ]
       ]
@@ -1557,14 +1554,25 @@
       "main": [
         [
           {
-            "node": "Generar Imagen - Pollinations (Primario)",
+            "node": "Build Image Prompt",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Generar Imagen - Pollinations (Primario)": {
+    "Build Image Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generar Imagen con Texto - Pollinations+Cloudinary (Primario)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generar Imagen con Texto - Pollinations+Cloudinary (Primario)": {
       "main": [
         [
           {
@@ -1575,7 +1583,7 @@
         ],
         [
           {
-            "node": "Generar Imagen - HuggingFace (Backup)",
+            "node": "Generar Imagen - HuggingFace (Backup, sin texto)",
             "type": "main",
             "index": 0
           }
@@ -1593,7 +1601,7 @@
         ]
       ]
     },
-    "Generar Imagen - HuggingFace (Backup)": {
+    "Generar Imagen - HuggingFace (Backup, sin texto)": {
       "main": [
         [
           {
@@ -1834,6 +1842,50 @@
         ]
       ]
     },
+    "RSS - Krebs on Security": {
+      "main": [
+        [
+          {
+            "node": "Merge - Ciberseguridad",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "RSS - Dark Reading": {
+      "main": [
+        [
+          {
+            "node": "Merge - Ciberseguridad",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "RSS - The Register Security": {
+      "main": [
+        [
+          {
+            "node": "Merge - Ciberseguridad",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "RSS - Wired Security": {
+      "main": [
+        [
+          {
+            "node": "Merge - Ciberseguridad",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
     "Merge - Ciberseguridad": {
       "main": [
         [
@@ -1845,6 +1897,50 @@
         ]
       ]
     },
+    "RSS - AWS Security Blog": {
+      "main": [
+        [
+          {
+            "node": "Merge - Infraestructura",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "RSS - Kubernetes Blog": {
+      "main": [
+        [
+          {
+            "node": "Merge - Infraestructura",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "RSS - Docker Blog": {
+      "main": [
+        [
+          {
+            "node": "Merge - Infraestructura",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "RSS - HashiCorp Blog": {
+      "main": [
+        [
+          {
+            "node": "Merge - Infraestructura",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
     "Merge - Infraestructura": {
       "main": [
         [
@@ -1852,6 +1948,17 @@
             "node": "Tag: Infraestructura",
             "type": "main",
             "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS - OpenAI Blog": {
+      "main": [
+        [
+          {
+            "node": "Merge - IA",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -1879,17 +1986,15 @@
       ]
     }
   },
-  "active": false,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "public-template-v1",
+  "nodeGroups": [],
+  "pinData": {},
   "meta": {
     "instanceId": "REPLACE_WITH_YOUR_OWN_N8N_INSTANCE_ID"
   },
-  "nodeGroups": [],
-  "id": "linkedin-post-automation-template",
   "tags": []
 }
