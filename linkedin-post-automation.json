@@ -1,8 +1,26 @@
 {
   "id": "linkedin-post-automation-template",
   "name": "Linkedin Post Automation - RSS",
+  "description": "Automatización n8n para generación y publicación de posts en LinkedIn con RSS, IA multimodal y Cloudflare FLUX.1",
+  "active": false,
+  "activeVersionId": "8b532ead-9d69-4ed8-b12e-94191a6e1a5b",
+  "createdAt": "2026-08-15T16:40:40.131Z",
+  "updatedAt": "2026-10-08T18:27:52.441Z",
+  "isArchived": false,
+  "versionId": "8b532ead-9d69-4ed8-b12e-94191a6e1a5b",
+  "versionCounter": 48,
+  "sourceWorkflowId": null,
+  "triggerCount": 2,
   "nodes": [
     {
+      "id": "4061aa48-0963-4b36-b28f-dfa6261345b5",
+      "name": "Lunes 8AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -2960,
+        928
+      ],
       "parameters": {
         "rule": {
           "interval": [
@@ -15,89 +33,89 @@
             }
           ]
         }
-      },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        -656,
-        368
-      ],
-      "id": "4061aa48-0963-4b36-b28f-dfa6261345b5",
-      "name": "Lunes 8AM"
+      }
     },
     {
+      "id": "a22c0a96-b0c5-4eea-b113-4079010a1038",
+      "name": "RSS - Ciberseguridad",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        -160
+      ],
       "parameters": {
         "url": "https://feeds.feedburner.com/TheHackersNews",
         "options": {}
-      },
+      }
+    },
+    {
+      "id": "a1575378-16c0-4b2f-b235-bd6c691fddd0",
+      "name": "RSS - Infraestructura",
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [
-        -432,
-        -16
-      ],
-      "id": "a22c0a96-b0c5-4eea-b113-4079010a1038",
-      "name": "RSS - Ciberseguridad",
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
-    },
-    {
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        80
+      ],
       "parameters": {
         "url": "https://isc.sans.edu/rssfeed_full.xml",
         "options": {}
-      },
+      }
+    },
+    {
+      "id": "20606b9b-d2cf-48fd-9843-15ff40797076",
+      "name": "RSS - IA",
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [
-        -432,
-        176
-      ],
-      "id": "a1575378-16c0-4b2f-b235-bd6c691fddd0",
-      "name": "RSS - Infraestructura",
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
-    },
-    {
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        304
+      ],
       "parameters": {
         "url": "https://blog.research.google/feeds/posts/default",
         "options": {}
-      },
+      }
+    },
+    {
+      "id": "29c47f12-98f8-44a2-9780-7eb96f31e13d",
+      "name": "RSS - Hardening",
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [
-        -432,
-        368
-      ],
-      "id": "20606b9b-d2cf-48fd-9843-15ff40797076",
-      "name": "RSS - IA",
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
-    },
-    {
+      "onError": "continueRegularOutput",
+      "position": [
+        -2512,
+        1552
+      ],
       "parameters": {
         "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
         "options": {}
-      },
-      "type": "n8n-nodes-base.rssFeedRead",
-      "typeVersion": 1.1,
-      "position": [
-        -432,
-        560
-      ],
-      "id": "29c47f12-98f8-44a2-9780-7eb96f31e13d",
-      "name": "RSS - Hardening",
-      "retryOnFail": true,
-      "maxTries": 3,
-      "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
+      }
     },
     {
+      "id": "3cb5f25d-4362-455a-bc9d-da2dd48a235b",
+      "name": "Tag: Ciberseguridad",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2288,
+        256
+      ],
       "parameters": {
         "assignments": {
           "assignments": [
@@ -109,19 +127,19 @@
             }
           ]
         },
-        "options": {},
-        "includeOtherFields": true
-      },
+        "includeOtherFields": true,
+        "options": {}
+      }
+    },
+    {
+      "id": "6a6e8b48-dc93-4feb-b73f-c2c3da4e4abe",
+      "name": "Tag: Infraestructura",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -208,
-        -16
+        -2288,
+        880
       ],
-      "id": "3cb5f25d-4362-455a-bc9d-da2dd48a235b",
-      "name": "Tag: Ciberseguridad"
-    },
-    {
       "parameters": {
         "assignments": {
           "assignments": [
@@ -133,19 +151,19 @@
             }
           ]
         },
-        "options": {},
-        "includeOtherFields": true
-      },
+        "includeOtherFields": true,
+        "options": {}
+      }
+    },
+    {
+      "id": "ce0a292e-3736-47a5-9e3a-36eacc5ad3b3",
+      "name": "Tag: IA",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -208,
-        176
+        -2288,
+        1184
       ],
-      "id": "6a6e8b48-dc93-4feb-b73f-c2c3da4e4abe",
-      "name": "Tag: Infraestructura"
-    },
-    {
       "parameters": {
         "assignments": {
           "assignments": [
@@ -157,19 +175,19 @@
             }
           ]
         },
-        "options": {},
-        "includeOtherFields": true
-      },
+        "includeOtherFields": true,
+        "options": {}
+      }
+    },
+    {
+      "id": "b2fe068e-bf2f-41b7-a943-bb8042566bbb",
+      "name": "Tag: Hardening",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -208,
-        368
+        -2288,
+        1552
       ],
-      "id": "ce0a292e-3736-47a5-9e3a-36eacc5ad3b3",
-      "name": "Tag: IA"
-    },
-    {
       "parameters": {
         "assignments": {
           "assignments": [
@@ -181,19 +199,19 @@
             }
           ]
         },
-        "options": {},
-        "includeOtherFields": true
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -208,
-        560
-      ],
-      "id": "b2fe068e-bf2f-41b7-a943-bb8042566bbb",
-      "name": "Tag: Hardening"
+        "includeOtherFields": true,
+        "options": {}
+      }
     },
     {
+      "id": "2744c5cb-4cc1-40de-84f3-513175a2cb99",
+      "name": "Read Posted Log",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -2512,
+        1792
+      ],
       "parameters": {
         "authentication": "serviceAccount",
         "documentId": {
@@ -210,22 +228,22 @@
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        -432,
-        752
-      ],
-      "id": "2744c5cb-4cc1-40de-84f3-513175a2cb99",
-      "name": "Read Posted Log",
       "credentials": {
         "googleApi": {
           "id": "YOUR_GOOGLE_SERVICE_ACCOUNT_CRED_ID",
-          "name": "Google Service Account account"
+          "name": "Google Service Account"
         }
       }
     },
     {
+      "id": "469429e6-8887-497a-bafd-3b9026dad981",
+      "name": "Tag Log Entries",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2288,
+        1792
+      ],
       "parameters": {
         "assignments": {
           "assignments": [
@@ -237,32 +255,32 @@
             }
           ]
         },
-        "options": {},
-        "includeOtherFields": true
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -208,
-        752
-      ],
-      "id": "469429e6-8887-497a-bafd-3b9026dad981",
-      "name": "Tag Log Entries"
+        "includeOtherFields": true,
+        "options": {}
+      }
     },
     {
-      "parameters": {
-        "jsCode": "// Combina items RSS (con category) + entradas del log (isLogEntry=true)\nconst items = $input.all();\n\nconst logLinks = items\n  .filter(i => i.json.isLogEntry === true)\n  .map(i => i.json.Link);\n\nconst rssItems = items.filter(i => !i.json.isLogEntry);\n\nconst freshItems = rssItems.filter(i => !logLinks.includes(i.json.link));\n\nif (freshItems.length === 0) {\n  return [{ json: { found: false } }];\n}\n\nconst chosen = freshItems[Math.floor(Math.random() * freshItems.length)];\n\nreturn [{\n  json: {\n    found: true,\n    title: chosen.json.title || '',\n    link: chosen.json.link || '',\n    description: (chosen.json.contentSnippet || chosen.json.content || '').toString().substring(0, 500),\n    category: chosen.json.category || 'General'\n  }\n}];"
-      },
+      "id": "85f4758a-79e6-4408-9ba4-f993ffb88e16",
+      "name": "Select New Topic",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        16,
-        368
+        -1840,
+        1280
       ],
-      "id": "85f4758a-79e6-4408-9ba4-f993ffb88e16",
-      "name": "Select New Topic"
+      "parameters": {
+        "jsCode": "// Combina items RSS (con category) + entradas del log (isLogEntry=true)\nconst items = $input.all();\n\n// 1. Enlaces ya publicados para no repetir\nconst logLinks = new Set(\n  items\n    .filter(i => i.json.isLogEntry === true && i.json.Link)\n    .map(i => i.json.Link.trim())\n);\n\n// 2. Extraer última categoría publicada si existe en el log para evitar rachas\nconst logEntriesWithCat = items.filter(i => i.json.isLogEntry === true && (i.json.Category || i.json.category));\nconst lastCategory = logEntriesWithCat.length > 0 \n  ? (logEntriesWithCat[logEntriesWithCat.length - 1].json.Category || logEntriesWithCat[logEntriesWithCat.length - 1].json.category)\n  : null;\n\n// 3. Filtrar noticias frescas\nconst freshItems = items.filter(i => {\n  if (i.json.isLogEntry) return false;\n  const link = (i.json.link || '').trim();\n  return link && !logLinks.has(link);\n});\n\nif (freshItems.length === 0) {\n  return [{ json: { found: false } }];\n}\n\n// 4. Agrupar noticias por categoría\nconst byCategory = {};\nfor (const item of freshItems) {\n  const cat = item.json.category || 'Tecnología';\n  if (!byCategory[cat]) byCategory[cat] = [];\n  byCategory[cat].push(item);\n}\n\n// 5. Categorías disponibles\nconst availableCategories = Object.keys(byCategory);\n\n// Si la última categoría fue por ejemplo 'IA', priorizar rotar a otra (Hardware, Ciberseguridad, Informática, etc.)\nlet eligibleCategories = availableCategories;\nif (availableCategories.length > 1 && lastCategory) {\n  const otherCategories = availableCategories.filter(c => c.toLowerCase() !== lastCategory.toLowerCase());\n  if (otherCategories.length > 0) {\n    eligibleCategories = otherCategories;\n  }\n}\n\n// 6. Selección Estratificada Equitativa:\n// Paso A: Sorteo de categoría con idéntica probabilidad para cada área\nconst chosenCategory = eligibleCategories[Math.floor(Math.random() * eligibleCategories.length)];\nconst categoryItems = byCategory[chosenCategory];\n\n// Paso B: Dentro de la categoría elegida, sortear entre las 20 noticias más recientes\nconst pool = categoryItems.slice(0, 20);\nconst chosen = pool[Math.floor(Math.random() * pool.length)];\n\nreturn [{\n  json: {\n    found: true,\n    title: chosen.json.title || '',\n    link: chosen.json.link || '',\n    description: (chosen.json.contentSnippet || chosen.json.content || '').toString().substring(0, 500),\n    category: chosenCategory,\n    totalFreshInCategory: categoryItems.length,\n    activeCategoriesCount: availableCategories.length\n  }\n}];"
+      }
     },
     {
+      "id": "ac23b7bf-1dac-407d-81bc-dca43943c7ff",
+      "name": "Hay contenido nuevo?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1616,
+        1280
+      ],
       "parameters": {
         "conditions": {
           "options": {
@@ -286,28 +304,28 @@
           "combinator": "and"
         },
         "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        240,
-        368
-      ],
-      "id": "ac23b7bf-1dac-407d-81bc-dca43943c7ff",
-      "name": "Hay contenido nuevo?"
+      }
     },
     {
-      "parameters": {},
+      "id": "48cd4573-a703-446e-a134-8f18164857d2",
+      "name": "Sin contenido nuevo - Fin",
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        464,
-        464
+        -1392,
+        1376
       ],
-      "id": "48cd4573-a703-446e-a134-8f18164857d2",
-      "name": "Sin contenido nuevo - Fin"
+      "parameters": {}
     },
     {
+      "id": "e7879ee0-991a-4ea7-a171-5a4dd269993d",
+      "name": "Prepare Prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1392,
+        1184
+      ],
       "parameters": {
         "assignments": {
           "assignments": [
@@ -320,17 +338,18 @@
           ]
         },
         "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        464,
-        272
-      ],
-      "id": "e7879ee0-991a-4ea7-a171-5a4dd269993d",
-      "name": "Prepare Prompt"
+      }
     },
     {
+      "id": "2bc9e120-c8b7-4340-a947-b0667fd580b4",
+      "name": "Generar Post - Gemini (Primario)",
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "onError": "continueErrorOutput",
+      "position": [
+        -1168,
+        1184
+      ],
       "parameters": {
         "modelId": {
           "__rl": true,
@@ -341,7 +360,7 @@
         "messages": {
           "values": [
             {
-              "content": "Eres un agente de IA experto en ciberseguridad, infraestructura, IA y hardening, especializado en crear publicaciones profesionales, educativas y de alto impacto para LinkedIn, basadas en el tema proporcionado por el usuario.\n\nGenera una publicación BILINGÜE para LinkedIn, con esta estructura exacta y en este orden:\n1. El post completo en ESPAÑOL (máximo 1100 caracteres): comienza con un gancho atractivo y relevante, desarrolla el tema de forma clara y educativa aportando valor accionable (buenas prácticas, hardening, mitigaciones), tono profesional y objetivo (sin alarmismo ni FUD), usa emojis con moderación, y cierra con una reflexión sin preguntas abiertas relacionada al tema, SIN pedir explícitamente comentarios, seguidores o interacción.\n2. Una línea con exactamente este separador: 🌐 English version:\n3. El mismo post traducido al INGLÉS (máximo 1100 caracteres), mismo contenido, tono y estructura que la versión en español.\n4. Una línea COMPLETAMENTE VACÍA (un salto de línea vacío, sin ningún carácter).\n5. Los hashtags del sector, todos en una sola línea, compartidos para ambos idiomas (#Cybersecurity #InfoSec #AI #Infrastructure #Hardening, etc.).\n\nRestricción dura: el post COMPLETO (español + inglés + hashtags) no debe superar 3000 caracteres en total.\n\nREGLAS CRÍTICAS DE FORMATO (búscalas y elimínalas de tu borrador antes de responder):\n- El texto de entrada viene estructurado como \"Título:\", \"Resumen:\", \"Fuente:\" — eso es SOLO referencia interna. NUNCA reproduzcas esas etiquetas ni esa estructura en el post final.\n- PROHIBIDO usar asteriscos (**) para negrita en absolutamente ninguna parte del post, ni siquiera en los ítems de una lista numerada. Si quieres destacar un concepto, hazlo con la redacción o un emoji, nunca con **texto**.\n- PROHIBIDO envolver el post completo (o cualquier parte) entre comillas dobles (\"...\").\n- PROHIBIDO pedir que sigan la cuenta, se suscriban, o cualquier variante de \"síguenos\".\n- PROHIBIDO frases como \"comparte en los comentarios\", \"cuéntame abajo\", \"déjame tu opinión en comentarios\" o cualquier instrucción explícita de comentar. Puedes cerrar con una reflexión, pero sin decirle al lector dónde ni cómo responder.\n- NO uses guiones bajos ni ningún otro símbolo de marcado.\n- OBLIGATORIO: deja una línea COMPLETAMENTE VACÍa entre el final del texto en inglés y el bloque de hashtags. Nunca pegues los hashtags directamente al final del último párrafo.\n- Escribe en prosa fluida y natural, como si lo redactaras directamente, no como resumen de un documento.\n\nInstrucción crítica de formato: Entrega ÚNICAMENTE el contenido de la publicación (español, separador, inglés, línea en blanco, hashtags). Sin frases introductorias, saludos ni explicaciones finales.",
+              "content": "Eres un agente de IA experto en ciberseguridad, infraestructura, inteligencia artificial, hardware y tecnología general, especializado en crear publicaciones profesionales, educativas y de alto impacto para LinkedIn, basadas en el tema proporcionado por el usuario.\n\nGenera una publicación BILINGÜE para LinkedIn, con esta estructura exacta y en este orden:\n1. El post completo en ESPAÑOL (máximo 1100 caracteres): comienza con un gancho atractivo y relevante, desarrolla el tema de forma clara y educativa aportando valor accionable (buenas prácticas, análisis técnico, impacto en la industria), tono profesional y objetivo (sin alarmismo ni FUD), usa emojis con moderación, y cierra con una reflexión sin preguntas abiertas relacionada al tema, SIN pedir explícitamente comentarios, seguidores o interacción.\n2. Una línea con exactamente este separador: 🌐 English version:\n3. El mismo post traducido al INGLÉS (máximo 1100 caracteres), mismo contenido, tono y estructura que la versión en español.\n4. Una línea COMPLETAMENTE VACÍA (un salto de línea vacío, sin ningún carácter).\n5. Los hashtags del sector, todos en una sola línea, compartidos para ambos idiomas (#Cybersecurity #InfoSec #AI #Infrastructure #Hardware #Networking #Tech, etc.).\n\nRestricción dura: el post COMPLETO (español + inglés + hashtags) no debe superar 3000 caracteres en total.\n\nREGLAS CRÍTICAS DE FORMATO (búscalas y elimínalas de tu borrador antes de responder):\n- El texto de entrada viene estructurado como \"Título:\", \"Resumen:\", \"Fuente:\" — eso es SOLO referencia interna. NUNCA reproduzcas esas etiquetas ni esa estructura en el post final.\n- PROHIBIDO usar asteriscos (**) para negrita en absolutamente ninguna parte del post, ni siquiera en los ítems de una lista numerada. Si quieres destacar un concepto, hazlo con la redacción o un emoji, nunca con **texto**.\n- PROHIBIDO envolver el post completo (o cualquier parte) entre comillas dobles (\"...\").\n- PROHIBIDO pedir que sigan la cuenta, se suscriban, o cualquier variante de \"síguenos\".\n- PROHIBIDO frases como \"comparte en los comentarios\", \"cuéntame abajo\", \"déjame tu opinión en comentarios\" o cualquier instrucción explícita de comentar. Puedes cerrar con una reflexión, pero sin decirle al lector dónde ni cómo responder.\n- NO uses guiones bajos ni ningún otro símbolo de marcado.\n- OBLIGATORIO: deja una línea COMPLETAMENTE VACÍA entre el final del texto en inglés y el bloque de hashtags. Nunca pegues los hashtags directamente al final del último párrafo.\n- Escribe en prosa fluida y natural, como si lo redactaras directamente, no como resumen de un documento.\n\nInstrucción crítica de formato: Entrega ÚNICAMENTE el contenido de la publicación (español, separador, inglés, línea en blanco, hashtags). Sin frases introductorias, saludos ni explicaciones finales.",
               "role": "system"
             },
             {
@@ -351,23 +370,22 @@
         },
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.googleGemini",
-      "typeVersion": 1,
-      "position": [
-        688,
-        272
-      ],
-      "id": "2bc9e120-c8b7-4340-a947-b0667fd580b4",
-      "name": "Generar Post - Gemini (Primario)",
       "credentials": {
         "googlePalmApi": {
           "id": "YOUR_GEMINI_CRED_ID",
-          "name": "Google Gemini API account"
+          "name": "Google Gemini API"
         }
-      },
-      "onError": "continueErrorOutput"
+      }
     },
     {
+      "id": "59261ea3-f6ec-4ac3-9dbf-cd4863fc2a34",
+      "name": "Normalizar salida Gemini",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -592,
+        992
+      ],
       "parameters": {
         "assignments": {
           "assignments": [
@@ -380,17 +398,17 @@
           ]
         },
         "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1264,
-        176
-      ],
-      "id": "59261ea3-f6ec-4ac3-9dbf-cd4863fc2a34",
-      "name": "Normalizar salida Gemini"
+      }
     },
     {
+      "id": "f899c12c-df8a-46c4-88ca-60c0bb6c10b8",
+      "name": "Generar Post - Groq (Backup)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -816,
+        1184
+      ],
       "parameters": {
         "method": "POST",
         "url": "https://api.groq.com/openai/v1/chat/completions",
@@ -401,22 +419,22 @@
         "jsonBody": "={{ JSON.stringify({\n  model: \"openai/gpt-oss-20b\",\n  messages: [\n    { role: \"system\", content: \"Eres experto en ciberseguridad, infraestructura, IA y hardening. Escribe un post de LinkedIn BILINGÜE: primero la versión completa en ESPAÑOL (máx 1100 caracteres), luego una línea separadora exacta '🌐 English version:', luego la misma versión traducida al INGLÉS (máx 1100 caracteres), luego una línea COMPLETAMENTE VACÍA, y al final los hashtags compartidos en una sola línea. El post completo (ambos idiomas + hashtags) no debe superar 3000 caracteres. Profesional, educativo, sin alarmismo, cierra con una reflexión sin preguntas abiertas, SIN pedir comentarios ni seguidores. PROHIBIDO usar asteriscos (**) para negrita en cualquier parte, incluyendo listas. PROHIBIDO envolver el texto entre comillas. El input viene con etiquetas 'Título:', 'Categoría:', 'Resumen:', 'Fuente:' que son SOLO referencia interna. Entrega SOLO el post en texto plano, sin explicaciones, sin comillas, sin asteriscos.\" },\n    { role: \"user\", content: \"Crea un post de LinkedIn basado en: \" + $('Prepare Prompt').item.json.text }\n  ],\n  temperature: 0.7\n}) }}",
         "options": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1040,
-        368
-      ],
-      "id": "f899c12c-df8a-46c4-88ca-60c0bb6c10b8",
-      "name": "Generar Post - Groq (Backup)",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "GROQ_CRED_ID",
-          "name": "Groq API Key"
+          "id": "YOUR_GROQ_CRED_ID",
+          "name": "Groq API"
         }
       }
     },
     {
+      "id": "ab36342b-628f-421d-abaa-69784fae5758",
+      "name": "Normalizar salida Groq",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -592,
+        1184
+      ],
       "parameters": {
         "assignments": {
           "assignments": [
@@ -429,75 +447,84 @@
           ]
         },
         "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1264,
-        368
-      ],
-      "id": "ab36342b-628f-421d-abaa-69784fae5758",
-      "name": "Normalizar salida Groq"
+      }
     },
     {
-      "parameters": {},
+      "id": "18ef0555-70f2-4515-ba89-109a9f253580",
+      "name": "Final Post Text",
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        1488,
-        272
+        -368,
+        1184
       ],
-      "id": "18ef0555-70f2-4515-ba89-109a9f253580",
-      "name": "Final Post Text"
+      "parameters": {}
     },
     {
-      "parameters": {
-        "jsCode": "const category = $('Select New Topic').item.json.category;\nconst postText = $('Final Post Text').item.json.content;\n\n// Estilo base más corto (menos tokens = URL final más corta y segura)\nconst baseStyle = \"cinematic digital art, dramatic lighting, depth of field, 8k, detailed\";\n\n// Escenas acortadas — mismo concepto, menos palabras\nconst categoryScenes = {\n  \"Ciberseguridad\": [\n    \"hands typing in dark room, red terminal glow\",\n    \"glowing padlock shattering into code, navy bg\"\n  ],\n  \"Infraestructura\": [\n    \"isometric data center, glowing server racks\",\n    \"server rack corridor, blue LED lights\"\n  ],\n  \"IA\": [\n    \"glowing neural network sphere, purple-cyan light\",\n    \"silhouette dissolving into data particles\"\n  ],\n  \"Hardening\": [\n    \"stone castle with digital shield dome, dusk\",\n    \"gears and circuits forming a barrier\"\n  ]\n};\n\nconst scenes = categoryScenes[category] || categoryScenes[\"Ciberseguridad\"];\nconst chosenScene = scenes[Math.floor(Math.random() * scenes.length)];\nconst imagePrompt = `${chosenScene}, ${baseStyle}`;\n\nconst availableModels = [\"flux\", \"flux-realism\", \"flux-3d\", \"turbo\"];\nconst chosenModel = availableModels[Math.floor(Math.random() * availableModels.length)];\nconst seed = Math.floor(Math.random() * 1000000);\n\nconst cleanText = postText\n  .replace(/#\\w+/g, '')\n  .replace(/[\\u{1F300}-\\u{1FAFF}]/gu, '')\n  .trim();\n\nlet headline = cleanText.split(/[.!?\\n]/)[0]\n  .replace(/[^a-zA-ZÀ-ÿ0-9 ]/g, '')\n  .trim()\n  .toUpperCase();\n\nconst words = headline.split(/\\s+/).slice(0, 5);\nheadline = words.join(' ');\nconst headlineUrlSafe = headline.replace(/\\s+/g, '%20');\n\nreturn [{\n  json: {\n    ...$('Final Post Text').item.json,\n    imagePrompt: imagePrompt,\n    imageSeed: seed,\n    imageModel: chosenModel,\n    headlineText: headlineUrlSafe\n  }\n}];"
-      },
+      "id": "bd134cf0-e99a-4835-a1cc-3f5bb6214d56",
+      "name": "Build Image Prompt",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1712,
-        272
+        -144,
+        1184
       ],
-      "id": "bd134cf0-e99a-4835-a1cc-3f5bb6214d56",
-      "name": "Build Image Prompt"
+      "parameters": {
+        "jsCode": "const category = $('Select New Topic').item?.json?.category || 'Ciberseguridad';\nconst postText = $('Final Post Text').item?.json?.content || '';\nconst topic = $('Select New Topic').item?.json || {};\nconst title = topic.title || '';\nconst desc = topic.description || '';\nconst fullText = (title + ' ' + desc).toLowerCase();\n\n// 1. Detección inteligente: ¿Es mejor Diagrama o Imagen Conceptual según la temática?\n// Temas estructurales, protocolos, flujos, hardware, redes, topología o defensas se benefician de DIAGRAMA\nconst diagramKeywords = [\n  'architecture', 'arquitectura', 'network', 'red', 'redes', 'routing', 'protocol', 'protocolo',\n  'infrastructure', 'infraestructura', 'pipeline', 'cluster', 'kubernetes', 'k8s', 'docker', 'container',\n  'firewall', 'topology', 'topología', 'hardware', 'chip', 'processor', 'procesador', 'semiconductor',\n  'pcb', 'circuit', 'circuito', 'vulnerability', 'vulnerabilidad', 'exploit', 'cve', 'malware', 'attack',\n  'api', 'framework', 'database', 'base de datos', 'server', 'servidor', 'sysadmin', 'kernel', 'linux',\n  'backend', 'data flow', 'flujo', 'diagram', 'diagrama', 'esquemático', 'schematic'\n];\n\nconst matchesDiagram = diagramKeywords.some(kw => fullText.includes(kw));\n\n// 2. Foco temático abstracto SIN incluir el título de la noticia\nconst categoryConcepts = {\n  \"Ciberseguridad\": \"cybersecurity defense architecture, cryptographic verification layers, threat mitigation conduits\",\n  \"Infraestructura\": \"cloud infrastructure cluster, high-availability data center routing, distributed system modules\",\n  \"IA\": \"artificial intelligence neural compute core, deep learning tensor pipelines, high-dimensional data processing\",\n  \"Hardening\": \"system hardening defense layout, multi-layered security controls, protected endpoint architecture\",\n  \"Hardware\": \"advanced semiconductor microarchitecture, silicon die interconnects, precision electronic bus lines\",\n  \"Informática\": \"enterprise computing network topology, high-throughput digital switching, modular server systems\"\n};\n\nconst conceptFocus = categoryConcepts[category] || categoryConcepts[\"Ciberseguridad\"];\n\n// 3. Catálogo de estilos según la modalidad elegida\nconst diagramStyles = [\n  // Blueprint de arquitectura\n  \"technical architectural diagram, isometric system architecture blueprint, abstract interconnected data flow conduits and modular blocks, dark slate blueprint background with crisp cyan and gold lines, precision vector aesthetic, 8k resolution\",\n  // Topología de red y flujo\n  \"futuristic network topology diagram, clean flowchart data pipeline visualization, glowing abstract nodes and routing pathways, dark theme engineering graphic, minimal modern cyber schematic\",\n  // Esquemático de hardware y circuitos\n  \"precision technical schematic diagram, isometric micro-architecture and bus interconnects, sleek circuit blueprint layout, dark titanium background with luminous copper traces, modular system layout\",\n  // Infografía modular técnica\n  \"modern enterprise technology infographics diagram, abstract modular layers, secure pipeline architecture visualization, sleek dark glassmorphism surfaces and glowing geometric connections\"\n];\n\nconst imageStyles = [\n  // Render 3D Isométrico de Alta Gama\n  \"sleek 3D isometric octane render, futuristic corporate tech aesthetic, slate and indigo background with glowing subtle nodes, clean geometric lighting, sophisticated studio environment\",\n  // Fotografía editorial tecnológica\n  \"high-end technology editorial photography, dramatic architectural lighting, clean minimal composition, deep navy and cyan highlights, 8k resolution, photorealistic\",\n  // Concepto abstracto minimalista\n  \"minimalist modern abstract concept, glowing subtle data streams and geometric grid, glass and dark titanium surfaces, elegant corporate tech style, photorealistic 8k\",\n  // Visual cinematográfico corporativo\n  \"cinematic corporate technology visual, deep obsidian palette, soft ambient illumination, macro depth of field, hyper-detailed digital surfaces\"\n];\n\nlet chosenMode = \"\";\nlet chosenStyle = \"\";\n\nif (matchesDiagram) {\n  chosenMode = \"diagrama\";\n  chosenStyle = diagramStyles[Math.floor(Math.random() * diagramStyles.length)];\n} else {\n  chosenMode = \"imagen_conceptual\";\n  chosenStyle = imageStyles[Math.floor(Math.random() * imageStyles.length)];\n}\n\n// 4. Prompt final para FLUX.1:\n// ESTRICTO: SIN título de noticia, sin texto, sin letras, sin palabras escritas, sin etiquetas\nconst imagePrompt = `${conceptFocus}, ${chosenStyle}, strictly no text, no words, no letters, no labels, no title, no typography, no captions, no watermark, no logo, no distorted faces`;\n\nreturn [{\n  json: {\n    ...$('Final Post Text').item.json,\n    imagePrompt: imagePrompt,\n    category: category,\n    originalTitle: title,\n    visualMode: chosenMode,\n    visualStyleVariant: chosenStyle.substring(0, 50) + '...'\n  }\n}];"
+      }
     },
     {
-      "parameters": {
-        "url": "=https://res.cloudinary.com/YOUR_CLOUDINARY_CLOUD_NAME/image/fetch/l_text:Arial_60_bold:{{ $json.headlineText }},co_white,g_south,y_50,b_rgb:0d1b2a,bo_25px_solid_rgb:0d1b2a/{{ encodeURIComponent('https://image.pollinations.ai/prompt/' + encodeURIComponent($json.imagePrompt)) }}",
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "file"
-            }
-          }
-        }
-      },
+      "id": "1fe2704a-7495-431a-af41-6ad1ab4cf45d",
+      "name": "Generar Imagen - Cloudflare FLUX.1 (Primario)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
       "position": [
-        1936,
-        272
+        80,
+        1184
       ],
-      "id": "1fe2704a-7495-431a-af41-6ad1ab4cf45d",
-      "name": "Generar Imagen con Texto - Pollinations+Cloudinary (Primario)",
-      "onError": "continueErrorOutput"
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.cloudflare.com/client/v4/accounts/YOUR_CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/black-forest-labs/flux-1-schnell",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ prompt: $json.imagePrompt }) }}",
+        "options": {
+          "timeout": 45000
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "YOUR_CLOUDFLARE_CRED_ID",
+          "name": "Cloudflare Workers AI"
+        }
+      }
     },
     {
-      "parameters": {
-        "jsCode": "const item = $input.first();\nitem.json.hasImage = true;\nreturn [item];"
-      },
+      "id": "86a508e2-2917-416d-861b-20f500268ffa",
+      "name": "Procesar Imagen FLUX.1 (Cloudflare)",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2384,
-        80
+        528,
+        800
       ],
-      "id": "86a508e2-2917-416d-861b-20f500268ffa",
-      "name": "Mark Image OK (Pollinations)"
+      "parameters": {
+        "jsCode": "const input = $input.first();\nconst b64 = input?.json?.result?.image;\n\nif (!b64) {\n  throw new Error('No se recibió imagen base64 de Cloudflare Workers AI');\n}\n\nreturn [{\n  json: {\n    ...input.json,\n    hasImage: true\n  },\n  binary: {\n    data: {\n      data: b64,\n      mimeType: 'image/jpeg',\n      fileName: 'flux_linkedin.jpg',\n      fileExtension: 'jpg'\n    }\n  }\n}];"
+      }
     },
     {
+      "id": "71c50ad2-72d5-4723-906c-917395aac6cc",
+      "name": "Generar Imagen - HuggingFace (Backup, sin texto)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput",
+      "position": [
+        304,
+        1184
+      ],
       "parameters": {
         "method": "POST",
         "url": "https://router.huggingface.co/hf-inference/models/stabilityai/stable-diffusion-2-1",
@@ -514,36 +541,35 @@
           }
         }
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        2160,
-        368
-      ],
-      "id": "71c50ad2-72d5-4723-906c-917395aac6cc",
-      "name": "Generar Imagen - HuggingFace (Backup, sin texto)",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "HF_CRED_ID",
-          "name": "HuggingFace API Key"
+          "id": "YOUR_HUGGINGFACE_CRED_ID",
+          "name": "HuggingFace API"
         }
-      },
-      "onError": "continueErrorOutput"
+      }
     },
     {
-      "parameters": {
-        "jsCode": "const item = $input.first();\nitem.json.hasImage = true;\nreturn [item];"
-      },
+      "id": "a36cbc2d-6b88-437d-ac5a-726d696f64ce",
+      "name": "Mark Image OK (HuggingFace)",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2384,
-        272
+        528,
+        992
       ],
-      "id": "a36cbc2d-6b88-437d-ac5a-726d696f64ce",
-      "name": "Mark Image OK (HuggingFace)"
+      "parameters": {
+        "jsCode": "const item = $input.first();\nitem.json.hasImage = true;\nreturn [item];"
+      }
     },
     {
+      "id": "998d4a3b-0390-46a5-b355-08dc82928a7e",
+      "name": "Sin Imagen (Fallback final)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        528,
+        1184
+      ],
       "parameters": {
         "assignments": {
           "assignments": [
@@ -556,28 +582,28 @@
           ]
         },
         "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2384,
-        464
-      ],
-      "id": "998d4a3b-0390-46a5-b355-08dc82928a7e",
-      "name": "Sin Imagen (Fallback final)"
+      }
     },
     {
-      "parameters": {},
+      "id": "161f54ac-f6e6-4002-ac54-91387b1b4d4a",
+      "name": "Final Image",
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2608,
-        272
+        752,
+        1088
       ],
-      "id": "161f54ac-f6e6-4002-ac54-91387b1b4d4a",
-      "name": "Final Image"
+      "parameters": {}
     },
     {
+      "id": "625fab67-9124-478d-aea4-f1e216aa26d9",
+      "name": "Hay imagen disponible?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        976,
+        1088
+      ],
       "parameters": {
         "conditions": {
           "options": {
@@ -601,17 +627,17 @@
           "combinator": "and"
         },
         "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        2832,
-        272
-      ],
-      "id": "625fab67-9124-478d-aea4-f1e216aa26d9",
-      "name": "Hay imagen disponible?"
+      }
     },
     {
+      "id": "572c4e45-0337-4882-8222-e447256fbf74",
+      "name": "Registrar Upload Imagen LinkedIn",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        896
+      ],
       "parameters": {
         "method": "POST",
         "url": "https://api.linkedin.com/v2/assets?action=registerUpload",
@@ -622,35 +648,35 @@
         "jsonBody": "={\n  \"registerUploadRequest\": {\n    \"recipes\": [\"urn:li:digitalmediaRecipe:feedshare-image\"],\n    \"owner\": \"urn:li:person:YOUR_LINKEDIN_PERSON_URN\",\n    \"serviceRelationships\": [\n      { \"relationshipType\": \"OWNER\", \"identifier\": \"urn:li:userGeneratedContent\" }\n    ]\n  }\n}",
         "options": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        3056,
-        176
-      ],
-      "id": "572c4e45-0337-4882-8222-e447256fbf74",
-      "name": "Registrar Upload Imagen LinkedIn",
       "credentials": {
         "linkedInOAuth2Api": {
           "id": "YOUR_LINKEDIN_CRED_ID",
-          "name": "LinkedIn account"
+          "name": "LinkedIn OAuth2"
         }
       }
     },
     {
-      "parameters": {
-        "jsCode": "// Combina el JSON del registro de upload con el binario de la imagen final\nconst registerData = $('Registrar Upload Imagen LinkedIn').first().json;\nconst imageItem = $('Final Image').first();\n\nreturn [{\n  json: registerData,\n  binary: {\n    data: imageItem.binary.data\n  }\n}];"
-      },
+      "id": "bdb5b003-4f3b-4672-a6eb-6045e8763624",
+      "name": "Combinar Info Upload + Imagen",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3280,
-        176
+        1424,
+        896
       ],
-      "id": "bdb5b003-4f3b-4672-a6eb-6045e8763624",
-      "name": "Combinar Info Upload + Imagen"
+      "parameters": {
+        "jsCode": "// Combina el JSON del registro de upload con el binario de la imagen final\nconst registerData = $('Registrar Upload Imagen LinkedIn').first().json;\nconst imageItem = $('Final Image').first();\n\nreturn [{\n  json: registerData,\n  binary: {\n    data: imageItem.binary.data\n  }\n}];"
+      }
     },
     {
+      "id": "f810c883-2051-46b4-8756-15dabed636a9",
+      "name": "Subir Binario Imagen",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1648,
+        896
+      ],
       "parameters": {
         "method": "PUT",
         "url": "={{ $json.value.uploadMechanism['com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest'].uploadUrl }}",
@@ -658,17 +684,17 @@
         "contentType": "binaryData",
         "inputDataFieldName": "data",
         "options": {}
-      },
+      }
+    },
+    {
+      "id": "2cb0e953-9566-4ee8-a474-c1dded7006d2",
+      "name": "Publicar Post con Imagen",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3504,
-        176
+        1872,
+        896
       ],
-      "id": "f810c883-2051-46b4-8756-15dabed636a9",
-      "name": "Subir Binario Imagen"
-    },
-    {
       "parameters": {
         "method": "POST",
         "url": "https://api.linkedin.com/v2/ugcPosts",
@@ -688,22 +714,22 @@
         "jsonBody": "={\n  \"author\": \"urn:li:person:YOUR_LINKEDIN_PERSON_URN\",\n  \"lifecycleState\": \"PUBLISHED\",\n  \"specificContent\": {\n    \"com.linkedin.ugc.ShareContent\": {\n      \"shareCommentary\": { \"text\": {{ JSON.stringify($('Final Post Text').item.json.content) }} },\n      \"shareMediaCategory\": \"IMAGE\",\n      \"media\": [\n        {\n          \"status\": \"READY\",\n          \"description\": { \"text\": \"Imagen generada automáticamente\" },\n          \"media\": \"{{ $('Registrar Upload Imagen LinkedIn').item.json.value.asset }}\",\n          \"title\": { \"text\": \"{{ $('Select New Topic').item.json.category }} Insight\" }\n        }\n      ]\n    }\n  },\n  \"visibility\": { \"com.linkedin.ugc.MemberNetworkVisibility\": \"PUBLIC\" }\n}",
         "options": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        3728,
-        176
-      ],
-      "id": "2cb0e953-9566-4ee8-a474-c1dded7006d2",
-      "name": "Publicar Post con Imagen",
       "credentials": {
         "linkedInOAuth2Api": {
           "id": "YOUR_LINKEDIN_CRED_ID",
-          "name": "LinkedIn account"
+          "name": "LinkedIn OAuth2"
         }
       }
     },
     {
+      "id": "52f51a20-8229-40b2-b193-e1657791121b",
+      "name": "Normalizar Resultado (Imagen)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2096,
+        896
+      ],
       "parameters": {
         "assignments": {
           "assignments": [
@@ -722,38 +748,38 @@
           ]
         },
         "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3952,
-        176
-      ],
-      "id": "52f51a20-8229-40b2-b193-e1657791121b",
-      "name": "Normalizar Resultado (Imagen)"
+      }
     },
     {
+      "id": "79edadbb-9e9c-4c12-9a32-d88e1c63ad4e",
+      "name": "Publicar Post - Solo Texto (Fallback)",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        1872,
+        1088
+      ],
       "parameters": {
         "person": "YOUR_LINKEDIN_PERSON_URN",
         "text": "={{ $('Final Post Text').item.json.content }}",
         "additionalFields": {}
       },
-      "type": "n8n-nodes-base.linkedIn",
-      "typeVersion": 1,
-      "position": [
-        3728,
-        368
-      ],
-      "id": "79edadbb-9e9c-4c12-9a32-d88e1c63ad4e",
-      "name": "Publicar Post - Solo Texto (Fallback)",
       "credentials": {
         "linkedInOAuth2Api": {
           "id": "YOUR_LINKEDIN_CRED_ID",
-          "name": "LinkedIn account"
+          "name": "LinkedIn OAuth2"
         }
       }
     },
     {
+      "id": "e17f59a1-6f39-45bc-b996-e40f382f483f",
+      "name": "Normalizar Resultado (Texto)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2096,
+        1088
+      ],
       "parameters": {
         "assignments": {
           "assignments": [
@@ -772,17 +798,17 @@
           ]
         },
         "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3952,
-        368
-      ],
-      "id": "e17f59a1-6f39-45bc-b996-e40f382f483f",
-      "name": "Normalizar Resultado (Texto)"
+      }
     },
     {
+      "id": "07af0a35-1dbb-42aa-9d55-75741f8abd1f",
+      "name": "Publicación exitosa?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2320,
+        1088
+      ],
       "parameters": {
         "conditions": {
           "options": {
@@ -806,74 +832,77 @@
           "combinator": "and"
         },
         "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        4176,
-        272
-      ],
-      "id": "07af0a35-1dbb-42aa-9d55-75741f8abd1f",
-      "name": "Publicación exitosa?"
+      }
     },
     {
+      "id": "73ae3891-dcff-42a7-92a2-43e34b240a70",
+      "name": "Success Mail",
+      "webhookId": "0233a188-b4db-4d20-8dab-076be6f87da2",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "continueOnFail": true,
+      "position": [
+        2544,
+        896
+      ],
       "parameters": {
         "sendTo": "YOUR_EMAIL@example.com",
         "subject": "✅ LinkedIn Post Publicado",
         "message": "=Tu post de LinkedIn se publicó correctamente.\n\n🔗 URN: {{ $json.urn }}\n📌 Categoría: {{ $('Select New Topic').item.json.category }}\n📄 Contenido:\n{{ $('Final Post Text').item.json.content }}",
         "options": {}
       },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        4400,
-        176
-      ],
-      "id": "73ae3891-dcff-42a7-92a2-43e34b240a70",
-      "name": "Success Mail",
-      "webhookId": "0233a188-b4db-4d20-8dab-076be6f87da2",
       "credentials": {
         "gmailOAuth2": {
-          "id": "GMAIL_CRED_ID",
-          "name": "Gmail account"
+          "id": "YOUR_GMAIL_CRED_ID",
+          "name": "Gmail OAuth2"
         }
       }
     },
     {
+      "id": "3597a74e-5d49-4cb6-834c-4e9ebc9281e2",
+      "name": "Failure Mail",
+      "webhookId": "e8008948-46cf-45a6-8732-277b348252c6",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "continueOnFail": true,
+      "position": [
+        2544,
+        1088
+      ],
       "parameters": {
         "sendTo": "YOUR_EMAIL@example.com",
         "subject": "🚫 LinkedIn Post Fallido",
         "message": "=No se pudo publicar el post en LinkedIn.\n\n🛠️ Revisa la respuesta de la API / autenticación.\n📌 Tema intentado: {{ $('Select New Topic').item.json.title }}",
         "options": {}
       },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        4400,
-        368
-      ],
-      "id": "3597a74e-5d49-4cb6-834c-4e9ebc9281e2",
-      "name": "Failure Mail",
-      "webhookId": "e8008948-46cf-45a6-8732-277b348252c6",
       "credentials": {
         "gmailOAuth2": {
-          "id": "GMAIL_CRED_ID",
-          "name": "Gmail account"
+          "id": "YOUR_GMAIL_CRED_ID",
+          "name": "Gmail OAuth2"
         }
       }
     },
     {
-      "parameters": {},
+      "id": "440d0cda-3c26-4745-bf46-4837303d19dc",
+      "name": "No Operation, do nothing",
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        4624,
-        368
+        2768,
+        1088
       ],
-      "id": "440d0cda-3c26-4745-bf46-4837303d19dc",
-      "name": "No Operation, do nothing"
+      "parameters": {}
     },
     {
+      "id": "5c024af0-4f11-4118-8ac8-193ffed39c4b",
+      "name": "Log Posted Item",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "continueOnFail": true,
+      "position": [
+        2768,
+        896
+      ],
       "parameters": {
         "authentication": "serviceAccount",
         "operation": "append",
@@ -882,14 +911,14 @@
           "value": "YOUR_GOOGLE_SHEET_ID",
           "mode": "list",
           "cachedResultName": "Linkedin_Post_Automation",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jPcRQL9rHoNF8l-0pZ4IYd9ex3MS4Y438FHyUw4lwKE/edit?usp=drivesdk"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": "YOUR_SHEET_GID",
           "mode": "list",
           "cachedResultName": "PostedLog",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jPcRQL9rHoNF8l-0pZ4IYd9ex3MS4Y438FHyUw4lwKE/edit#gid=0"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=YOUR_SHEET_GID"
         },
         "columns": {
           "mappingMode": "autoMapInputData",
@@ -986,22 +1015,22 @@
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        4624,
-        176
-      ],
-      "id": "5c024af0-4f11-4118-8ac8-193ffed39c4b",
-      "name": "Log Posted Item",
       "credentials": {
         "googleApi": {
           "id": "YOUR_GOOGLE_SERVICE_ACCOUNT_CRED_ID",
-          "name": "Google Service Account account"
+          "name": "Google Service Account"
         }
       }
     },
     {
+      "id": "eb1dbeb8-a297-49f5-8bd9-e3342ca78b98",
+      "name": "Filter content for Drive",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2992,
+        896
+      ],
       "parameters": {
         "assignments": {
           "assignments": [
@@ -1026,43 +1055,44 @@
           ]
         },
         "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        4848,
-        176
-      ],
-      "id": "eb1dbeb8-a297-49f5-8bd9-e3342ca78b98",
-      "name": "Filter content for Drive"
+      }
     },
     {
+      "id": "c48bfbf0-793b-467d-9282-745b8c149c77",
+      "name": "Creating csv file",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3216,
+        896
+      ],
       "parameters": {
         "jsCode": "const urn = $input.first().json.URN\nconst description = $input.first().json[\"Post Description\"]\nconst timestamp = $input.first().json[\"Posted at\"]\n\nconst csv = `Description,LinkedIn URN,Posted At\n\"${description}\",\"${urn}\",\"${timestamp}\"`;\n\nreturn [{ json: { file_content: csv } }];"
-      },
+      }
+    },
+    {
+      "id": "6a0c4650-facf-45ab-8471-22b5537aeef8",
+      "name": "Converting csv to binary",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5072,
-        176
+        3440,
+        896
       ],
-      "id": "c48bfbf0-793b-467d-9282-745b8c149c77",
-      "name": "Creating csv file"
-    },
-    {
       "parameters": {
         "jsCode": "const content = $input.first().json.file_content\nconst fileName = \"LinkedIn_Post.csv\";\n\nreturn {\n  json: {},\n  binary: {\n    data: {\n      data: Buffer.from(content, \"utf8\").toString(\"base64\"),\n      mimeType: \"text/csv\",\n      fileName: fileName,\n    },\n  },\n};\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        5296,
-        176
-      ],
-      "id": "6a0c4650-facf-45ab-8471-22b5537aeef8",
-      "name": "Converting csv to binary"
+      }
     },
     {
+      "id": "1b92d168-d911-44e7-93a1-6000104cf0b0",
+      "name": "Upload file",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "continueOnFail": true,
+      "position": [
+        3664,
+        896
+      ],
       "parameters": {
         "name": "=Linkedin_Post_{{ $now }}",
         "driveId": {
@@ -1073,20 +1103,13 @@
         },
         "folderId": {
           "__rl": true,
-          "value": "root",
+          "value": "1Ecm_tvhy4CccfFE-_lrYNpqkrqrVr38Y",
           "mode": "list",
-          "cachedResultName": "/ (Root folder)"
+          "cachedResultName": "N8n",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1Ecm_tvhy4CccfFE-_lrYNpqkrqrVr38Y"
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.googleDrive",
-      "typeVersion": 3,
-      "position": [
-        5520,
-        176
-      ],
-      "id": "1b92d168-d911-44e7-93a1-6000104cf0b0",
-      "name": "Upload file",
       "credentials": {
         "googleDriveOAuth2Api": {
           "id": "YOUR_GOOGLE_DRIVE_OAUTH_CRED_ID",
@@ -1095,233 +1118,571 @@
       }
     },
     {
-      "parameters": {},
+      "id": "b33ebe69-6609-41e9-9662-3a02c87cd1db",
+      "name": "No Operation, do nothing1",
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        5744,
-        176
+        3888,
+        896
       ],
-      "id": "b33ebe69-6609-41e9-9662-3a02c87cd1db",
-      "name": "No Operation, do nothing1"
+      "parameters": {}
     },
     {
+      "id": "rss-krebs-0027",
+      "name": "RSS - Krebs on Security",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        496
+      ],
       "parameters": {
         "url": "https://krebsonsecurity.com/feed/",
         "options": {}
-      },
+      }
+    },
+    {
+      "id": "rss-darkreading-0028",
+      "name": "RSS - Dark Reading",
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [
-        -2960,
-        400
-      ],
-      "id": "rss-krebs-0027",
-      "name": "RSS - Krebs on Security",
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
-    },
-    {
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        688
+      ],
       "parameters": {
         "url": "https://www.darkreading.com/rss.xml",
         "options": {}
-      },
+      }
+    },
+    {
+      "id": "rss-theregister-0029",
+      "name": "RSS - The Register Security",
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [
-        -2960,
-        560
-      ],
-      "id": "rss-darkreading-0028",
-      "name": "RSS - Dark Reading",
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
-    },
-    {
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        976
+      ],
       "parameters": {
         "url": "https://www.theregister.com/security/headlines.atom",
         "options": {}
-      },
+      }
+    },
+    {
+      "id": "rss-wired-0030",
+      "name": "RSS - Wired Security",
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [
-        -2960,
-        720
-      ],
-      "id": "rss-theregister-0029",
-      "name": "RSS - The Register Security",
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
-    },
-    {
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        1264
+      ],
       "parameters": {
         "url": "https://www.wired.com/feed/category/security/latest/rss",
         "options": {}
-      },
+      }
+    },
+    {
+      "id": "rss-awssecurity-0031",
+      "name": "RSS - AWS Security Blog",
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [
-        -2960,
-        880
-      ],
-      "id": "rss-wired-0030",
-      "name": "RSS - Wired Security",
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
-    },
-    {
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        1456
+      ],
       "parameters": {
         "url": "https://aws.amazon.com/blogs/security/feed/",
         "options": {}
-      },
+      }
+    },
+    {
+      "id": "rss-kubernetes-0032",
+      "name": "RSS - Kubernetes Blog",
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [
-        -2960,
-        1040
-      ],
-      "id": "rss-awssecurity-0031",
-      "name": "RSS - AWS Security Blog",
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
-    },
-    {
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        1648
+      ],
       "parameters": {
         "url": "https://kubernetes.io/feed.xml",
         "options": {}
-      },
+      }
+    },
+    {
+      "id": "rss-docker-0033",
+      "name": "RSS - Docker Blog",
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [
-        -2960,
-        1200
-      ],
-      "id": "rss-kubernetes-0032",
-      "name": "RSS - Kubernetes Blog",
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
-    },
-    {
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        1840
+      ],
       "parameters": {
         "url": "https://www.docker.com/blog/feed/",
         "options": {}
-      },
+      }
+    },
+    {
+      "id": "rss-hashicorp-0034",
+      "name": "RSS - HashiCorp Blog",
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
-      "position": [
-        -2960,
-        1360
-      ],
-      "id": "rss-docker-0033",
-      "name": "RSS - Docker Blog",
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
-    },
-    {
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        2032
+      ],
       "parameters": {
         "url": "https://www.hashicorp.com/blog/feed.xml",
         "options": {}
-      },
-      "type": "n8n-nodes-base.rssFeedRead",
-      "typeVersion": 1.1,
-      "position": [
-        -2960,
-        1520
-      ],
-      "id": "rss-hashicorp-0034",
-      "name": "RSS - HashiCorp Blog",
-      "retryOnFail": true,
-      "maxTries": 3,
-      "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
+      }
     },
     {
-      "parameters": {
-        "url": "https://openai.com/blog/rss.xml",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.rssFeedRead",
-      "typeVersion": 1.1,
-      "position": [
-        -2960,
-        1680
-      ],
       "id": "rss-openai-0035",
       "name": "RSS - OpenAI Blog",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 2000,
-      "onError": "continueRegularOutput"
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        2224
+      ],
+      "parameters": {
+        "url": "https://openai.com/news/rss.xml",
+        "options": {}
+      }
     },
     {
-      "parameters": {
-        "mode": "append",
-        "numberInputs": 5
-      },
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3.2,
-      "position": [
-        -2600,
-        -160
-      ],
       "id": "merge-ciber-0040",
-      "name": "Merge - Ciberseguridad"
-    },
-    {
-      "parameters": {
-        "mode": "append",
-        "numberInputs": 5
-      },
+      "name": "Merge - Ciberseguridad",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -2600,
-        700
+        -2512,
+        208
       ],
+      "parameters": {
+        "numberInputs": 7
+      }
+    },
+    {
       "id": "merge-infra-0041",
-      "name": "Merge - Infraestructura"
-    },
-    {
-      "parameters": {
-        "mode": "append",
-        "numberInputs": 2
-      },
+      "name": "Merge - Infraestructura",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -2600,
-        1400
+        -2512,
+        832
       ],
-      "id": "merge-ia-0042",
-      "name": "Merge - IA"
-    },
-    {
       "parameters": {
-        "mode": "append",
         "numberInputs": 5
-      },
+      }
+    },
+    {
+      "id": "merge-ia-0042",
+      "name": "Merge - IA",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -2360,
-        220
+        -2512,
+        1184
       ],
+      "parameters": {
+        "numberInputs": 5
+      }
+    },
+    {
       "id": "merge-preselect-0043",
-      "name": "Merge - PreSelect"
+      "name": "Merge - PreSelect",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -2064,
+        1232
+      ],
+      "parameters": {
+        "numberInputs": 7
+      }
+    },
+    {
+      "id": "99999999-8888-7777-6666-555555555555",
+      "name": "Manual Test Trigger",
+      "webhookId": "test-linkedin-manual",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1600,
+        400
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "test-linkedin-manual",
+        "responseMode": "onReceived"
+      }
+    },
+    {
+      "id": "rss-tc-ai-0050",
+      "name": "RSS - TechCrunch AI",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        2416
+      ],
+      "parameters": {
+        "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-mit-ai-0051",
+      "name": "RSS - MIT Tech Review AI",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        2608
+      ],
+      "parameters": {
+        "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-hf-ai-0052",
+      "name": "RSS - Hugging Face Blog",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        2800
+      ],
+      "parameters": {
+        "url": "https://huggingface.co/blog/feed.xml",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-secweek-0053",
+      "name": "RSS - SecurityWeek",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        2992
+      ],
+      "parameters": {
+        "url": "https://www.securityweek.com/feed/",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-muyseg-0054",
+      "name": "RSS - MuySeguridad (ES)",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        3184
+      ],
+      "parameters": {
+        "url": "https://www.muyseguridad.net/feed/",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-toms-0055",
+      "name": "RSS - Tom's Hardware",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        3376
+      ],
+      "parameters": {
+        "url": "https://www.tomshardware.com/feeds/all",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-chapuzas-0056",
+      "name": "RSS - El Chapuzas Informático (ES)",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        3568
+      ],
+      "parameters": {
+        "url": "https://elchapuzasinformatico.com/feed/",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-hardzone-0057",
+      "name": "RSS - HardZone (ES)",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        3760
+      ],
+      "parameters": {
+        "url": "https://hardzone.es/feed/",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-phoronix-0058",
+      "name": "RSS - Phoronix Hardware",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        3952
+      ],
+      "parameters": {
+        "url": "https://www.phoronix.com/phoronix-rss.php",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-redeszone-0059",
+      "name": "RSS - RedesZone (ES)",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        4144
+      ],
+      "parameters": {
+        "url": "https://www.redeszone.net/feed/",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-genbeta-0060",
+      "name": "RSS - Genbeta (ES)",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        4336
+      ],
+      "parameters": {
+        "url": "https://www.genbeta.com/index.xml",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-muylinux-0061",
+      "name": "RSS - MuyLinux (ES)",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        4528
+      ],
+      "parameters": {
+        "url": "https://www.muylinux.com/feed/",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-arstechnica-0062",
+      "name": "RSS - Ars Technica",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        4720
+      ],
+      "parameters": {
+        "url": "https://feeds.arstechnica.com/arstechnica/index",
+        "options": {}
+      }
+    },
+    {
+      "id": "rss-theregister-0063",
+      "name": "RSS - The Register General",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput",
+      "position": [
+        -2736,
+        4912
+      ],
+      "parameters": {
+        "url": "https://www.theregister.com/headlines.atom",
+        "options": {}
+      }
+    },
+    {
+      "id": "merge-hardware-0070",
+      "name": "Merge - Hardware",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -2512,
+        3664
+      ],
+      "parameters": {
+        "numberInputs": 4
+      }
+    },
+    {
+      "id": "tag-hardware-0071",
+      "name": "Tag: Hardware",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2288,
+        3664
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "tag_hw_1",
+              "name": "category",
+              "value": "Hardware",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      }
+    },
+    {
+      "id": "merge-informatica-0072",
+      "name": "Merge - Informática",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -2512,
+        4528
+      ],
+      "parameters": {
+        "numberInputs": 5
+      }
+    },
+    {
+      "id": "tag-informatica-0073",
+      "name": "Tag: Informática",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2288,
+        4528
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "tag_info_1",
+              "name": "category",
+              "value": "Informática",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      }
     }
   ],
   "connections": {
@@ -1395,6 +1756,76 @@
           },
           {
             "node": "Read Posted Log",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - TechCrunch AI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - MIT Tech Review AI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Hugging Face Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - SecurityWeek",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - MuySeguridad (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Tom's Hardware",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - El Chapuzas Informático (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - HardZone (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Phoronix Hardware",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - RedesZone (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Genbeta (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - MuyLinux (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Ars Technica",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - The Register General",
             "type": "main",
             "index": 0
           }
@@ -1506,7 +1937,7 @@
           {
             "node": "Merge - PreSelect",
             "type": "main",
-            "index": 4
+            "index": 6
           }
         ]
       ]
@@ -1617,36 +2048,7 @@
       "main": [
         [
           {
-            "node": "Generar Imagen con Texto - Pollinations+Cloudinary (Primario)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Generar Imagen con Texto - Pollinations+Cloudinary (Primario)": {
-      "main": [
-        [
-          {
-            "node": "Mark Image OK (Pollinations)",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Generar Imagen - HuggingFace (Backup, sin texto)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Mark Image OK (Pollinations)": {
-      "main": [
-        [
-          {
-            "node": "Final Image",
+            "node": "Generar Imagen - Cloudflare FLUX.1 (Primario)",
             "type": "main",
             "index": 0
           }
@@ -2036,17 +2438,3261 @@
           }
         ]
       ]
+    },
+    "Generar Imagen - Cloudflare FLUX.1 (Primario)": {
+      "main": [
+        [
+          {
+            "node": "Procesar Imagen FLUX.1 (Cloudflare)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generar Imagen - HuggingFace (Backup, sin texto)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar Imagen FLUX.1 (Cloudflare)": {
+      "main": [
+        [
+          {
+            "node": "Final Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Test Trigger": {
+      "main": [
+        [
+          {
+            "node": "RSS - Ciberseguridad",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Infraestructura",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - IA",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Hardening",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Krebs on Security",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Dark Reading",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - The Register Security",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Wired Security",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - AWS Security Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Kubernetes Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Docker Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - HashiCorp Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - OpenAI Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Read Posted Log",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - TechCrunch AI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - MIT Tech Review AI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Hugging Face Blog",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - SecurityWeek",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - MuySeguridad (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Tom's Hardware",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - El Chapuzas Informático (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - HardZone (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Phoronix Hardware",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - RedesZone (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Genbeta (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - MuyLinux (ES)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - Ars Technica",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS - The Register General",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS - TechCrunch AI": {
+      "main": [
+        [
+          {
+            "node": "Merge - IA",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "RSS - MIT Tech Review AI": {
+      "main": [
+        [
+          {
+            "node": "Merge - IA",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "RSS - Hugging Face Blog": {
+      "main": [
+        [
+          {
+            "node": "Merge - IA",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "RSS - SecurityWeek": {
+      "main": [
+        [
+          {
+            "node": "Merge - Ciberseguridad",
+            "type": "main",
+            "index": 5
+          }
+        ]
+      ]
+    },
+    "RSS - MuySeguridad (ES)": {
+      "main": [
+        [
+          {
+            "node": "Merge - Ciberseguridad",
+            "type": "main",
+            "index": 6
+          }
+        ]
+      ]
+    },
+    "RSS - Tom's Hardware": {
+      "main": [
+        [
+          {
+            "node": "Merge - Hardware",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS - El Chapuzas Informático (ES)": {
+      "main": [
+        [
+          {
+            "node": "Merge - Hardware",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "RSS - HardZone (ES)": {
+      "main": [
+        [
+          {
+            "node": "Merge - Hardware",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "RSS - Phoronix Hardware": {
+      "main": [
+        [
+          {
+            "node": "Merge - Hardware",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Merge - Hardware": {
+      "main": [
+        [
+          {
+            "node": "Tag: Hardware",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS - RedesZone (ES)": {
+      "main": [
+        [
+          {
+            "node": "Merge - Informática",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS - Genbeta (ES)": {
+      "main": [
+        [
+          {
+            "node": "Merge - Informática",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "RSS - MuyLinux (ES)": {
+      "main": [
+        [
+          {
+            "node": "Merge - Informática",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "RSS - Ars Technica": {
+      "main": [
+        [
+          {
+            "node": "Merge - Informática",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "RSS - The Register General": {
+      "main": [
+        [
+          {
+            "node": "Merge - Informática",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Merge - Informática": {
+      "main": [
+        [
+          {
+            "node": "Tag: Informática",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tag: Hardware": {
+      "main": [
+        [
+          {
+            "node": "Merge - PreSelect",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Tag: Informática": {
+      "main": [
+        [
+          {
+            "node": "Merge - PreSelect",
+            "type": "main",
+            "index": 5
+          }
+        ]
+      ]
     }
   },
+  "nodeGroups": [],
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
-    "availableInMCP": false
+    "availableInMCP": false,
+    "saveExecutionProgress": true,
+    "saveDataSuccessExecution": "all"
   },
-  "nodeGroups": [],
+  "staticData": {
+    "node:Lunes 8AM": {
+      "recurrenceRules": [
+        null
+      ],
+      "recurrenceRuleSignatures": [
+        null
+      ]
+    }
+  },
   "pinData": {},
   "meta": {
-    "instanceId": "REPLACE_WITH_YOUR_OWN_N8N_INSTANCE_ID"
+    "templateCredsSetupCompleted": true
   },
-  "tags": []
+  "tags": [],
+  "shared": [
+    {
+      "role": "workflow:owner",
+      "workflowId": "mSnCgesRW5wKgWLA",
+      "projectId": "yUX1TICrYztkfFr4",
+      "project": {
+        "id": "yUX1TICrYztkfFr4",
+        "name": "Juan Carlos Araneda Morales <YOUR_EMAIL@example.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "3794d172-a3cc-4358-8a28-1b1902c5fb61",
+        "createdAt": "2025-07-09T20:26:43.673Z",
+        "updatedAt": "2025-07-09T20:28:51.101Z"
+      },
+      "createdAt": "2026-08-15T16:40:40.131Z",
+      "updatedAt": "2026-08-15T16:40:40.131Z"
+    }
+  ],
+  "activeVersion": {
+    "versionId": "8b532ead-9d69-4ed8-b12e-94191a6e1a5b",
+    "workflowId": "mSnCgesRW5wKgWLA",
+    "nodes": [
+      {
+        "id": "4061aa48-0963-4b36-b28f-dfa6261345b5",
+        "name": "Lunes 8AM",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.2,
+        "position": [
+          -2960,
+          928
+        ],
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "weeks",
+                "triggerAtDay": [
+                  1
+                ],
+                "triggerAtHour": 8
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "a22c0a96-b0c5-4eea-b113-4079010a1038",
+        "name": "RSS - Ciberseguridad",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          -160
+        ],
+        "parameters": {
+          "url": "https://feeds.feedburner.com/TheHackersNews",
+          "options": {}
+        }
+      },
+      {
+        "id": "a1575378-16c0-4b2f-b235-bd6c691fddd0",
+        "name": "RSS - Infraestructura",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          80
+        ],
+        "parameters": {
+          "url": "https://isc.sans.edu/rssfeed_full.xml",
+          "options": {}
+        }
+      },
+      {
+        "id": "20606b9b-d2cf-48fd-9843-15ff40797076",
+        "name": "RSS - IA",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          304
+        ],
+        "parameters": {
+          "url": "https://blog.research.google/feeds/posts/default",
+          "options": {}
+        }
+      },
+      {
+        "id": "29c47f12-98f8-44a2-9780-7eb96f31e13d",
+        "name": "RSS - Hardening",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2512,
+          1552
+        ],
+        "parameters": {
+          "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+          "options": {}
+        }
+      },
+      {
+        "id": "3cb5f25d-4362-455a-bc9d-da2dd48a235b",
+        "name": "Tag: Ciberseguridad",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2288,
+          256
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "tag1",
+                "name": "category",
+                "value": "Ciberseguridad",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": true,
+          "options": {}
+        }
+      },
+      {
+        "id": "6a6e8b48-dc93-4feb-b73f-c2c3da4e4abe",
+        "name": "Tag: Infraestructura",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2288,
+          880
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "tag2",
+                "name": "category",
+                "value": "Infraestructura",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": true,
+          "options": {}
+        }
+      },
+      {
+        "id": "ce0a292e-3736-47a5-9e3a-36eacc5ad3b3",
+        "name": "Tag: IA",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2288,
+          1184
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "tag3",
+                "name": "category",
+                "value": "IA",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": true,
+          "options": {}
+        }
+      },
+      {
+        "id": "b2fe068e-bf2f-41b7-a943-bb8042566bbb",
+        "name": "Tag: Hardening",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2288,
+          1552
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "tag4",
+                "name": "category",
+                "value": "Hardening",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": true,
+          "options": {}
+        }
+      },
+      {
+        "id": "2744c5cb-4cc1-40de-84f3-513175a2cb99",
+        "name": "Read Posted Log",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -2512,
+          1792
+        ],
+        "parameters": {
+          "authentication": "serviceAccount",
+          "documentId": {
+            "__rl": true,
+            "value": "YOUR_GOOGLE_SHEET_ID",
+            "mode": "list",
+            "cachedResultName": "Linkedin_Post_Automation"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "PostedLog"
+          },
+          "options": {}
+        },
+        "credentials": {
+          "googleApi": {
+            "id": "cGBxJomoyxEsHnAb",
+            "name": "Google Service Account - Sheets Read (Read Posted Log)"
+          }
+        }
+      },
+      {
+        "id": "469429e6-8887-497a-bafd-3b9026dad981",
+        "name": "Tag Log Entries",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2288,
+          1792
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "logflag",
+                "name": "isLogEntry",
+                "value": true,
+                "type": "boolean"
+              }
+            ]
+          },
+          "includeOtherFields": true,
+          "options": {}
+        }
+      },
+      {
+        "id": "85f4758a-79e6-4408-9ba4-f993ffb88e16",
+        "name": "Select New Topic",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -1840,
+          1280
+        ],
+        "parameters": {
+          "jsCode": "// Combina items RSS (con category) + entradas del log (isLogEntry=true)\nconst items = $input.all();\n\n// 1. Enlaces ya publicados para no repetir\nconst logLinks = new Set(\n  items\n    .filter(i => i.json.isLogEntry === true && i.json.Link)\n    .map(i => i.json.Link.trim())\n);\n\n// 2. Extraer última categoría publicada si existe en el log para evitar rachas\nconst logEntriesWithCat = items.filter(i => i.json.isLogEntry === true && (i.json.Category || i.json.category));\nconst lastCategory = logEntriesWithCat.length > 0 \n  ? (logEntriesWithCat[logEntriesWithCat.length - 1].json.Category || logEntriesWithCat[logEntriesWithCat.length - 1].json.category)\n  : null;\n\n// 3. Filtrar noticias frescas\nconst freshItems = items.filter(i => {\n  if (i.json.isLogEntry) return false;\n  const link = (i.json.link || '').trim();\n  return link && !logLinks.has(link);\n});\n\nif (freshItems.length === 0) {\n  return [{ json: { found: false } }];\n}\n\n// 4. Agrupar noticias por categoría\nconst byCategory = {};\nfor (const item of freshItems) {\n  const cat = item.json.category || 'Tecnología';\n  if (!byCategory[cat]) byCategory[cat] = [];\n  byCategory[cat].push(item);\n}\n\n// 5. Categorías disponibles\nconst availableCategories = Object.keys(byCategory);\n\n// Si la última categoría fue por ejemplo 'IA', priorizar rotar a otra (Hardware, Ciberseguridad, Informática, etc.)\nlet eligibleCategories = availableCategories;\nif (availableCategories.length > 1 && lastCategory) {\n  const otherCategories = availableCategories.filter(c => c.toLowerCase() !== lastCategory.toLowerCase());\n  if (otherCategories.length > 0) {\n    eligibleCategories = otherCategories;\n  }\n}\n\n// 6. Selección Estratificada Equitativa:\n// Paso A: Sorteo de categoría con idéntica probabilidad para cada área\nconst chosenCategory = eligibleCategories[Math.floor(Math.random() * eligibleCategories.length)];\nconst categoryItems = byCategory[chosenCategory];\n\n// Paso B: Dentro de la categoría elegida, sortear entre las 20 noticias más recientes\nconst pool = categoryItems.slice(0, 20);\nconst chosen = pool[Math.floor(Math.random() * pool.length)];\n\nreturn [{\n  json: {\n    found: true,\n    title: chosen.json.title || '',\n    link: chosen.json.link || '',\n    description: (chosen.json.contentSnippet || chosen.json.content || '').toString().substring(0, 500),\n    category: chosenCategory,\n    totalFreshInCategory: categoryItems.length,\n    activeCategoriesCount: availableCategories.length\n  }\n}];"
+        }
+      },
+      {
+        "id": "ac23b7bf-1dac-407d-81bc-dca43943c7ff",
+        "name": "Hay contenido nuevo?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -1616,
+          1280
+        ],
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "found-check",
+                "leftValue": "={{ $json.found }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "48cd4573-a703-446e-a134-8f18164857d2",
+        "name": "Sin contenido nuevo - Fin",
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          -1392,
+          1376
+        ],
+        "parameters": {}
+      },
+      {
+        "id": "e7879ee0-991a-4ea7-a171-5a4dd269993d",
+        "name": "Prepare Prompt",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1392,
+          1184
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "prep1",
+                "name": "text",
+                "value": "=Título: {{ $json.title }}\\nCategoría: {{ $json.category }}\\nResumen: {{ $json.description }}\\nFuente: {{ $json.link }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "2bc9e120-c8b7-4340-a947-b0667fd580b4",
+        "name": "Generar Post - Gemini (Primario)",
+        "type": "@n8n/n8n-nodes-langchain.googleGemini",
+        "typeVersion": 1,
+        "onError": "continueErrorOutput",
+        "position": [
+          -1168,
+          1184
+        ],
+        "parameters": {
+          "modelId": {
+            "__rl": true,
+            "value": "models/gemini-3.5-flash-lite",
+            "mode": "list",
+            "cachedResultName": "models/gemini-3.5-flash-lite"
+          },
+          "messages": {
+            "values": [
+              {
+                "content": "Eres un agente de IA experto en ciberseguridad, infraestructura, inteligencia artificial, hardware y tecnología general, especializado en crear publicaciones profesionales, educativas y de alto impacto para LinkedIn, basadas en el tema proporcionado por el usuario.\n\nGenera una publicación BILINGÜE para LinkedIn, con esta estructura exacta y en este orden:\n1. El post completo en ESPAÑOL (máximo 1100 caracteres): comienza con un gancho atractivo y relevante, desarrolla el tema de forma clara y educativa aportando valor accionable (buenas prácticas, análisis técnico, impacto en la industria), tono profesional y objetivo (sin alarmismo ni FUD), usa emojis con moderación, y cierra con una reflexión sin preguntas abiertas relacionada al tema, SIN pedir explícitamente comentarios, seguidores o interacción.\n2. Una línea con exactamente este separador: 🌐 English version:\n3. El mismo post traducido al INGLÉS (máximo 1100 caracteres), mismo contenido, tono y estructura que la versión en español.\n4. Una línea COMPLETAMENTE VACÍA (un salto de línea vacío, sin ningún carácter).\n5. Los hashtags del sector, todos en una sola línea, compartidos para ambos idiomas (#Cybersecurity #InfoSec #AI #Infrastructure #Hardware #Networking #Tech, etc.).\n\nRestricción dura: el post COMPLETO (español + inglés + hashtags) no debe superar 3000 caracteres en total.\n\nREGLAS CRÍTICAS DE FORMATO (búscalas y elimínalas de tu borrador antes de responder):\n- El texto de entrada viene estructurado como \"Título:\", \"Resumen:\", \"Fuente:\" — eso es SOLO referencia interna. NUNCA reproduzcas esas etiquetas ni esa estructura en el post final.\n- PROHIBIDO usar asteriscos (**) para negrita en absolutamente ninguna parte del post, ni siquiera en los ítems de una lista numerada. Si quieres destacar un concepto, hazlo con la redacción o un emoji, nunca con **texto**.\n- PROHIBIDO envolver el post completo (o cualquier parte) entre comillas dobles (\"...\").\n- PROHIBIDO pedir que sigan la cuenta, se suscriban, o cualquier variante de \"síguenos\".\n- PROHIBIDO frases como \"comparte en los comentarios\", \"cuéntame abajo\", \"déjame tu opinión en comentarios\" o cualquier instrucción explícita de comentar. Puedes cerrar con una reflexión, pero sin decirle al lector dónde ni cómo responder.\n- NO uses guiones bajos ni ningún otro símbolo de marcado.\n- OBLIGATORIO: deja una línea COMPLETAMENTE VACÍA entre el final del texto en inglés y el bloque de hashtags. Nunca pegues los hashtags directamente al final del último párrafo.\n- Escribe en prosa fluida y natural, como si lo redactaras directamente, no como resumen de un documento.\n\nInstrucción crítica de formato: Entrega ÚNICAMENTE el contenido de la publicación (español, separador, inglés, línea en blanco, hashtags). Sin frases introductorias, saludos ni explicaciones finales.",
+                "role": "system"
+              },
+              {
+                "content": "=Crea un post de LinkedIn basado en esta noticia:\n{{ $json.text }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "credentials": {
+          "googlePalmApi": {
+            "id": "16dkUZCx5GuuNXi8",
+            "name": "Google Gemini API PaLM - En uso"
+          }
+        }
+      },
+      {
+        "id": "59261ea3-f6ec-4ac3-9dbf-cd4863fc2a34",
+        "name": "Normalizar salida Gemini",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -592,
+          992
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "norm1",
+                "name": "content",
+                "value": "={{ $json.content.parts[0].text }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "f899c12c-df8a-46c4-88ca-60c0bb6c10b8",
+        "name": "Generar Post - Groq (Backup)",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          -816,
+          1184
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.groq.com/openai/v1/chat/completions",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({\n  model: \"openai/gpt-oss-20b\",\n  messages: [\n    { role: \"system\", content: \"Eres experto en ciberseguridad, infraestructura, IA y hardening. Escribe un post de LinkedIn BILINGÜE: primero la versión completa en ESPAÑOL (máx 1100 caracteres), luego una línea separadora exacta '🌐 English version:', luego la misma versión traducida al INGLÉS (máx 1100 caracteres), luego una línea COMPLETAMENTE VACÍA, y al final los hashtags compartidos en una sola línea. El post completo (ambos idiomas + hashtags) no debe superar 3000 caracteres. Profesional, educativo, sin alarmismo, cierra con una reflexión sin preguntas abiertas, SIN pedir comentarios ni seguidores. PROHIBIDO usar asteriscos (**) para negrita en cualquier parte, incluyendo listas. PROHIBIDO envolver el texto entre comillas. El input viene con etiquetas 'Título:', 'Categoría:', 'Resumen:', 'Fuente:' que son SOLO referencia interna. Entrega SOLO el post en texto plano, sin explicaciones, sin comillas, sin asteriscos.\" },\n    { role: \"user\", content: \"Crea un post de LinkedIn basado en: \" + $('Prepare Prompt').item.json.text }\n  ],\n  temperature: 0.7\n}) }}",
+          "options": {}
+        },
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "r0rTlOV4ESbJrMAs",
+            "name": "Grok API Key"
+          }
+        }
+      },
+      {
+        "id": "ab36342b-628f-421d-abaa-69784fae5758",
+        "name": "Normalizar salida Groq",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -592,
+          1184
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "norm2",
+                "name": "content",
+                "value": "={{ $json.choices[0].message.content }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "18ef0555-70f2-4515-ba89-109a9f253580",
+        "name": "Final Post Text",
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          -368,
+          1184
+        ],
+        "parameters": {}
+      },
+      {
+        "id": "bd134cf0-e99a-4835-a1cc-3f5bb6214d56",
+        "name": "Build Image Prompt",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -144,
+          1184
+        ],
+        "parameters": {
+          "jsCode": "const category = $('Select New Topic').item?.json?.category || 'Ciberseguridad';\nconst postText = $('Final Post Text').item?.json?.content || '';\nconst topic = $('Select New Topic').item?.json || {};\nconst title = topic.title || '';\nconst desc = topic.description || '';\nconst fullText = (title + ' ' + desc).toLowerCase();\n\n// 1. Detección inteligente: ¿Es mejor Diagrama o Imagen Conceptual según la temática?\n// Temas estructurales, protocolos, flujos, hardware, redes, topología o defensas se benefician de DIAGRAMA\nconst diagramKeywords = [\n  'architecture', 'arquitectura', 'network', 'red', 'redes', 'routing', 'protocol', 'protocolo',\n  'infrastructure', 'infraestructura', 'pipeline', 'cluster', 'kubernetes', 'k8s', 'docker', 'container',\n  'firewall', 'topology', 'topología', 'hardware', 'chip', 'processor', 'procesador', 'semiconductor',\n  'pcb', 'circuit', 'circuito', 'vulnerability', 'vulnerabilidad', 'exploit', 'cve', 'malware', 'attack',\n  'api', 'framework', 'database', 'base de datos', 'server', 'servidor', 'sysadmin', 'kernel', 'linux',\n  'backend', 'data flow', 'flujo', 'diagram', 'diagrama', 'esquemático', 'schematic'\n];\n\nconst matchesDiagram = diagramKeywords.some(kw => fullText.includes(kw));\n\n// 2. Foco temático abstracto SIN incluir el título de la noticia\nconst categoryConcepts = {\n  \"Ciberseguridad\": \"cybersecurity defense architecture, cryptographic verification layers, threat mitigation conduits\",\n  \"Infraestructura\": \"cloud infrastructure cluster, high-availability data center routing, distributed system modules\",\n  \"IA\": \"artificial intelligence neural compute core, deep learning tensor pipelines, high-dimensional data processing\",\n  \"Hardening\": \"system hardening defense layout, multi-layered security controls, protected endpoint architecture\",\n  \"Hardware\": \"advanced semiconductor microarchitecture, silicon die interconnects, precision electronic bus lines\",\n  \"Informática\": \"enterprise computing network topology, high-throughput digital switching, modular server systems\"\n};\n\nconst conceptFocus = categoryConcepts[category] || categoryConcepts[\"Ciberseguridad\"];\n\n// 3. Catálogo de estilos según la modalidad elegida\nconst diagramStyles = [\n  // Blueprint de arquitectura\n  \"technical architectural diagram, isometric system architecture blueprint, abstract interconnected data flow conduits and modular blocks, dark slate blueprint background with crisp cyan and gold lines, precision vector aesthetic, 8k resolution\",\n  // Topología de red y flujo\n  \"futuristic network topology diagram, clean flowchart data pipeline visualization, glowing abstract nodes and routing pathways, dark theme engineering graphic, minimal modern cyber schematic\",\n  // Esquemático de hardware y circuitos\n  \"precision technical schematic diagram, isometric micro-architecture and bus interconnects, sleek circuit blueprint layout, dark titanium background with luminous copper traces, modular system layout\",\n  // Infografía modular técnica\n  \"modern enterprise technology infographics diagram, abstract modular layers, secure pipeline architecture visualization, sleek dark glassmorphism surfaces and glowing geometric connections\"\n];\n\nconst imageStyles = [\n  // Render 3D Isométrico de Alta Gama\n  \"sleek 3D isometric octane render, futuristic corporate tech aesthetic, slate and indigo background with glowing subtle nodes, clean geometric lighting, sophisticated studio environment\",\n  // Fotografía editorial tecnológica\n  \"high-end technology editorial photography, dramatic architectural lighting, clean minimal composition, deep navy and cyan highlights, 8k resolution, photorealistic\",\n  // Concepto abstracto minimalista\n  \"minimalist modern abstract concept, glowing subtle data streams and geometric grid, glass and dark titanium surfaces, elegant corporate tech style, photorealistic 8k\",\n  // Visual cinematográfico corporativo\n  \"cinematic corporate technology visual, deep obsidian palette, soft ambient illumination, macro depth of field, hyper-detailed digital surfaces\"\n];\n\nlet chosenMode = \"\";\nlet chosenStyle = \"\";\n\nif (matchesDiagram) {\n  chosenMode = \"diagrama\";\n  chosenStyle = diagramStyles[Math.floor(Math.random() * diagramStyles.length)];\n} else {\n  chosenMode = \"imagen_conceptual\";\n  chosenStyle = imageStyles[Math.floor(Math.random() * imageStyles.length)];\n}\n\n// 4. Prompt final para FLUX.1:\n// ESTRICTO: SIN título de noticia, sin texto, sin letras, sin palabras escritas, sin etiquetas\nconst imagePrompt = `${conceptFocus}, ${chosenStyle}, strictly no text, no words, no letters, no labels, no title, no typography, no captions, no watermark, no logo, no distorted faces`;\n\nreturn [{\n  json: {\n    ...$('Final Post Text').item.json,\n    imagePrompt: imagePrompt,\n    category: category,\n    originalTitle: title,\n    visualMode: chosenMode,\n    visualStyleVariant: chosenStyle.substring(0, 50) + '...'\n  }\n}];"
+        }
+      },
+      {
+        "id": "1fe2704a-7495-431a-af41-6ad1ab4cf45d",
+        "name": "Generar Imagen - Cloudflare FLUX.1 (Primario)",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "onError": "continueErrorOutput",
+        "position": [
+          80,
+          1184
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.cloudflare.com/client/v4/accounts/YOUR_CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/black-forest-labs/flux-1-schnell",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({ prompt: $json.imagePrompt }) }}",
+          "options": {
+            "timeout": 45000
+          }
+        },
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "aiWSR4B33jMUUpiP",
+            "name": "Cloudflare Workers AI"
+          }
+        }
+      },
+      {
+        "id": "86a508e2-2917-416d-861b-20f500268ffa",
+        "name": "Procesar Imagen FLUX.1 (Cloudflare)",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          528,
+          800
+        ],
+        "parameters": {
+          "jsCode": "const input = $input.first();\nconst b64 = input?.json?.result?.image;\n\nif (!b64) {\n  throw new Error('No se recibió imagen base64 de Cloudflare Workers AI');\n}\n\nreturn [{\n  json: {\n    ...input.json,\n    hasImage: true\n  },\n  binary: {\n    data: {\n      data: b64,\n      mimeType: 'image/jpeg',\n      fileName: 'flux_linkedin.jpg',\n      fileExtension: 'jpg'\n    }\n  }\n}];"
+        }
+      },
+      {
+        "id": "71c50ad2-72d5-4723-906c-917395aac6cc",
+        "name": "Generar Imagen - HuggingFace (Backup, sin texto)",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "onError": "continueErrorOutput",
+        "position": [
+          304,
+          1184
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://router.huggingface.co/hf-inference/models/stabilityai/stable-diffusion-2-1",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({\n  inputs: $json.imagePrompt,\n  parameters: {\n    negative_prompt: \"blurry, low quality, watermark, text, logo, distorted, amateur, cartoon, childish\",\n    num_inference_steps: 30\n  }\n}) }}",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            }
+          }
+        },
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "r0rTlOV4ESbJrMAs",
+            "name": "Grok API Key"
+          }
+        }
+      },
+      {
+        "id": "a36cbc2d-6b88-437d-ac5a-726d696f64ce",
+        "name": "Mark Image OK (HuggingFace)",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          528,
+          992
+        ],
+        "parameters": {
+          "jsCode": "const item = $input.first();\nitem.json.hasImage = true;\nreturn [item];"
+        }
+      },
+      {
+        "id": "998d4a3b-0390-46a5-b355-08dc82928a7e",
+        "name": "Sin Imagen (Fallback final)",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          528,
+          1184
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "img3",
+                "name": "hasImage",
+                "value": false,
+                "type": "boolean"
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "161f54ac-f6e6-4002-ac54-91387b1b4d4a",
+        "name": "Final Image",
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          752,
+          1088
+        ],
+        "parameters": {}
+      },
+      {
+        "id": "625fab67-9124-478d-aea4-f1e216aa26d9",
+        "name": "Hay imagen disponible?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          976,
+          1088
+        ],
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "has-img-check",
+                "leftValue": "={{ $json.hasImage }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "572c4e45-0337-4882-8222-e447256fbf74",
+        "name": "Registrar Upload Imagen LinkedIn",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1200,
+          896
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.linkedin.com/v2/assets?action=registerUpload",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "linkedInOAuth2Api",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"registerUploadRequest\": {\n    \"recipes\": [\"urn:li:digitalmediaRecipe:feedshare-image\"],\n    \"owner\": \"urn:li:person:YOUR_LINKEDIN_PERSON_URN\",\n    \"serviceRelationships\": [\n      { \"relationshipType\": \"OWNER\", \"identifier\": \"urn:li:userGeneratedContent\" }\n    ]\n  }\n}",
+          "options": {}
+        },
+        "credentials": {
+          "linkedInOAuth2Api": {
+            "id": "NNBvWK0XW9wMgnXR",
+            "name": "LinkedIn - Publicar Posts"
+          }
+        }
+      },
+      {
+        "id": "bdb5b003-4f3b-4672-a6eb-6045e8763624",
+        "name": "Combinar Info Upload + Imagen",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1424,
+          896
+        ],
+        "parameters": {
+          "jsCode": "// Combina el JSON del registro de upload con el binario de la imagen final\nconst registerData = $('Registrar Upload Imagen LinkedIn').first().json;\nconst imageItem = $('Final Image').first();\n\nreturn [{\n  json: registerData,\n  binary: {\n    data: imageItem.binary.data\n  }\n}];"
+        }
+      },
+      {
+        "id": "f810c883-2051-46b4-8756-15dabed636a9",
+        "name": "Subir Binario Imagen",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1648,
+          896
+        ],
+        "parameters": {
+          "method": "PUT",
+          "url": "={{ $json.value.uploadMechanism['com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest'].uploadUrl }}",
+          "sendBody": true,
+          "contentType": "binaryData",
+          "inputDataFieldName": "data",
+          "options": {}
+        }
+      },
+      {
+        "id": "2cb0e953-9566-4ee8-a474-c1dded7006d2",
+        "name": "Publicar Post con Imagen",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1872,
+          896
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.linkedin.com/v2/ugcPosts",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "linkedInOAuth2Api",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "X-Restli-Protocol-Version",
+                "value": "2.0.0"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"author\": \"urn:li:person:YOUR_LINKEDIN_PERSON_URN\",\n  \"lifecycleState\": \"PUBLISHED\",\n  \"specificContent\": {\n    \"com.linkedin.ugc.ShareContent\": {\n      \"shareCommentary\": { \"text\": {{ JSON.stringify($('Final Post Text').item.json.content) }} },\n      \"shareMediaCategory\": \"IMAGE\",\n      \"media\": [\n        {\n          \"status\": \"READY\",\n          \"description\": { \"text\": \"Imagen generada automáticamente\" },\n          \"media\": \"{{ $('Registrar Upload Imagen LinkedIn').item.json.value.asset }}\",\n          \"title\": { \"text\": \"{{ $('Select New Topic').item.json.category }} Insight\" }\n        }\n      ]\n    }\n  },\n  \"visibility\": { \"com.linkedin.ugc.MemberNetworkVisibility\": \"PUBLIC\" }\n}",
+          "options": {}
+        },
+        "credentials": {
+          "linkedInOAuth2Api": {
+            "id": "NNBvWK0XW9wMgnXR",
+            "name": "LinkedIn - Publicar Posts"
+          }
+        }
+      },
+      {
+        "id": "52f51a20-8229-40b2-b193-e1657791121b",
+        "name": "Normalizar Resultado (Imagen)",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          2096,
+          896
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "res1",
+                "name": "success",
+                "value": "={{ $json.id ? true : false }}",
+                "type": "boolean"
+              },
+              {
+                "id": "res2",
+                "name": "urn",
+                "value": "={{ $json.id }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "79edadbb-9e9c-4c12-9a32-d88e1c63ad4e",
+        "name": "Publicar Post - Solo Texto (Fallback)",
+        "type": "n8n-nodes-base.linkedIn",
+        "typeVersion": 1,
+        "position": [
+          1872,
+          1088
+        ],
+        "parameters": {
+          "person": "YOUR_LINKEDIN_PERSON_URN",
+          "text": "={{ $('Final Post Text').item.json.content }}",
+          "additionalFields": {}
+        },
+        "credentials": {
+          "linkedInOAuth2Api": {
+            "id": "NNBvWK0XW9wMgnXR",
+            "name": "LinkedIn - Publicar Posts"
+          }
+        }
+      },
+      {
+        "id": "e17f59a1-6f39-45bc-b996-e40f382f483f",
+        "name": "Normalizar Resultado (Texto)",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          2096,
+          1088
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "res3",
+                "name": "success",
+                "value": "={{ $json.urn ? true : false }}",
+                "type": "boolean"
+              },
+              {
+                "id": "res4",
+                "name": "urn",
+                "value": "={{ $json.urn }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "07af0a35-1dbb-42aa-9d55-75741f8abd1f",
+        "name": "Publicación exitosa?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          2320,
+          1088
+        ],
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "post-ok-check",
+                "leftValue": "={{ $json.success }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "73ae3891-dcff-42a7-92a2-43e34b240a70",
+        "name": "Success Mail",
+        "webhookId": "0233a188-b4db-4d20-8dab-076be6f87da2",
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.1,
+        "continueOnFail": true,
+        "position": [
+          2544,
+          896
+        ],
+        "parameters": {
+          "sendTo": "YOUR_EMAIL@example.com",
+          "subject": "✅ LinkedIn Post Publicado",
+          "message": "=Tu post de LinkedIn se publicó correctamente.\n\n🔗 URN: {{ $json.urn }}\n📌 Categoría: {{ $('Select New Topic').item.json.category }}\n📄 Contenido:\n{{ $('Final Post Text').item.json.content }}",
+          "options": {}
+        },
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "SQAwEZAR5yzfyWei",
+            "name": "Gmail - Notificaciones Mail"
+          }
+        }
+      },
+      {
+        "id": "3597a74e-5d49-4cb6-834c-4e9ebc9281e2",
+        "name": "Failure Mail",
+        "webhookId": "e8008948-46cf-45a6-8732-277b348252c6",
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.1,
+        "continueOnFail": true,
+        "position": [
+          2544,
+          1088
+        ],
+        "parameters": {
+          "sendTo": "YOUR_EMAIL@example.com",
+          "subject": "🚫 LinkedIn Post Fallido",
+          "message": "=No se pudo publicar el post en LinkedIn.\n\n🛠️ Revisa la respuesta de la API / autenticación.\n📌 Tema intentado: {{ $('Select New Topic').item.json.title }}",
+          "options": {}
+        },
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "SQAwEZAR5yzfyWei",
+            "name": "Gmail - Notificaciones Mail"
+          }
+        }
+      },
+      {
+        "id": "440d0cda-3c26-4745-bf46-4837303d19dc",
+        "name": "No Operation, do nothing",
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          2768,
+          1088
+        ],
+        "parameters": {}
+      },
+      {
+        "id": "5c024af0-4f11-4118-8ac8-193ffed39c4b",
+        "name": "Log Posted Item",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "continueOnFail": true,
+        "position": [
+          2768,
+          896
+        ],
+        "parameters": {
+          "authentication": "serviceAccount",
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "YOUR_GOOGLE_SHEET_ID",
+            "mode": "list",
+            "cachedResultName": "Linkedin_Post_Automation",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "PostedLog",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=YOUR_SHEET_GID"
+          },
+          "columns": {
+            "mappingMode": "autoMapInputData",
+            "value": {},
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "Title",
+                "displayName": "Title",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Link",
+                "displayName": "Link",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Category",
+                "displayName": "Category",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "PostedText",
+                "displayName": "PostedText",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "URN",
+                "displayName": "URN",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "PostedAt",
+                "displayName": "PostedAt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "threadId",
+                "displayName": "threadId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "labelIds",
+                "displayName": "labelIds",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "credentials": {
+          "googleApi": {
+            "id": "QAb1DnzIKsFqHa9f",
+            "name": "Google Service Account - Sheets Write (Log Posted Item)"
+          }
+        }
+      },
+      {
+        "id": "eb1dbeb8-a297-49f5-8bd9-e3342ca78b98",
+        "name": "Filter content for Drive",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          2992,
+          896
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "26e3d125",
+                "name": "Post Description",
+                "value": "={{ $('Select New Topic').item.json.title }}",
+                "type": "string"
+              },
+              {
+                "id": "01d7f2e0",
+                "name": "URN",
+                "value": "={{ $json.urn }}",
+                "type": "string"
+              },
+              {
+                "id": "5cd5c859",
+                "name": "Posted at",
+                "value": "={{ $now }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "c48bfbf0-793b-467d-9282-745b8c149c77",
+        "name": "Creating csv file",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          3216,
+          896
+        ],
+        "parameters": {
+          "jsCode": "const urn = $input.first().json.URN\nconst description = $input.first().json[\"Post Description\"]\nconst timestamp = $input.first().json[\"Posted at\"]\n\nconst csv = `Description,LinkedIn URN,Posted At\n\"${description}\",\"${urn}\",\"${timestamp}\"`;\n\nreturn [{ json: { file_content: csv } }];"
+        }
+      },
+      {
+        "id": "6a0c4650-facf-45ab-8471-22b5537aeef8",
+        "name": "Converting csv to binary",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          3440,
+          896
+        ],
+        "parameters": {
+          "jsCode": "const content = $input.first().json.file_content\nconst fileName = \"LinkedIn_Post.csv\";\n\nreturn {\n  json: {},\n  binary: {\n    data: {\n      data: Buffer.from(content, \"utf8\").toString(\"base64\"),\n      mimeType: \"text/csv\",\n      fileName: fileName,\n    },\n  },\n};\n"
+        }
+      },
+      {
+        "id": "1b92d168-d911-44e7-93a1-6000104cf0b0",
+        "name": "Upload file",
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "continueOnFail": true,
+        "position": [
+          3664,
+          896
+        ],
+        "parameters": {
+          "name": "=Linkedin_Post_{{ $now }}",
+          "driveId": {
+            "__rl": true,
+            "value": "My Drive",
+            "mode": "list",
+            "cachedResultName": "My Drive"
+          },
+          "folderId": {
+            "__rl": true,
+            "value": "1Ecm_tvhy4CccfFE-_lrYNpqkrqrVr38Y",
+            "mode": "list",
+            "cachedResultName": "N8n",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1Ecm_tvhy4CccfFE-_lrYNpqkrqrVr38Y"
+          },
+          "options": {}
+        },
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "DE1xyGoMBYeHm6sy",
+            "name": "Google Drive - Backup CSV (Upload file)"
+          }
+        }
+      },
+      {
+        "id": "b33ebe69-6609-41e9-9662-3a02c87cd1db",
+        "name": "No Operation, do nothing1",
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          3888,
+          896
+        ],
+        "parameters": {}
+      },
+      {
+        "id": "rss-krebs-0027",
+        "name": "RSS - Krebs on Security",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          496
+        ],
+        "parameters": {
+          "url": "https://krebsonsecurity.com/feed/",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-darkreading-0028",
+        "name": "RSS - Dark Reading",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          688
+        ],
+        "parameters": {
+          "url": "https://www.darkreading.com/rss.xml",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-theregister-0029",
+        "name": "RSS - The Register Security",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          976
+        ],
+        "parameters": {
+          "url": "https://www.theregister.com/security/headlines.atom",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-wired-0030",
+        "name": "RSS - Wired Security",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          1264
+        ],
+        "parameters": {
+          "url": "https://www.wired.com/feed/category/security/latest/rss",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-awssecurity-0031",
+        "name": "RSS - AWS Security Blog",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          1456
+        ],
+        "parameters": {
+          "url": "https://aws.amazon.com/blogs/security/feed/",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-kubernetes-0032",
+        "name": "RSS - Kubernetes Blog",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          1648
+        ],
+        "parameters": {
+          "url": "https://kubernetes.io/feed.xml",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-docker-0033",
+        "name": "RSS - Docker Blog",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          1840
+        ],
+        "parameters": {
+          "url": "https://www.docker.com/blog/feed/",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-hashicorp-0034",
+        "name": "RSS - HashiCorp Blog",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          2032
+        ],
+        "parameters": {
+          "url": "https://www.hashicorp.com/blog/feed.xml",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-openai-0035",
+        "name": "RSS - OpenAI Blog",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          2224
+        ],
+        "parameters": {
+          "url": "https://openai.com/news/rss.xml",
+          "options": {}
+        }
+      },
+      {
+        "id": "merge-ciber-0040",
+        "name": "Merge - Ciberseguridad",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -2512,
+          208
+        ],
+        "parameters": {
+          "numberInputs": 7
+        }
+      },
+      {
+        "id": "merge-infra-0041",
+        "name": "Merge - Infraestructura",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -2512,
+          832
+        ],
+        "parameters": {
+          "numberInputs": 5
+        }
+      },
+      {
+        "id": "merge-ia-0042",
+        "name": "Merge - IA",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -2512,
+          1184
+        ],
+        "parameters": {
+          "numberInputs": 5
+        }
+      },
+      {
+        "id": "merge-preselect-0043",
+        "name": "Merge - PreSelect",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -2064,
+          1232
+        ],
+        "parameters": {
+          "numberInputs": 7
+        }
+      },
+      {
+        "id": "99999999-8888-7777-6666-555555555555",
+        "name": "Manual Test Trigger",
+        "webhookId": "test-linkedin-manual",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          -1600,
+          400
+        ],
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "test-linkedin-manual",
+          "responseMode": "onReceived"
+        }
+      },
+      {
+        "id": "rss-tc-ai-0050",
+        "name": "RSS - TechCrunch AI",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          2416
+        ],
+        "parameters": {
+          "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-mit-ai-0051",
+        "name": "RSS - MIT Tech Review AI",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          2608
+        ],
+        "parameters": {
+          "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-hf-ai-0052",
+        "name": "RSS - Hugging Face Blog",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          2800
+        ],
+        "parameters": {
+          "url": "https://huggingface.co/blog/feed.xml",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-secweek-0053",
+        "name": "RSS - SecurityWeek",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          2992
+        ],
+        "parameters": {
+          "url": "https://www.securityweek.com/feed/",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-muyseg-0054",
+        "name": "RSS - MuySeguridad (ES)",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          3184
+        ],
+        "parameters": {
+          "url": "https://www.muyseguridad.net/feed/",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-toms-0055",
+        "name": "RSS - Tom's Hardware",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          3376
+        ],
+        "parameters": {
+          "url": "https://www.tomshardware.com/feeds/all",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-chapuzas-0056",
+        "name": "RSS - El Chapuzas Informático (ES)",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          3568
+        ],
+        "parameters": {
+          "url": "https://elchapuzasinformatico.com/feed/",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-hardzone-0057",
+        "name": "RSS - HardZone (ES)",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          3760
+        ],
+        "parameters": {
+          "url": "https://hardzone.es/feed/",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-phoronix-0058",
+        "name": "RSS - Phoronix Hardware",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          3952
+        ],
+        "parameters": {
+          "url": "https://www.phoronix.com/phoronix-rss.php",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-redeszone-0059",
+        "name": "RSS - RedesZone (ES)",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          4144
+        ],
+        "parameters": {
+          "url": "https://www.redeszone.net/feed/",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-genbeta-0060",
+        "name": "RSS - Genbeta (ES)",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          4336
+        ],
+        "parameters": {
+          "url": "https://www.genbeta.com/index.xml",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-muylinux-0061",
+        "name": "RSS - MuyLinux (ES)",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          4528
+        ],
+        "parameters": {
+          "url": "https://www.muylinux.com/feed/",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-arstechnica-0062",
+        "name": "RSS - Ars Technica",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          4720
+        ],
+        "parameters": {
+          "url": "https://feeds.arstechnica.com/arstechnica/index",
+          "options": {}
+        }
+      },
+      {
+        "id": "rss-theregister-0063",
+        "name": "RSS - The Register General",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.1,
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "onError": "continueRegularOutput",
+        "position": [
+          -2736,
+          4912
+        ],
+        "parameters": {
+          "url": "https://www.theregister.com/headlines.atom",
+          "options": {}
+        }
+      },
+      {
+        "id": "merge-hardware-0070",
+        "name": "Merge - Hardware",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -2512,
+          3664
+        ],
+        "parameters": {
+          "numberInputs": 4
+        }
+      },
+      {
+        "id": "tag-hardware-0071",
+        "name": "Tag: Hardware",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2288,
+          3664
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "tag_hw_1",
+                "name": "category",
+                "value": "Hardware",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": true,
+          "options": {}
+        }
+      },
+      {
+        "id": "merge-informatica-0072",
+        "name": "Merge - Informática",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -2512,
+          4528
+        ],
+        "parameters": {
+          "numberInputs": 5
+        }
+      },
+      {
+        "id": "tag-informatica-0073",
+        "name": "Tag: Informática",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2288,
+          4528
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "tag_info_1",
+                "name": "category",
+                "value": "Informática",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": true,
+          "options": {}
+        }
+      }
+    ],
+    "connections": {
+      "Lunes 8AM": {
+        "main": [
+          [
+            {
+              "node": "RSS - Ciberseguridad",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Infraestructura",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - IA",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Hardening",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Krebs on Security",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Dark Reading",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - The Register Security",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Wired Security",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - AWS Security Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Kubernetes Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Docker Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - HashiCorp Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - OpenAI Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Read Posted Log",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - TechCrunch AI",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - MIT Tech Review AI",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Hugging Face Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - SecurityWeek",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - MuySeguridad (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Tom's Hardware",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - El Chapuzas Informático (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - HardZone (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Phoronix Hardware",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - RedesZone (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Genbeta (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - MuyLinux (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Ars Technica",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - The Register General",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS - Ciberseguridad": {
+        "main": [
+          [
+            {
+              "node": "Merge - Ciberseguridad",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS - Infraestructura": {
+        "main": [
+          [
+            {
+              "node": "Merge - Infraestructura",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS - IA": {
+        "main": [
+          [
+            {
+              "node": "Merge - IA",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS - Hardening": {
+        "main": [
+          [
+            {
+              "node": "Tag: Hardening",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Read Posted Log": {
+        "main": [
+          [
+            {
+              "node": "Tag Log Entries",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Tag: Ciberseguridad": {
+        "main": [
+          [
+            {
+              "node": "Merge - PreSelect",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Tag: Infraestructura": {
+        "main": [
+          [
+            {
+              "node": "Merge - PreSelect",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Tag: IA": {
+        "main": [
+          [
+            {
+              "node": "Merge - PreSelect",
+              "type": "main",
+              "index": 2
+            }
+          ]
+        ]
+      },
+      "Tag: Hardening": {
+        "main": [
+          [
+            {
+              "node": "Merge - PreSelect",
+              "type": "main",
+              "index": 3
+            }
+          ]
+        ]
+      },
+      "Tag Log Entries": {
+        "main": [
+          [
+            {
+              "node": "Merge - PreSelect",
+              "type": "main",
+              "index": 6
+            }
+          ]
+        ]
+      },
+      "Select New Topic": {
+        "main": [
+          [
+            {
+              "node": "Hay contenido nuevo?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Hay contenido nuevo?": {
+        "main": [
+          [
+            {
+              "node": "Prepare Prompt",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Sin contenido nuevo - Fin",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Prepare Prompt": {
+        "main": [
+          [
+            {
+              "node": "Generar Post - Gemini (Primario)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generar Post - Gemini (Primario)": {
+        "main": [
+          [
+            {
+              "node": "Normalizar salida Gemini",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Generar Post - Groq (Backup)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalizar salida Gemini": {
+        "main": [
+          [
+            {
+              "node": "Final Post Text",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generar Post - Groq (Backup)": {
+        "main": [
+          [
+            {
+              "node": "Normalizar salida Groq",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalizar salida Groq": {
+        "main": [
+          [
+            {
+              "node": "Final Post Text",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Final Post Text": {
+        "main": [
+          [
+            {
+              "node": "Build Image Prompt",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Build Image Prompt": {
+        "main": [
+          [
+            {
+              "node": "Generar Imagen - Cloudflare FLUX.1 (Primario)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generar Imagen - HuggingFace (Backup, sin texto)": {
+        "main": [
+          [
+            {
+              "node": "Mark Image OK (HuggingFace)",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Sin Imagen (Fallback final)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Mark Image OK (HuggingFace)": {
+        "main": [
+          [
+            {
+              "node": "Final Image",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Sin Imagen (Fallback final)": {
+        "main": [
+          [
+            {
+              "node": "Final Image",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Final Image": {
+        "main": [
+          [
+            {
+              "node": "Hay imagen disponible?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Hay imagen disponible?": {
+        "main": [
+          [
+            {
+              "node": "Registrar Upload Imagen LinkedIn",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Publicar Post - Solo Texto (Fallback)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Registrar Upload Imagen LinkedIn": {
+        "main": [
+          [
+            {
+              "node": "Combinar Info Upload + Imagen",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Combinar Info Upload + Imagen": {
+        "main": [
+          [
+            {
+              "node": "Subir Binario Imagen",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Subir Binario Imagen": {
+        "main": [
+          [
+            {
+              "node": "Publicar Post con Imagen",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Publicar Post con Imagen": {
+        "main": [
+          [
+            {
+              "node": "Normalizar Resultado (Imagen)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalizar Resultado (Imagen)": {
+        "main": [
+          [
+            {
+              "node": "Publicación exitosa?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Publicar Post - Solo Texto (Fallback)": {
+        "main": [
+          [
+            {
+              "node": "Normalizar Resultado (Texto)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalizar Resultado (Texto)": {
+        "main": [
+          [
+            {
+              "node": "Publicación exitosa?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Publicación exitosa?": {
+        "main": [
+          [
+            {
+              "node": "Success Mail",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Failure Mail",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Success Mail": {
+        "main": [
+          [
+            {
+              "node": "Log Posted Item",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Failure Mail": {
+        "main": [
+          [
+            {
+              "node": "No Operation, do nothing",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Log Posted Item": {
+        "main": [
+          [
+            {
+              "node": "Filter content for Drive",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Filter content for Drive": {
+        "main": [
+          [
+            {
+              "node": "Creating csv file",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Creating csv file": {
+        "main": [
+          [
+            {
+              "node": "Converting csv to binary",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Converting csv to binary": {
+        "main": [
+          [
+            {
+              "node": "Upload file",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Upload file": {
+        "main": [
+          [
+            {
+              "node": "No Operation, do nothing1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS - Krebs on Security": {
+        "main": [
+          [
+            {
+              "node": "Merge - Ciberseguridad",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "RSS - Dark Reading": {
+        "main": [
+          [
+            {
+              "node": "Merge - Ciberseguridad",
+              "type": "main",
+              "index": 2
+            }
+          ]
+        ]
+      },
+      "RSS - The Register Security": {
+        "main": [
+          [
+            {
+              "node": "Merge - Ciberseguridad",
+              "type": "main",
+              "index": 3
+            }
+          ]
+        ]
+      },
+      "RSS - Wired Security": {
+        "main": [
+          [
+            {
+              "node": "Merge - Ciberseguridad",
+              "type": "main",
+              "index": 4
+            }
+          ]
+        ]
+      },
+      "Merge - Ciberseguridad": {
+        "main": [
+          [
+            {
+              "node": "Tag: Ciberseguridad",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS - AWS Security Blog": {
+        "main": [
+          [
+            {
+              "node": "Merge - Infraestructura",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "RSS - Kubernetes Blog": {
+        "main": [
+          [
+            {
+              "node": "Merge - Infraestructura",
+              "type": "main",
+              "index": 2
+            }
+          ]
+        ]
+      },
+      "RSS - Docker Blog": {
+        "main": [
+          [
+            {
+              "node": "Merge - Infraestructura",
+              "type": "main",
+              "index": 3
+            }
+          ]
+        ]
+      },
+      "RSS - HashiCorp Blog": {
+        "main": [
+          [
+            {
+              "node": "Merge - Infraestructura",
+              "type": "main",
+              "index": 4
+            }
+          ]
+        ]
+      },
+      "Merge - Infraestructura": {
+        "main": [
+          [
+            {
+              "node": "Tag: Infraestructura",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS - OpenAI Blog": {
+        "main": [
+          [
+            {
+              "node": "Merge - IA",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Merge - IA": {
+        "main": [
+          [
+            {
+              "node": "Tag: IA",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Merge - PreSelect": {
+        "main": [
+          [
+            {
+              "node": "Select New Topic",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generar Imagen - Cloudflare FLUX.1 (Primario)": {
+        "main": [
+          [
+            {
+              "node": "Procesar Imagen FLUX.1 (Cloudflare)",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Generar Imagen - HuggingFace (Backup, sin texto)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Procesar Imagen FLUX.1 (Cloudflare)": {
+        "main": [
+          [
+            {
+              "node": "Final Image",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Manual Test Trigger": {
+        "main": [
+          [
+            {
+              "node": "RSS - Ciberseguridad",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Infraestructura",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - IA",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Hardening",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Krebs on Security",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Dark Reading",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - The Register Security",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Wired Security",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - AWS Security Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Kubernetes Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Docker Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - HashiCorp Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - OpenAI Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Read Posted Log",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - TechCrunch AI",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - MIT Tech Review AI",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Hugging Face Blog",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - SecurityWeek",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - MuySeguridad (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Tom's Hardware",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - El Chapuzas Informático (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - HardZone (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Phoronix Hardware",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - RedesZone (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Genbeta (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - MuyLinux (ES)",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - Ars Technica",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS - The Register General",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS - TechCrunch AI": {
+        "main": [
+          [
+            {
+              "node": "Merge - IA",
+              "type": "main",
+              "index": 2
+            }
+          ]
+        ]
+      },
+      "RSS - MIT Tech Review AI": {
+        "main": [
+          [
+            {
+              "node": "Merge - IA",
+              "type": "main",
+              "index": 3
+            }
+          ]
+        ]
+      },
+      "RSS - Hugging Face Blog": {
+        "main": [
+          [
+            {
+              "node": "Merge - IA",
+              "type": "main",
+              "index": 4
+            }
+          ]
+        ]
+      },
+      "RSS - SecurityWeek": {
+        "main": [
+          [
+            {
+              "node": "Merge - Ciberseguridad",
+              "type": "main",
+              "index": 5
+            }
+          ]
+        ]
+      },
+      "RSS - MuySeguridad (ES)": {
+        "main": [
+          [
+            {
+              "node": "Merge - Ciberseguridad",
+              "type": "main",
+              "index": 6
+            }
+          ]
+        ]
+      },
+      "RSS - Tom's Hardware": {
+        "main": [
+          [
+            {
+              "node": "Merge - Hardware",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS - El Chapuzas Informático (ES)": {
+        "main": [
+          [
+            {
+              "node": "Merge - Hardware",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "RSS - HardZone (ES)": {
+        "main": [
+          [
+            {
+              "node": "Merge - Hardware",
+              "type": "main",
+              "index": 2
+            }
+          ]
+        ]
+      },
+      "RSS - Phoronix Hardware": {
+        "main": [
+          [
+            {
+              "node": "Merge - Hardware",
+              "type": "main",
+              "index": 3
+            }
+          ]
+        ]
+      },
+      "Merge - Hardware": {
+        "main": [
+          [
+            {
+              "node": "Tag: Hardware",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS - RedesZone (ES)": {
+        "main": [
+          [
+            {
+              "node": "Merge - Informática",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS - Genbeta (ES)": {
+        "main": [
+          [
+            {
+              "node": "Merge - Informática",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "RSS - MuyLinux (ES)": {
+        "main": [
+          [
+            {
+              "node": "Merge - Informática",
+              "type": "main",
+              "index": 2
+            }
+          ]
+        ]
+      },
+      "RSS - Ars Technica": {
+        "main": [
+          [
+            {
+              "node": "Merge - Informática",
+              "type": "main",
+              "index": 3
+            }
+          ]
+        ]
+      },
+      "RSS - The Register General": {
+        "main": [
+          [
+            {
+              "node": "Merge - Informática",
+              "type": "main",
+              "index": 4
+            }
+          ]
+        ]
+      },
+      "Merge - Informática": {
+        "main": [
+          [
+            {
+              "node": "Tag: Informática",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Tag: Hardware": {
+        "main": [
+          [
+            {
+              "node": "Merge - PreSelect",
+              "type": "main",
+              "index": 4
+            }
+          ]
+        ]
+      },
+      "Tag: Informática": {
+        "main": [
+          [
+            {
+              "node": "Merge - PreSelect",
+              "type": "main",
+              "index": 5
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "Juan Carlos Araneda Morales",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "createdAt": "2026-10-08T18:27:52.455Z",
+    "updatedAt": "2026-10-08T18:27:52.455Z",
+    "workflowPublishHistory": [
+      {
+        "id": 144,
+        "workflowId": "mSnCgesRW5wKgWLA",
+        "versionId": "8b532ead-9d69-4ed8-b12e-94191a6e1a5b",
+        "event": "activated",
+        "userId": "3794d172-a3cc-4358-8a28-1b1902c5fb61",
+        "createdAt": "2026-10-08T18:27:53.601Z"
+      },
+      {
+        "id": 145,
+        "workflowId": "mSnCgesRW5wKgWLA",
+        "versionId": "8b532ead-9d69-4ed8-b12e-94191a6e1a5b",
+        "event": "deactivated",
+        "userId": "3794d172-a3cc-4358-8a28-1b1902c5fb61",
+        "createdAt": "2026-10-08T18:27:54.301Z"
+      },
+      {
+        "id": 146,
+        "workflowId": "mSnCgesRW5wKgWLA",
+        "versionId": "8b532ead-9d69-4ed8-b12e-94191a6e1a5b",
+        "event": "activated",
+        "userId": "3794d172-a3cc-4358-8a28-1b1902c5fb61",
+        "createdAt": "2026-10-08T18:27:54.639Z"
+      }
+    ]
+  }
 }
